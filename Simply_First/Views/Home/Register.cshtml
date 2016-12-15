@@ -1,46 +1,118 @@
 ﻿
 @{
-    ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Login";
 }
 
-<<!-- ==============================================
-        HEADER
-        =============================================== -->
-<header id="home" class="bg-image fixed-bg window-height overlay-on-scroll parallax-bg" data-stellar-background-ratio=".5" style="background-image:url(../images/header-dark.jpg);">
-
-    <div class="middle-align-content">
-        <div class="container text-center text-lg parallax-move-down">
-
-            <h2 class="text-lg scrolling-animation fade-down d2">Take your</h2>
-            <h1 class="text-bold text-lg scrolling-animation scale-in">Responsive Portfolio</h1>
-            <p class="text-lg scrolling-animation fade-up d2">to the Next Level</p>
-
-        </div>
-    </div>
-
-</header>
-
-<div class="bg-light pt-160 pb-160">
-
+<div id="contact" class="bg-image pt-160 pb-120 fixed-bg" style="background-image:url('../images/contact-bg.jpg')">
     <div class="container">
-
         <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-login bg-black">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="#" class="active" id="login-form-link">Login</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="#" id="register-form-link">Register</a>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form id="login-form" action="~/Views/Home/Login.cshtml" method="post" role="form" style="display: block;">
+                                    <div class="form-group">
+                                        <input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="First Name" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Last Name" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="company-name" id="company-name" tabindex="1" class="form-control" placeholder="Company Name" value="">
+                                    </div>
 
-            <div id="waypoints" class="col-sm-10 col-sm-offset-1 text-center scrolling-animation fade-up">
 
-                <p class="text-lg-2x">
-                    <sup><i class="fa fa-quote-left fa-fw text-color"></i></sup>
-                    <em class="text-gray"> Every problem has a solution.</em>
-                    <sup><i class="fa fa-quote-right fa-fw text-color"></i></sup>
-                </p>
+                                    <div class="form-group">
+                                        <input type="text" name="housenum" id="housenum" tabindex="2" class="form-control" placeholder="House Number">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="streetnum" id="streetnum" tabindex="2" class="form-control" placeholder="Street Number">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="address" id="address" tabindex="2" class="form-control" placeholder="Address">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="city" id="city" tabindex="2" class="form-control" placeholder="City">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="province" id="province" tabindex="2" class="form-control" placeholder="Province">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="postal-code" id="postal-code" tabindex="2" class="form-control" placeholder="Postal Code">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="country" id="country" tabindex="2" class="form-control" placeholder="Country">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="tel" name="phonenumber" id="phonenumber" tabindex="2" class="form-control" placeholder="Phone Number">
+                                    </div>
 
-                <p class="text-2x"><em>You just have to be creative enough to find it.</em></p>
 
+
+
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+                                    </div>
+
+                                    <div class="form-group text-center">
+                       
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Register">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="text-center">
+                                                    <a href="~/Views/Home/Login.cshtml" tabindex="5" class="forgot-password">Already Registered?</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <form id="register-form" action="~/Views/Home/Login.cshtml" method="post" role="form" style="display: none;">
+                                    <div class="form-group">
+                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
-
     </div>
-
 </div>
