@@ -23,5 +23,27 @@ namespace Simply_First.Controllers
         {
             return View();
         }
+
+        public ActionResult Register() {
+            return View();
+        }
+
+        public ActionResult Admin() {
+            return View();
+        }
+
+        public ActionResult Employee()
+        {
+            return View();
+        }
+
+        public ActionResult Customer()
+        {
+            return View();
+        }
+
+        public ActionResult Product() {
+            return View();
+        }
     }
 }
