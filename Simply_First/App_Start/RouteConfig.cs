@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Simple_First
+namespace Simply_First
 {
     public class RouteConfig
     {
