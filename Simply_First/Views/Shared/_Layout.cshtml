@@ -45,7 +45,7 @@
 
 <body data-spy="scroll" data-target="#site-nav" data-offset="300">
 
-    @*<span id="preloader"><span></span></span>*@
+    <span id="preloader"><span></span></span>
 
     <!-- ==============================================
     MAIN NAVIGATION
@@ -59,7 +59,7 @@
             </button>
 
             <!-- ======= LOGO ========-->
-            @Html.ActionLink("Home", "Index", "Home", new { @class = "navbar-brand scrollto" })
+            @Html.ActionLink("Simply First", "Index", "Home", new { @class = "navbar-brand" })
             @*<a class="navbar-brand scrollto" href="#home">*@
 
                 @*<img class="site-logo transparent-logo" src="~/images/logo-transparent-color-5.png" alt="logo" />
@@ -71,10 +71,13 @@
         <div id="site-nav" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li class="sr-only">
-                    @Html.ActionLink("home", "Index", "Home")
+                    @Html.ActionLink("Home", "Index", "Home")
                 </li>
                 <li>
-                    @Html.ActionLink("Home", "Index", "Home", new { @class = "scrollto" })
+                    @Html.ActionLink("Login", "Login", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("Contact", "Contact", "Home")
                 </li>
             </ul>
         </div><!--End navbar-collapse -->
@@ -83,12 +86,19 @@
 
     @RenderBody()
 
+    <div class="text-center">
+        <a class="btn btn-rect btn-xl btn-block" href="http://www.dji.com/mavic" target="_blank">
+            Buy DJI Mavic Now<br>
+            <span class="btn-subtext">You won't regret it</span>
+        </a>
+    </div>
+
     <!-- ==============================================
     FOOTER
     =============================================== -->
     <footer>
 
-        <div class="main-footer bg-dark pt-80 pb-40">
+        <div class="main-footer bg-dark pt-10 pb-40">
 
             <div class="container text-center">
 
@@ -98,7 +108,7 @@
 
                         <div class="icon-box icon-box-round icon-top">
 
-                            <span class="icon-inline icon-circle icon-solid-color"><i class="fa fa-twitter"></i></span>
+                            @*<span class="icon-inline icon-circle icon-solid-color"><i class="fa fa-twitter"></i></span>
 
                             <div class="icon-box-content bg-dark">
 
@@ -107,7 +117,7 @@
                                 <div id="footer-twitter" class="twitter-slider flexslider dynamic-slides no-bullet-nav" data-widget-id="386017398488186880" data-tweets-length="3">
                                 </div>
 
-                            </div>
+                            </div>*@
 
                         </div>
 
@@ -134,7 +144,7 @@
 
             <div class="container text-gray text-center">
 
-                <p class="mb-20 mt-20">&copy; 2016 <a href="http://q-themes.net/" class="text-hover-color" target="_blank">Qthemes</a></p>
+                <p class="mb-20 mt-20">&copy; @Html.Raw(DateTime.Now) -  <a href="http://q-themes.net/" class="text-hover-color" target="_blank">Simply First</a></p>
 
             </div>
 

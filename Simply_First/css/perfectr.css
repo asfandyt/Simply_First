@@ -2550,9 +2550,9 @@ FOOTER STYLES
   position:relative;
   font-weight: 400;
   z-index:1;
-  padding:5px 10px;
+  padding:20px 10px;
   font-size:14px;
-  line-height:70px;
+  /*line-height:70px;*/
   letter-spacing:0.08em;
   background:transparent;
   color:#141414;
