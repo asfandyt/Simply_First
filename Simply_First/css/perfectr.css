@@ -2517,7 +2517,7 @@ FOOTER STYLES
   padding:20px 50px;
   margin:0;
   font-size:28px;
-  line-height:68px;
+  /*line-height:68px;*/
   height:auto;
   font-weight:600;
   color:#777;
@@ -2542,7 +2542,7 @@ FOOTER STYLES
 }
 
 .main-nav.navbar-transparent .navbar-brand{
-  padding:40px 50px 40px;
+  /*padding:40px 50px 40px;*/
   border-right: 1px solid rgba(255,255,255,.8);
 }
 
