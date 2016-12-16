@@ -1,116 +1,95 @@
 ﻿
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div id="contact" class="bg-image pt-160 pb-120 fixed-bg" style="background-image:url('../images/contact-bg.jpg')">
+<div class="bg-gray pt-120 pb-60 overflow-hidden">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <div class="panel panel-login bg-black">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <a href="#" class="active" id="login-form-link">Login</a>
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-offset-3 col-md-6 col-md-offset-3">
+
+                        <h2 class="text-uppercase text-bold mb-40 scrolling-animation fade-up">REGISTER</h2>
+
+                        <form class="contact-form text-dark mb-120 scrolling-animation fade-up d1" action="assets/php/contact.php" method="post" novalidate>
+
+                            <div class="form-i-right">
+                                <input class="form-control input-rect input-solid-white mb-20 requiredField" placeholder="First Name" type="text" name="fname">
+                                <i class="fa fa-user"></i>
                             </div>
-                            <div class="col-xs-6">
-                                <a href="#" id="register-form-link">Register</a>
+
+                            <div class="form-i-right">
+                                <input class="form-control input-rect input-solid-white mb-20 requiredField" placeholder="Last Name" type="text" name="lname">
+                                <i class="fa fa-user"></i>
                             </div>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <form id="login-form" action="~/Views/Home/Login.cshtml" method="post" role="form" style="display: block;">
-                                    <div class="form-group">
-                                        <input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="First Name" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Last Name" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" name="company-name" id="company-name" tabindex="1" class="form-control" placeholder="Company Name" value="">
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <input type="text" name="housenum" id="housenum" tabindex="2" class="form-control" placeholder="House Number">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" name="streetnum" id="streetnum" tabindex="2" class="form-control" placeholder="Street Number">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" name="address" id="address" tabindex="2" class="form-control" placeholder="Address">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" name="city" id="city" tabindex="2" class="form-control" placeholder="City">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" name="province" id="province" tabindex="2" class="form-control" placeholder="Province">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" name="postal-code" id="postal-code" tabindex="2" class="form-control" placeholder="Postal Code">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" name="country" id="country" tabindex="2" class="form-control" placeholder="Country">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="tel" name="phonenumber" id="phonenumber" tabindex="2" class="form-control" placeholder="Phone Number">
-                                    </div>
-
-
-
-
-                                    <div class="form-group">
-                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
-                                    </div>
-
-                                    <div class="form-group text-center">
-                       
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-sm-offset-3">
-                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Register">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="text-center">
-                                                    <a href="~/Views/Home/Login.cshtml" tabindex="5" class="forgot-password">Already Registered?</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                <form id="register-form" action="~/Views/Home/Login.cshtml" method="post" role="form" style="display: none;">
-                                    <div class="form-group">
-                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-sm-offset-3">
-                                                <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                        
+                            <div class="form-i-right">
+                                <input class="form-control input-rect input-solid-white mb-20 requiredField" placeholder="Company Name" type="text" name="companyname">
+                                <i class="fa fa-user"></i>
                             </div>
-                        </div>
+
+                            <div class="form-i-right">
+                                <input class="form-control input-rect input-solid-white mb-20 requiredField" placeholder="House Number" type="text" name="housenumber">
+                                <i class="fa fa-user"></i>
+                            </div>     
+                            
+                            <div class="form-i-right">
+                                <input class="form-control input-rect input-solid-white mb-20 requiredField" placeholder="Street Number" type="text" name="streetnumber">
+                                <i class="fa fa-user"></i>
+                            </div>        
+                            
+                            <div class="form-i-right">
+                                <input class="form-control input-rect input-solid-white mb-20 requiredField" placeholder="Address" type="text" name="address">
+                                <i class="fa fa-user"></i>
+                            </div>        
+                            
+                            <div class="form-i-right">
+                                <input class="form-control input-rect input-solid-white mb-20 requiredField" placeholder="City" type="text" name="city">
+                                <i class="fa fa-user"></i>
+                            </div>      
+                            
+                            <div class="form-i-right">
+                                <input class="form-control input-rect input-solid-white mb-20 requiredField" placeholder="Province" type="text" name="province">
+                                <i class="fa fa-user"></i>
+                            </div>         
+                            
+                            <div class="form-i-right">
+                                <input class="form-control input-rect input-solid-white mb-20 requiredField" placeholder="Postal Code" type="text" name="postal">
+                                <i class="fa fa-user"></i>
+                            </div>   
+                            
+                            <div class="form-i-right">
+                                <input class="form-control input-rect input-solid-white mb-20 requiredField" placeholder="Province" type="text" name="province">
+                                <i class="fa fa-user"></i>
+                            </div>    
+                            
+                            <div class="form-i-right">
+                                <input class="form-control input-rect input-solid-white mb-20 requiredField" placeholder="Phone Number" type="tel" name="number">
+                                <i class="fa fa-user"></i>
+                            </div>     
+
+                            <div class="form-i-right">
+                                <input class="form-control input-rect input-solid-white mb-20 requiredField" placeholder="Your Password" type="password" name="password">
+                                <i class="fa fa-user"></i>
+                            </div>
+
+                            <div class="form-i-right">
+                                <input class="form-control input-rect input-solid-white mb-20 requiredField" placeholder="Confirm Password" type="password" name="cpassword">
+                                <i class="fa fa-user"></i>
+                            </div>
+
+                            <div class="form-i-right">
+                                <input class="form-control input-rect input-solid-white mb-20 requiredField" placeholder="Your Email" type="email" name="email">
+                                <i class="fa fa-envelope"></i>
+                            </div>
+
+                            <button type="submit" class="btn btn-block btn-rect btn-3d">Register</button>
+                            <input type="hidden" name="submitted" id="submitted" value="true" />
+                        </form>
                     </div>
                 </div>
             </div>
