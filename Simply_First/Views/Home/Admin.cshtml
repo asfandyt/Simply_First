@@ -18,13 +18,13 @@
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Manage Employee(s) <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Add Employee</a>
+                        @Html.ActionLink("Add Employee", "AddEmployee", "Home", new {@class = "fa fa-fw fa-edit"})
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Edit Employee</a>
+                        <a href="EditEmployee"><i class="fa fa-fw fa-edit"></i> Edit Employee</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Remove Employee</a>
+                        <a href="RemoveEmployee"><i class="fa fa-fw fa-edit"></i> Remove Employee</a>
                     </li>
                 </ul>
             </li>
@@ -32,13 +32,13 @@
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> Inventory <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo2" class="collapse">
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Update Inventory</a>
+                        <a href="UpdateInventory"><i class="fa fa-fw fa-edit"></i> Update Inventory</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Check Inventory</a>
+                        <a href="CheckInventory"><i class="fa fa-fw fa-edit"></i> Check Inventory</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Create Order</a>
+                        <a href="CreateOrder"><i class="fa fa-fw fa-edit"></i> Create Order</a>
                     </li>
                 </ul>
             </li>
@@ -46,21 +46,21 @@
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-fw fa-arrows-v"></i> Manage Customer(s)<i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo3" class="collapse">
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> All Cutomers</a>
+                        <a href="AllCustomers"><i class="fa fa-fw fa-edit"></i> All Cutomers</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Create Customer</a>
+                        <a href="CreateCustomer"><i class="fa fa-fw fa-edit"></i> Create Customer</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Edit Customer</a>
+                        <a href="EditCustomer"><i class="fa fa-fw fa-edit"></i> Edit Customer</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Delete Customer</a>
+                        <a href="DeleteCustomer"><i class="fa fa-fw fa-edit"></i> Delete Customer</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> Profile</a>
+                <a href="Profile"><i class="fa fa-fw fa-dashboard"></i> Profile</a>
             </li>
         </ul>
     </div>
