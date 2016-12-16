@@ -278,7 +278,10 @@
     <Content Include="Views\Home\Customer.cshtml" />
     <Content Include="Views\Home\Product.cshtml" />
     <Content Include="css\plugin\desktop.ini" />
+    <None Include="Properties\PublishProfiles\AzureTest20161214020903 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\hithere - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\simplyfirst - Web Deploy.pubxml" />
+    <Content Include="Views\Home\PurchaseProduct.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

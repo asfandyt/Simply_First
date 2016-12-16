@@ -1,11 +1,13 @@
-﻿@{
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home";
 }
 <style>
+    body {
+        background-color: #fff;
+    }
     section.mavic-s2 {
         position: relative;
-        height: 750px;
         background-color: #000;
         background-position: center bottom;
         background-repeat: no-repeat;
@@ -20,9 +22,44 @@
         background: linear-gradient(to bottom,#222 0%,#000 100%) url('http://www3.djicdn.com/assets/images/products/mavic/s2-img-v2-da1b574a4cc30a1d24f31706f6bcfbfe.png') center bottom no-repeat;
     }
 
-        section.mavic-s2 .img-box img {
+        section.mavic-s2 .img-box {
             line-height: 0;
-            width: 1100px;
+            max-width: 1100px;
+            margin:0 auto;
+        }
+        .features-list .switch-tab {
+            text-align: center;
+            padding: 40px 0;
+            text-transform: uppercase;
+        }
+        .features-list .switch-tab ul li {
+            margin: 0 35px;
+        }
+        .features-list .switch-tab ul li.active a {
+            color: #111;
+            border-bottom: 2px solid #44a8f2;
+        }
+        .features-list .switch-tab ul li a {
+            display: inline-block;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            font-size: 20px;
+            position: relative;
+            font-weight: 300;
+            top: 2px;
+            color: #ccc;
+        }
+        .feature-box ul {
+            display: flex;
+            flex-wrap: wrap;
+            list-style-type: none;
+            padding: 0;
+            justify-content: space-between;
+        }
+        .feature-box ul li {
+            width: 31%;
+            min-height: 550px;
         }
 </style>
 <!-- ==============================================
@@ -58,8 +95,229 @@
                     <em class="text-gray"> Every problem has a solution.</em>
                     <sup><i class="fa fa-quote-right fa-fw text-color"></i></sup>
                 </p>
-                <p class="text-2x"><em>You just have to be creative enough to find it.</em></p>
+                <p class="text-2x"><em>You just have to be creative enough to fly it.</em></p>
             </div>
         </div>
     </div>
+</div>
+<section class="mavic-s2 text-center">
+    <div class="container">
+        <div class="text">
+            <p>The DJI Mavic Pro is a small yet powerful drone that turns the sky into your creative canvas easily and without worry, <span class="br-display"></span>helping you make every moment an aerial moment. Its compact size hides a high degree of complexity that makes it one of DJI’s most <span class="br-display"></span>sophisticated flying cameras ever. 24 high-performance computing cores, an all-new transmission system with a 4.3mi (7km) *range, <span class="br-display"></span>5 vision sensors, and a 4K camera stabilized by a 3-axis mechanical gimbal, are at your command <span class="br-display"></span>with just a push of your thumb or a tap of your finger. <span class="br-display"></span><span class="br-display"></span>*Unobstructed, free of interference, when FCC compliant.</p>
+        </div>
+    </div>
+    <div class="img-box"><img src="http://www3.djicdn.com/assets/images/products/mavic/s2-img-v2-da1b574a4cc30a1d24f31706f6bcfbfe.png" class="img-responsive center-block"></div>
+</section>
+<section class="section mavic-s3">
+    <div class="features-list">
+        <div class="switch-tab"><ul class="list-inline list-unstyled"><li class="active"><a href="javascript:;" class="font-gotham">Powerful</a></li><li class=""></li></ul></div>
+        
+        <div class="container">
+            <div class="feature-box box-1" style="display: block;">
+                <ul>
+                    <li>
+                        <p class="pic-box"><img src="//www3.djicdn.com/assets/images/products/mavic/s3-cover/powerful-1-b5a823d7e986f20594d8f280e2219a7b.jpg" class="img-responsive"></p><h3>Fly further</h3><p class="text">Inside the Mavic’s pocket-sized remote controller is DJI’s brand new OcuSync transmission technology, with a range of 4.3mi (7km)*, HD 720p long range and Full HD 1080p short range video streaming.<span class="br-display"></span>*Unobstructed, free of interference, when FCC compliant.</p><a href="javascript:;" data-title="Fly further" data-content="The Mavic uses DJI’s newly developed OcuSync transmission system. Part of the Lightbridge family, OcuSync performs far better than Wi-Fi transmission at all transmission speeds. OcuSync also uses more effective digital compression and channel transmission technologies, allowing it to transmit HD video reliably even in environments with strong radio interference. Compared to traditional analog transmission, OcuSync can transmit video at 720p and 1080p – equivalent to a 4-10 times better quality, without a color cast, static interference, flickering or other problems associated with analog transmission. Even when using the same amount of radio transmission power, OcuSync transmits further than analog at 4.1mi (7km)*.<span class=&quot;br-height-diy&quot;></span>
+
+OcuSync goes even further than optimizing the communication mechanism and parameters of aerial imaging. There are several video transmission systems on the market claiming to offer video transmission with zero latency. However, it should be noted that the physical layer of those transmission systems is too simple to adapt to changes in the environment. When affected by signal interference, the image quality of the video being transmitted will fall sharply. This means these systems are not suitable for far field transmissions and transmissions in interference-heavy environments. Also, because these video transmission systems are not integrated into the whole system, latency will immediately start to rise up from 0 when working with devices including cameras and displays. OcuSync is able to strike a perfect balance between latency and receptivity, reducing latency to 5ms for remote controller transmission commands, 10ms for video data and 130ms for videos. More than low enough to ensure that Mavic is able to fly reliably despite interference. OcuSync’s integration with video processing, coding, and signal transmission systems also make it more cost effective. <span class=&quot;br-height-diy&quot;></span>
+
+Before taking off, OcuSync will automatically scan the environment and choose the frequency band with the lowest interference, ensuring more stable video transmission. During a flight, it sends key flight parameters back for viewing in the DJI GO app and supports a maximum download speed of 40Mb/s for photos and videos.<span class=&quot;br-height-diy&quot;></span>
+
+There are many Wi-Fi based transmission systems available on market. However, the experience of using OcuSync is completely different. As Wi-Fi was primarily designed to connect electronic devices locally, it works best when connecting to nearby devices. As it was designed for short range, Wi-Fi systems use low cost transmitters that suffer from weak data links. This means that a Wi-Fi cannot detect weak signals or signals with interference. OcuSync however, uses many cutting-edge communication industry technologies to outperform Wi-Fi in terms of sensitivity, anti-interference, and anti-fading, as well as when flying at high speed. It also supports simultaneous connection to multiple devices. <span class=&quot;br-height-diy&quot;></span>
+
+In use, this is the difference between smooth or interrupted transmission, short or long flight range, and short or long recovery times after interference or GPS signal loss. Additionally, since Wi-Fi uses a traditional protocol stack, it takes longer - from several seconds to tens of seconds – to get connected and to re-connect after signal loss But OcuSync uses Cross-Layer Protocol Design, it can establish or re-establish links within one second. <span class=&quot;br-height-diy&quot;></span>
+
+As well as point-to-point video transmission, OcuSync also supports wireless connections to multiple devices. For example, you can connect the DJI Goggles, remote controller, and Mavic wirelessly to OcuSync all at the same time. You can also add an additional remote so that you can control the Mavic with two remotes or share First Person View (FPV) videos. <span class=&quot;br-height-diy&quot;></span>
+
+* Unobstructed, free of interference, when FCC compliant." data-src="//www1.djicdn.com/assets/images/products/mavic/s3-cover/powerful-1-large-391f9bf091f73963f629f96544cbc152.jpg" class="link-more">LEARN MORE</a>
+                    </li>
+                    <li>
+                        <p class="pic-box"><img src="//www4.djicdn.com/assets/images/products/mavic/s3-cover/powerful-2-f41d473a9042af5a9c7c56a886921fdf.jpg" class="img-responsive"></p><h3>No bumps and scrapes</h3><p class="text">An unprotected drone could hit obstacles during long distance flight or when descending from an inadequate height in Return to Home mode. The Mavic uses FlightAutonomy technology to sense obstacles up to 49ft (15m) away and allows the Mavic to bypass them or brake to hover, reducing accidents.</p><a href="javascript:;" data-title="No bumps and scrapes" data-content="Ultrasonic waves and Time of Flight (ToF) sensors are often used to measure distance from an obstacle, but both methods calculate distance based on signal reflection and are therefore reliant on the shape of the obstacle. This means distances from common obstacles such as rocks and branches cannot be sensed. FlightAutonomy gives the Mavic long range, high precision obstacle sensing, enabling it to scan its environment in 3D before taking off. FlightAutonomy ensures the Mavic precisely locates obstacles around it.<span class=&quot;br-height-diy&quot;></span>
+
+Detecting obstacles requires getting information about the obstacle to the Mavic. Ultrasonic and ToF sensors measure distance by detecting the first reflected wave. In other words, they can only measure the distance from a single point, instead of getting a 3D depth image of a particular obstacle. Another method of creating a depth image is structured light projection. For this, a structured light sensor projects infrared in a specific shape onto the obstacle in front of it. The infrared then reflects back and the sensor then calculates the strength of the reflected signal so that it can create a 3D depth image of the obstacle. However, due to the limited strength of infrared and interference from visible light, the maximum sensing distance for a structured light sensor is only 3 to 5 meters. It is also ineffective in bright light significantly reducing its reliability and effectiveness on a sunny day.<span class=&quot;br-height-diy&quot;></span>
+
+FlightAutonomy is made up of 7 components including 5 cameras (forward and downward dual vision sensors and the main camera), dual-band satellite positioning (GPS and GLONASS), 2 ultrasonic rangefinders, redundant sensors, and a group of 24 powerful, specialized computing cores. Cameras on the left and right side in the front of the Mavic are fixed in place using an aluminum bracket to ensure the optimum alignment of the vision sensor lenses. <span class=&quot;br-height-diy&quot;></span>
+
+As the Mavic flies, dual forward and downward vision sensors measure the distance between itself and obstacles by taking photos from all four cameras and using the information to create a 3D map that tells it exactly where obstacles are. The dual forward and downward vision sensors require visible light to function, and in bright light can see as far as 49ft (15m) out in front.<span class=&quot;br-height-diy&quot;></span>
+
+This obstacle avoidance system is activated in every Intelligent Flight Mode including all ActiveTrack modes, TapFly and Terrain Follow. It is also available during automatic Return to Home, so that the Mavic can easily make its way back without bumping into anything in its path. <span class=&quot;br-height-diy&quot;></span>" data-iframe="https://www.djivideos.com/watch/1d8de9f2-4bab-4fcb-b09f-85170977cfaa?autoplay=0&amp;&amp;loop=0&amp;disctrl=false&amp;poster=https://asset1.djicdn.com/images/products/mavic/mavic-video-cover/cgianimation.jpg" data-src="//www2.djicdn.com/assets/images/products/mavic/s3-cover/powerful-2-large-1a55a44bfb270e97e2dc978cd8320ca3.jpg" class="link-more">LEARN MORE</a>
+                    </li>
+                    <li>
+                        <p class="pic-box"><img src="//www5.djicdn.com/assets/images/products/mavic/s3-cover/powerful-3-90e62f254beab04eb43f7332c834a3d3.jpg" class="img-responsive"></p><h3>Precision Hover</h3><p class="text">Satellite positioning can only help a drone hover in an unobstructed outdoor area free of interference. Without satellites, the drone will not be able to position and become susceptible to drifting. However, with forward and downward vision sensors, the Mavic can hover precisely indoors or in places without GPS.</p><a href="javascript:;" data-title="Precision Hover" data-content="Situations without satellite positioning can be divided into two main types. First, satellite connectivity may be unavailable when flying indoors. Second, satellite connectivity is cut off during an outdoor flight, such as by flying under a balcony or flying from indoors to outdoors. The loss of satellite positioning makes these scenarios dangerous for new pilots, or those who want to fly long distances*.<span class=&quot;br-height-diy&quot;></span>
+
+If the drone wants to position itself using satellites, the flight controller needs the current location and flight speed of the aircraft. However, if the drone needs to position accurately without GPS, flight status and location will need to be collected another way. Vision positioning equipped drones generally use what is known as an Optical Flow visual positioning system, consisting of dual ultrasonic sensors and a single camera. The ultrasonic sensors provide altitude information by measuring the distance between the aircraft and the landing point, while the single camera is used to calculate positioning information by capturing images below the aircraft. As ultrasonic sensors are the only measure of height, the higher the aircraft flies the less precise the data from reflected sound waves become. Accurate height positioning is therefore limited to less than 3 meters. The single camera is unable to improve height positioning accuracy and limits areas that the drone can hover stably to those that have a clear and definable texture. <span class=&quot;br-height-diy&quot;></span>
+
+The Mavic overcomes these problems through the use of dual forward vision sensors. This setup allows the Mavic to see obstacles in 3-dimensions up to 15 meters in front, increasing positioning accuracy to 2-3 times that of an Optical Flow system. It also allows the speed of the aircraft to be calculated, enabling precise hovering at up to 10 meters without satellite positioning. Dual forward vision sensors allow it to calculate its current location and speed of flight by observing the scene in front, further increasing positioning accuracy. Thanks to this precise hovering technology, the Mavic is able to automatically land almost exactly where you took off. Every time you take off, the two downward facing vision sensors record a burst of video of the ground below and pair it with satellite coordinates. When you tell the Mavic to fly home, it will return to that coordinate, match the video, and land back at your feet.
+<span class=&quot;br-height-diy&quot;></span>
+
+*Line of sight flight is required in some countries." data-iframe="https://www.djivideos.com/watch/a4191d28-7740-4fd6-86d8-987e35122f1d?autoplay=0&amp;&amp;loop=0&amp;disctrl=false&amp;poster=https://asset1.djicdn.com/images/products/mavic/mavic-video-cover/inside.jpg" data-more-video="https://www.djivideos.com/watch/a4191d28-7740-4fd6-86d8-987e35122f1d?autoplay=0&amp;&amp;loop=0&amp;disctrl=false&amp;poster=https://asset1.djicdn.com/images/products/mavic/mavic-video-cover/inside.jpg" data-src="//www3.djicdn.com/assets/images/products/mavic/s3-cover/powerful-3-large-1a55a44bfb270e97e2dc978cd8320ca3.jpg" class="link-more">LEARN MORE</a>
+                    </li>
+                    <li>
+                        <p class="pic-box"><img src="//www1.djicdn.com/assets/images/products/mavic/s3-cover/powerful-4-48261f884bf4414b4281a3eba4fd54be.jpg" class="img-responsive"></p><h3>Stay flying longer</h3><p class="text">The Mavic is only 1/6th the size of the Phantom 4 but this reduction in size doesn't mean a reduction in flight time. The Mavic actually flies much longer than you would expect from its compact size. It is capable of reaching an absolute maximum flight time of 27 minutes and a maximum distance of 8mi (13km) due to its powerful, high-efficiency motors.</p><a href="javascript:;" data-title="Stay flying longer" data-content="When designing the Mavic, we wanted to reduce its size without sacrificing flight time. Since the Mavic has a brand new 4.1mi (7km) (Unobstructed, free of interference, when FCC compliant)Full High Definition (FHD) video transmission system, we knew customers would want increased flight time and speed to enjoy their flying more. This is why the Mavic can fly for up to 27* minutes and reach speeds of 40mph (64kph). Because the Mavic is much smaller than the Phantom 4, it requires an even more efficient propulsion system. The efficiency of the Mavic’s propulsion system allows it to fly more than twice the 10 minutes that other folding or pocket-sized drones on the market are capable of. Its propulsion system is also more stable than smaller drones that do not have the power to fly in strong winds. The flight time of a drone is heavily dependent on its propulsion system and its overall power consumption. Since Mavic is smaller, the expectation is that it is less stable than a Phantom 4 when flying against the wind, but the Mavic’s airframe and propulsion system have been optimized to allow it to rival the Phantom 4 in the following ways:<br>
+1.	An aerodynamic design in the front and rear of the Mavic and its polished surfaces reduce air resistance as it flies forwards. <br>
+2.	Mavic has 2 pairs of 8.3inch foldable propellers, each covering nearly half its length, compared to most foldable drones on the market whose propellers are only 1/4 their length. This is possible through elegant engineering that allows rear arms to fold below forearms, saving overall space while allowing room for larger props.<br>
+3.	The aerodynamic configuration of the Mavic has been redesigned according to its flying attitude and angle when moving forward. We also optimized the aerodynamic efficiency of the propellers so that the Mavic can fly for longer. <br>
+4.	High-density lithium batteries reduce space required for batteries, yet provide the same amount of power. The battery compartment is deeply integrated inside the Mavic and guarantees structural strength.<br>
+5.	An improved propulsion system ensures the Mavic ascends and accelerates faster. Combined with a fast responding, highly robustness flight controller, it is able to expertly handle strong winds while flying.<span class=&quot;br-height-diy&quot;></span>
+
+*Battery duration is recorded in an ideal flight situation, subject to real flying environments and conditions." data-src="//www4.djicdn.com/assets/images/products/mavic/s3-cover/powerful-4-large-9731a3b968d876fb785f4d2a866d8594.jpg" class="link-more">LEARN MORE</a>
+                    </li>
+                    <li>
+                        <p class="pic-box"><img src="//www5.djicdn.com/assets/images/products/mavic/s3-cover/creative-1-22ee53f9f67aa7d7e831c7f9b862c605.jpg" class="img-responsive"></p><h3>4K Ultra HD Video</h3><p class="text">Mavic supports 4K video at 30fps. No Electronic Image Stabilization is used, ensuring all footage is 4K. We have created a miniaturized, ultra-precise 3-axis gimbal for the Mavic, capable of stabilizing the camera even during high-speed motion for smooth video and sharp photos.</p><a href="javascript:;" data-title="4K Ultra HD Video" data-content="Electronic Image Stabilization (EIS) is a shake reduction technology based on image cropping. It is particularly popular among compact and small drones since they can be made more simply by replacing a 3-axis gimbal stabilized camera with a fixed camera and EIS. EIS works by cropping edges from a 4K image, and can theoretically create a smooth full HD 1080p video from an original 4K video. However, EIS is unable to completely eliminate shaking and introduces ripples in both photos and videos. In drones, EIS has three main problems:<br>
+
+1.	EIS systems cannot shoot 4K or high frame rate video because cropping is necessary to reduce shake, and the amount of cropping will vary depending on the amount of movement. As 4K is currently the highest definition available for most cameras, 4K (or even 2.7K video) cannot be shot while using EIS. Additionally, as it takes time to process the cropping, recording video at high framerates is not possible, resulting in only 1080p video at 30fps.<br>
+
+2.	Shooting perspectives cannot be controlled precisely. Without a gimbal, drones are forced to use a fisheye lens to allow shooting angle changes, but changing the angle only uses part of the camera view, negatively affecting the shooting experience.<br>
+
+3.	Black edges may be introduced in the video in flight during a severe maneuver. This occurs because EIS technology clips beyond the edge of the video in an effort to keep the image stable.<span class=&quot;br-height-diy&quot;></span>
+
+To provide true 4K aerial video and a smooth live feed, the Mavic Pro is equipped with the smallest high-precision 3-axis gimbal that DJI has ever made. With brushless motors on all three axes, the gimbal can control the camera with precision, adjusting it to eliminate shake caused by movement from the Mavic. This 4K camera uses core technologies found in all DJI cameras. It is equipped with a 1/2.3 inch CMOS image sensor, commonly found in professional sports cameras, and an aerial imaging optimized integrated lens with an equivalent focal length of 28mm. It shoots smooth 4K video at 30fps, 1080P video at 96fps and 12-megapixel photos." data-src="//www5.djicdn.com/assets/images/products/mavic/s3-cover/powerful-5-large-5ab1d7bcb0312b162e68b278833cbd1b.jpg" class="link-more">LEARN MORE</a>
+                    </li>
+                    <li><p class="pic-box"><img src="//www2.djicdn.com/assets/images/products/mavic/s3-cover/creative-3-941b6bf2abb578343aa2e0e16b6fb3be.jpg" class="img-responsive"></p><h3>Photos with altitude</h3><p class="text">Everyone loves a good photo. Whether you just want to take a snap or are building up your portfolio, the Mavic’s 12-megapixel camera with Adobe DNG RAW support is ready to shoot.</p><a href="javascript:;" data-title="Photos with altitude" data-content="Every photo you take with the Mavic can be as big as 12 megapixels. Combined with an image sensor that has been expertly tuned for aerial images, all you need to do is find the perfect subject. You can even flip the camera 90° for portrait oriented shots, just like you do with your phone. If you are as concerned about editing as you are about composition, you can capture every photo in Adobe DNG RAW to give you all the editing power you need to turn any photo into a work of art." data-src="//www5.djicdn.com/assets/images/products/mavic/s3-cover/creative-3-large-62cea46ee550fccea35c4d96860d0e0b.jpg" class="link-more">LEARN MORE</a></li>
+                </ul>
+            </div>
+        
+        
+    </div>
+</section>
+
+<!-- ==============================================
+        TESTIMONIALS
+        =============================================== -->
+<div id="testimonials" class="bg-gray pt-120 pb-80">
+
+    <div class="container">
+
+        <div class="scrolling-animation fade-up">
+            <h2 class="text-lg text-center">Satisfied <span class="text-color">Clients</span></h2>
+            <hr class="hr-gray hr-bold hr-sm hr-center">
+        </div>
+
+        <div class="row mt-100 mb-80">
+
+            <div class="col-sm-4 col-lg-2 mb-40 scrolling-animation fade-right d2">
+
+                <a href="#link"><img class="img-responsive img-hover-opacity" src="~/images/client-logo-1.png" alt="" /></a>
+
+            </div>
+
+            <div class="col-sm-4 col-lg-2 mb-40 scrolling-animation fade-right d1">
+
+                <a href="#link"><img class="img-responsive img-hover-opacity" src="~/images/client-logo-2.png" alt="" /></a>
+
+            </div>
+
+            <div class="col-sm-4 col-lg-2 mb-40 scrolling-animation fade-in">
+
+                <a href="#link"><img class="img-responsive img-hover-opacity" src="~/images/client-logo-3.png" alt="" /></a>
+
+            </div>
+
+            <div class="col-sm-4 col-lg-2 mb-40 scrolling-animation fade-in">
+
+                <a href="#link"><img class="img-responsive img-hover-opacity" src="~/images/client-logo-4.png" alt="" /></a>
+
+            </div>
+
+            <div class="col-sm-4 col-lg-2 mb-40 scrolling-animation fade-left d1">
+
+                <a href="#link"><img class="img-responsive img-hover-opacity" src="~/images/client-logo-5.png" alt="" /></a>
+
+            </div>
+
+            <div class="col-sm-4 col-lg-2 mb-40 scrolling-animation fade-left d2">
+
+                <a href="#link"><img class="img-responsive img-hover-opacity" src="~/images/client-logo-6.png" alt="" /></a>
+
+            </div>
+
+        </div>
+
+        <div class="row scrolling-animation fade-up">
+
+            <div class="col-sm-10 col-sm-offset-1 col-lg-8 col-lg-offset-2">
+
+                <div class="testimonials flexslider no-direction-nav effect-slide" data-speed="5000">
+
+                    <ul class="slides">
+
+                        <li class="icon-box icon-box-round mb-40 icon-top-left">
+
+                            <span class="icon-inline icon-circle icon-solid-color nml mb-20"><i class="fa fa-quote-left"></i></span>
+
+                            <div class="icon-box-content bg-light">
+
+                                <h3 class="text-color"><img class="img-circle" src="~/images/client-1.jpg" alt="" />John Doe</h3>
+
+                                <p>It feels so incredibly empowering to actually fly something"</p>
+
+                                <p class="text-gray text-right text-hover-color mt-40"><em><a href="#link">microsoft.com</a></em></p>
+
+                            </div>
+
+                        </li>
+
+                        <li class="icon-box icon-box-round mb-40 icon-top-left">
+
+                            <span class="icon-inline icon-circle icon-solid-color nml mb-20"><i class="fa fa-quote-left"></i></span>
+
+                            <div class="icon-box-content bg-light">
+
+                                <h3 class="text-color"><img class="img-circle" src="~/images/client-2.jpg" alt="" />Jane Doe</h3>
+
+                                <p>Learning to fly teaches you a way of thinking that can be applied to many other areas of life - I don't think people always appreciate that.</p>
+
+                                <p class="text-gray text-right text-hover-color mt-40"><em><a href="#link">gopro.com</a></em></p>
+
+                            </div>
+
+                        </li>
+
+                        <li class="icon-box icon-box-round mb-40 icon-top-left">
+
+                            <span class="icon-inline icon-circle icon-solid-color nml mb-20"><i class="fa fa-quote-left"></i></span>
+
+                            <div class="icon-box-content bg-light">
+
+                                <h3 class="text-color"><img class="img-circle" src="~/images/client-1.jpg" alt="" />Frank Cheng</h3>
+
+                                <p>At first, it may be intimidating to see all of the available funtions. Pick a place that interests you and fly through it at your own pace.</p>
+
+                                <p class="text-gray text-right text-hover-color mt-40"><em><a href="#link">sfu.com</a></em></p>
+
+                            </div>
+
+                        </li>
+
+                        <li class="icon-box icon-box-round mb-40 icon-top-left">
+
+                            <span class="icon-inline icon-circle icon-solid-color nml mb-20"><i class="fa fa-quote-left"></i></span>
+
+                            <div class="icon-box-content bg-light">
+
+                                <h3 class="text-color"><img class="img-circle" src="~/images/client-2.jpg" alt="" />Max Wu</h3>
+
+                                <p>Flying Mavic is a unique talent that anyone can learn — so take the opportunity to learn it.</p>
+
+                                <p class="text-gray text-right text-hover-color mt-40"><em><a href="#link">bcit.com</a></em></p>
+
+                            </div>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="text-center">
+    <a class="btn btn-rect btn-xl btn-block" href="http://www.dji.com/mavic" target="_blank">
+        Buy DJI Mavic Now<br>
+        <span class="btn-subtext">You won't regret it</span>
+    </a>
 </div>

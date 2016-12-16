@@ -46,10 +46,6 @@ namespace Simply_First.Controllers
             return View();
         }
 
-        public ActionResult Profile()
-        {
-            return View();
-        }
         public ActionResult AddEmployee()
         {
             return View();

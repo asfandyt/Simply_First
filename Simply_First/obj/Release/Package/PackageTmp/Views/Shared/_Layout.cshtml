@@ -52,7 +52,7 @@
 
 </head>
 
-<body data-spy="scroll" data-target="#site-nav" data-offset="300">
+<body data-spy="scroll" data-target="#site-nav" data-offset="300" classes="@ViewBag.Title">
 
     <span id="preloader"><span></span></span>
 
@@ -68,7 +68,7 @@
             </button>
 
             <!-- ======= LOGO ========-->
-            @Html.ActionLink("Simply First", "Index", "Home", new { @class = "navbar-brand" })
+            @Html.ActionLink("Simply First", "Index", new { controller = "Home" }, new { @class = "navbar-brand" })
             @*<a class="navbar-brand scrollto" href="#home">*@
 
                 @*<img class="site-logo transparent-logo" src="~/images/logo-transparent-color-5.png" alt="logo" />
@@ -86,10 +86,25 @@
                     @Html.ActionLink("Product", "Product", "Home")
                 </li>
                 <li>
+                    @Html.ActionLink("Register", "Register", "Home")
+                </li>
+                <li>
                     @Html.ActionLink("Login", "Login", "Home")
                 </li>
                 <li>
+                    @Html.ActionLink("Admin", "Admin", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("Employee", "Employee", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("Customer", "Customer", "Home")
+                </li>
+                <li>
                     @Html.ActionLink("Contact", "Contact", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("Purchase", "PurchaseProduct", "Home")
                 </li>
             </ul>
         </div><!--End navbar-collapse -->
@@ -97,13 +112,6 @@
     </div><!--End main-nav -->
 
     @RenderBody()
-
-    <div class="text-center">
-        <a class="btn btn-rect btn-xl btn-block" href="http://www.dji.com/mavic" target="_blank">
-            Buy DJI Mavic Now<br>
-            <span class="btn-subtext">You won't regret it</span>
-        </a>
-    </div>
     
     <!-- ==============================================
     FOOTER
