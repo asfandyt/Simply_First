@@ -8,6 +8,7 @@
 
 
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse" style="font-size: 14px;">
         <ul class="nav navbar-nav side-nav pt-40" style="color: #fff">
 
@@ -18,13 +19,13 @@
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Manage Employee(s) <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Add Employee</a>
+                        @Html.ActionLink("Add Employee", "AddEmployee", "Home", new { @class = "fa fa-fw fa-edit" })
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Edit Employee</a>
+                        @Html.ActionLink("Edit Employee", "EditEmployee", "Home", new { @class = "fa fa-fw fa-edit" })
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Remove Employee</a>
+                        @Html.ActionLink("Remove Employee", "RemoveEmployee", "Home", new { @class = "fa fa-fw fa-edit" })
                     </li>
                 </ul>
             </li>
@@ -32,13 +33,13 @@
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> Inventory <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo2" class="collapse">
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Update Inventory</a>
+                        @Html.ActionLink("Update Inventory", "UpdateInventory", "Home", new { @class = "fa fa-fw fa-edit" })
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Check Inventory</a>
+                        @Html.ActionLink("Check Inventory", "CheckInventory", "Home", new { @class = "fa fa-fw fa-edit" })
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Create Order</a>
+                        @Html.ActionLink("Create Order", "CreateOrder", "Home", new { @class = "fa fa-fw fa-edit" })
                     </li>
                 </ul>
             </li>
@@ -46,21 +47,21 @@
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-fw fa-arrows-v"></i> Manage Customer(s)<i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo3" class="collapse">
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> All Cutomers</a>
+                        @Html.ActionLink("All Cutomers", "AllCustomers", "Home", new { @class = "fa fa-fw fa-edit" })
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Create Customer</a>
+                        @Html.ActionLink("Create Customer", "CreateCustomer", "Home", new { @class = "fa fa-fw fa-edit" })
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Edit Customer</a>
+                        @Html.ActionLink("Edit Customer", "EditCustomer", "Home", new { @class = "fa fa-fw fa-edit" })
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Delete Customer</a>
+                        @Html.ActionLink("Delete Customer", "DeleteCustomer", "Home", new { @class = "fa fa-fw fa-edit" })
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> Profile</a>
+                <a href="Profile"><i class="fa fa-fw fa-dashboard"></i> Profile</a>
             </li>
         </ul>
     </div>
