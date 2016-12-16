@@ -280,8 +280,21 @@
     <Content Include="css\plugin\desktop.ini" />
     <None Include="Properties\PublishProfiles\AzureTest20161214020903 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\hithere - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\simplyfirst - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\simplyfirst - Web Deploy.pubxml" />
     <Content Include="Views\Home\PurchaseProduct.cshtml" />
+    <Content Include="Views\Home\AddEmployee.cshtml" />
+    <Content Include="Views\Home\AllCustomers.cshtml" />
+    <Content Include="Views\Home\AllEmployee.cshtml" />
+    <Content Include="Views\Home\CheckInventory.cshtml" />
+    <Content Include="Views\Home\CreateCustomer.cshtml" />
+    <Content Include="Views\Home\CreateOrder.cshtml" />
+    <Content Include="Views\Home\DeleteCustomer.cshtml" />
+    <Content Include="Views\Home\desktop.ini" />
+    <Content Include="Views\Home\EditCustomer.cshtml" />
+    <Content Include="Views\Home\EditEmployee.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
+    <Content Include="Views\Home\RemoveEmployee.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
