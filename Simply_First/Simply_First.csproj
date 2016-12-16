@@ -124,6 +124,7 @@
     <Content Include="css\perfectr-color-1.css" />
     <Content Include="css\perfectr.css" />
     <Content Include="css\plugin\morris.css" />
+    <Content Include="css\sb-admin.css" />
     <Content Include="css\twentytwenty.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -239,6 +240,16 @@
     <Content Include="js\lib\modernizr.min.js" />
     <Content Include="js\lib\respond.min.js" />
     <Content Include="js\lib\respond.src.js" />
+    <Content Include="js\plugins\flot\excanvas.min.js" />
+    <Content Include="js\plugins\flot\flot-data.js" />
+    <Content Include="js\plugins\flot\jquery.flot.js" />
+    <Content Include="js\plugins\flot\jquery.flot.pie.js" />
+    <Content Include="js\plugins\flot\jquery.flot.resize.js" />
+    <Content Include="js\plugins\flot\jquery.flot.tooltip.min.js" />
+    <Content Include="js\plugins\morris\morris-data.js" />
+    <Content Include="js\plugins\morris\morris.js" />
+    <Content Include="js\plugins\morris\morris.min.js" />
+    <Content Include="js\plugins\morris\raphael.min.js" />
     <Content Include="js\scripts.js" />
     <Content Include="js\twitterFetcher_min.js" />
     <Content Include="Web.config" />
@@ -278,6 +289,10 @@
     <Content Include="Views\Home\Customer.cshtml" />
     <Content Include="Views\Home\Product.cshtml" />
     <Content Include="css\plugin\desktop.ini" />
+    <Content Include="js\plugins\desktop.ini" />
+    <Content Include="js\plugins\flot\desktop.ini" />
+    <Content Include="js\plugins\morris\desktop.ini" />
+    <Content Include="fonts\desktop.ini" />
     <None Include="Properties\PublishProfiles\AzureTest20161214020903 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\hithere - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\simplyfirst - Web Deploy %282%29.pubxml" />
