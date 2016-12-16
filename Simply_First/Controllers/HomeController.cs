@@ -45,5 +45,54 @@ namespace Simply_First.Controllers
         public ActionResult Product() {
             return View();
         }
+
+        public ActionResult Profile()
+        {
+            return View();
+        }
+        public ActionResult AddEmployee()
+        {
+            return View();
+        }
+        public ActionResult EditEmployee()
+        {
+            return View();
+        }
+        public ActionResult RemoveEmployee()
+        {
+            return View();
+        }
+        public ActionResult UpdateInventory()
+        {
+            return View();
+        }
+        public ActionResult CheckInventory()
+        {
+            return View();
+        }
+        public ActionResult CreateOrder()
+        {
+            return View();
+        }
+        public ActionResult AllCustomers()
+        {
+            return View();
+        }
+        public ActionResult CreateCustomer()
+        {
+            return View();
+
+        }
+
+        public ActionResult EditCustomer()
+        {
+            return View();
+
+        }
+        public ActionResult DeleteCustomer()
+        {
+            return View();
+
+        }
     }
 }
