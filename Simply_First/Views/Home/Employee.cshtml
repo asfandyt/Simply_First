@@ -4,22 +4,201 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!-- ==============================================
-        HEADER
-        =============================================== -->
-<header id="home" class="bg-image fixed-bg window-height overlay-on-scroll parallax-bg" data-stellar-background-ratio=".5" style="background-image:url(../images/header-dark.jpg);">
+<div id="wrapper" class="overflow-hidden pt-40">
 
-    <div class="middle-align-content">
-        <div class="container text-center text-lg parallax-move-down">
 
-            <h2 class="text-lg scrolling-animation fade-down d2">Take your</h2>
-            <h1 class="text-bold text-lg scrolling-animation scale-in">Responsive Portfolio</h1>
-            <p class="text-lg scrolling-animation fade-up d2">to the Next Level</p>
+    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse" style="font-size: 14px;">
+        <ul class="nav navbar-nav side-nav pt-40" style="color: #fff">
 
-        </div>
+            <li class="active">
+                <a href="Admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+            </li>
+            <li>
+                <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> Inventory <i class="fa fa-fw fa-caret-down"></i></a>
+                <ul id="demo2" class="collapse">
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-edit"></i> Update Inventory</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-edit"></i> Check Inventory</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-edit"></i> Create Order</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-fw fa-arrows-v"></i> Manage Customer(s)<i class="fa fa-fw fa-caret-down"></i></a>
+                <ul id="demo3" class="collapse">
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-edit"></i> All Cutomers</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-edit"></i> Create Customer</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-edit"></i> Edit Customer</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-edit"></i> Delete Customer</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> Profile</a>
+            </li>
+        </ul>
     </div>
+    <!-- /.navbar-collapse -->
+    </nav>
 
-</header>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        Dashboard <small>Statistics Overview</small>
+                    </h1>
+                    <ol class="breadcrumb alert alert-info">
+                        <li class="active">
+                            <i class="fa fa-fw fa-dashboard"></i><i class="alert-link"></i> Dashboard
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Tasks Panel</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">
+                                <span class="badge">just now</span>
+                                <i class="fa fa-fw fa-calendar"></i> Calendar updated
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <span class="badge">4 minutes ago</span>
+                                <i class="fa fa-fw fa-comment"></i> Commented on a post
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <span class="badge">23 minutes ago</span>
+                                <i class="fa fa-fw fa-truck"></i> Order 392 shipped
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <span class="badge">46 minutes ago</span>
+                                <i class="fa fa-fw fa-money"></i> Invoice 653 has been paid
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <span class="badge">1 hour ago</span>
+                                <i class="fa fa-fw fa-user"></i> A new user has been added
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <span class="badge">2 hours ago</span>
+                                <i class="fa fa-fw fa-check"></i> Completed task: "pick up dry cleaning"
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <span class="badge">yesterday</span>
+                                <i class="fa fa-fw fa-globe"></i> Saved the world
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <span class="badge">two days ago</span>
+                                <i class="fa fa-fw fa-check"></i> Completed task: "fix error on sales page"
+                            </a>
+                        </div>
+                        <div class="text-right">
+                            <a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Transactions Panel</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Order #</th>
+                                        <th>Order Date</th>
+                                        <th>Order Time</th>
+                                        <th>Amount (USD)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>3326</td>
+                                        <td>10/21/2013</td>
+                                        <td>3:29 PM</td>
+                                        <td>$321.33</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3325</td>
+                                        <td>10/21/2013</td>
+                                        <td>3:20 PM</td>
+                                        <td>$234.34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3324</td>
+                                        <td>10/21/2013</td>
+                                        <td>3:03 PM</td>
+                                        <td>$724.17</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3323</td>
+                                        <td>10/21/2013</td>
+                                        <td>3:00 PM</td>
+                                        <td>$23.71</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3322</td>
+                                        <td>10/21/2013</td>
+                                        <td>2:49 PM</td>
+                                        <td>$8345.23</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3321</td>
+                                        <td>10/21/2013</td>
+                                        <td>2:23 PM</td>
+                                        <td>$245.12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3320</td>
+                                        <td>10/21/2013</td>
+                                        <td>2:15 PM</td>
+                                        <td>$5663.54</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3319</td>
+                                        <td>10/21/2013</td>
+                                        <td>2:13 PM</td>
+                                        <td>$943.45</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-right">
+                            <a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
+</div>
+<!-- /#wrapper -->
 
 <div class="bg-light pt-160 pb-160">
 
