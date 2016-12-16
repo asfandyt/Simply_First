@@ -4231,3 +4231,21 @@ DEVICES STYLES
 	-ms-transform: translateY(0px);
 	transform:translateY(0px);
 }
+
+th {
+    font-size: .7em;
+}
+
+td {
+    font-size: .7em;
+    padding: 0px 10px 0px;
+}
+
+tr {
+    padding: 10px;
+}
+
+.section-title {
+    padding: 20px 0px 0px 0px;
+    text-transform: uppercase;
+}

@@ -137,3 +137,4 @@ D:\Google Drive\School\BCIT\Fall2016\Internal Project\Code\Simply_First\Simply_F
 D:\Google Drive\School\BCIT\Fall2016\Internal Project\Code\Simply_First\Simply_First\obj\Debug\Simply_First.dll
 D:\Google Drive\School\BCIT\Fall2016\Internal Project\Code\Simply_First\Simply_First\obj\Debug\Simply_First.pdb
 D:\Google Drive\School\BCIT\Fall2016\Internal Project\Code\Simply_First\Simply_First\bin\roslyn\desktop.ini
+D:\Work\Simply_First\Simply_First\bin\roslyn\desktop.ini
