@@ -45,5 +45,43 @@ namespace Simply_First.Controllers
         public ActionResult Product() {
             return View();
         }
+
+        public ActionResult Profile()
+        {
+            return View();
+        }
+        public ActionResult Product()
+        {
+            return View();
+        }
+        public ActionResult Product()
+        {
+            return View();
+        }
+        public ActionResult Product()
+        {
+            return View();
+        }
+        public ActionResult Product()
+        {
+            return View();
+        }
+        public ActionResult Product()
+        {
+            return View();
+        }
+        public ActionResult Product()
+        {
+            return View();
+        }
+        public ActionResult Product()
+        {
+            return View();
+        }
+        public ActionResult Product()
+        {
+            return View();
+
+        }
     }
 }
