@@ -94,5 +94,9 @@ namespace Simply_First.Controllers
             return View();
 
         }
+
+        public ActionResult PurchaseProduct() {
+            return View();
+        }
     }
 }
