@@ -18,7 +18,7 @@
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Manage Employee(s) <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">
                     <li>
-                        <a href="AddEmployee"><i class="fa fa-fw fa-edit"></i> Add Employee</a>
+                        @Html.ActionLink("Add Employee", "AddEmployee", "Home", new {@class = "fa fa-fw fa-edit"})
                     </li>
                     <li>
                         <a href="EditEmployee"><i class="fa fa-fw fa-edit"></i> Edit Employee</a>
