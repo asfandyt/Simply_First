@@ -1,1 +1,62 @@
+NEED TO FIX NOW 
+  - NAV BAR
+  - This link is broken.
+    http://www.simplyfirst.azurewebsites.net/Home/PurchaseProduct
+  - azure images path
 
+
+
+
+
+
+add search function
+add inventory management function
+
+
+
+ADMIN AREA
+
+The area where the Admin can manage an account (mentioend in the ERD) is missing from the wire frame.
+
+The inventory management area mentioned in the USE case and ERD is not mentioned in the requirements and it is not 
+present in the wire frame.
+
+
+The Admin page shows stats like:
+-employee updated just now
+-removed customer order 4 minutes ago.
+-updated customer info 23 minutes ago.
+-created invoice 46 minutes ago.
+etc.
+
+These stats are not tracked in the ERD, they do not appear in the requirements and they are not accounted for in the USE case. Please remove this model imcompatibility or adjust your models accordingly.
+
+
+The search features listed for employees in the requirements and use case are not present in the wire frame.
+
+
+That detail page for a drone is way too detailed. 
+
+
+PURCHASING
+
+The Use case explains that an employee can create invoices however the essential requirements say a customer
+can place orders. The wire frame does not indicate whether buyers or employees can place orders. Clarification
+is needed.
+
+The transaction page only shows order#, date, order time and amount. It really does not 
+show the information that an admin, employee or customer would need to view products purchased or to 
+edit orders.
+
+
+Unable to navigate to the checkout.
+
+
+
+
+-------------------------------------------------
+decide the primary function
+decide codefirst or edm
+cut presentation plugins
+
+there is a lot of incompatibility between models
