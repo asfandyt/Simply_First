@@ -9,17 +9,19 @@ NEED TO FIX NOW
 
 
 
-add search function
-add inventory management function
-
-
 
 ADMIN AREA
 
 The area where the Admin can manage an account (mentioend in the ERD) is missing from the wire frame.
 
-The inventory management area mentioned in the USE case and ERD is not mentioned in the requirements and it is not 
-present in the wire frame.
+
+add search function
+  The search features listed for employees in the requirements and use case are not present in the wire frame.
+
+add inventory management function
+  The inventory management area mentioned in the USE case and ERD is not mentioned in the requirements and it is not 
+  present in the wire frame.
+
 
 
 The Admin page shows stats like:
@@ -32,7 +34,6 @@ etc.
 These stats are not tracked in the ERD, they do not appear in the requirements and they are not accounted for in the USE case. Please remove this model imcompatibility or adjust your models accordingly.
 
 
-The search features listed for employees in the requirements and use case are not present in the wire frame.
 
 
 That detail page for a drone is way too detailed. 
