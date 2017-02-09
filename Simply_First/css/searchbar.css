@@ -1,6 +1,6 @@
-﻿.navbar-collapse form[role="search"] {
+.navbar-collapse form[role="search"] {
 		position: absolute;
-		top: 80px;
+		top: 70px;
 		right: 0px;
 		width: 100%;
 		padding: 0px;
@@ -9,7 +9,7 @@
 	}
 	.navbar-collapse form[role="search"] button,
 	.navbar-collapse form[role="search"] input {
-		padding: 14px 18px;
+		padding: 15px 18px;
 		border-radius: 0px;
 		border-width: 0px;
 		color: rgb(119, 119, 119);
@@ -37,7 +37,7 @@
 		.navbar-collapse form[role="search"] input {
 			font-size: 18pt;          
             height: 50px;
-			padding: 14px 32px;
+			padding: 20px 32px;
 		}
 		.navbar-collapse form[role="search"].active {
 			width: 100%;
@@ -47,9 +47,12 @@
 			display: table-cell;
 			opacity: 1;
 		}
+        .navbar-collapse form[role="search"].active .input-group-btn:last-child>.btn {
+			padding: 16px 18px;
+		}
     	.navbar-collapse form[role="search"].active input {
 			width: 100%;
-            padding: 30px 20px;
+            padding: 20px 20px;
 		}
         .navbar-form .input-group {
             display: table;
@@ -65,17 +68,22 @@
     @media (min-width: 1200px) {
         .navbar-collapse form[role="search"] {
 			width: 77px;
-		}
-        .navbar-collapse form[role="search"] {
 		    top: 0;
-	    }
+		}
 		.navbar-collapse form[role="search"] input {
 			opacity: 0;
 			display: none;
+			padding: 29px 32px;
 		}
         .input-group-btn:last-child>.btn {
             padding: 20px 32px;
         }
+    	.navbar-collapse form[role="search"].active input {
+            padding: 29px 20px;
+		}
+        .navbar-collapse form[role="search"].active .input-group-btn:last-child>.btn {
+			padding: 20px 32px;
+		}
     }
     @media (max-width: 1199px) {
         .main-nav .navbar-nav {
