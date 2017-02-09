@@ -18,6 +18,12 @@ namespace Simply_First.Controllers
         {
             return View();
         }
+      
+        public ActionResult CheckOut()
+        {
+            return View();
+        }
+
 
         public ActionResult Contact()
         {

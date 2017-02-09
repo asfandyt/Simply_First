@@ -311,6 +311,8 @@
     <Content Include="Views\Home\Profile.cshtml" />
     <Content Include="Views\Home\RemoveEmployee.cshtml" />
     <Content Include="Views\Home\PastOrders.cshtml" />
+    <Content Include="Views\Home\CheckOut.cshtml" />
+    <Content Include="Views\Home\UpdateInventory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
