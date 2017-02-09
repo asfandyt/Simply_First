@@ -98,5 +98,10 @@ namespace Simply_First.Controllers
         public ActionResult PurchaseProduct() {
             return View();
         }
+
+        public ActionResult PastOrders()
+        {
+            return View();
+        }
     }
 }

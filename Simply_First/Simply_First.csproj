@@ -310,6 +310,7 @@
     <Content Include="Views\Home\EditEmployee.cshtml" />
     <Content Include="Views\Home\Profile.cshtml" />
     <Content Include="Views\Home\RemoveEmployee.cshtml" />
+    <Content Include="Views\Home\PastOrders.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
