@@ -16,7 +16,7 @@ hr.hr-fancy:after,
 .progress-bar,
 .progress-bar-vertical
 {
-  background: #2997AB;
+  background: #D3B53D;
 }
 
 
@@ -41,7 +41,7 @@ a.link-both-2:focus,
 .close-modal:hover,
 .device-button.active,
 .rotate-button:hover{
-  color: #2997AB;
+  color: #D3B53D;
 }
 
 .form-control:focus,
@@ -54,7 +54,7 @@ hr.hr-color,
 .bg-image.text-dark hr.hr-color,
 .bg-video.text-dark hr.hr-color,
 .img-border-color{
-  border-color: #2997AB;
+  border-color: #D3B53D;
 }
 
 
@@ -66,14 +66,14 @@ hr.hr-color,
 .btn.btn-hover-border,
 .btn.btn-border,
 .btn.btn-border.btn-hover-solid:hover{
-  background: #2997AB;
-  border-color: #2997AB;
+  background: #D3B53D;
+  border-color: #D3B53D;
   color:#fff;
 }
 
 .btn.btn-border,
 .btn.btn-hover-border:hover{
-  color:#2997AB;
+  color:#D3B53D;
   background:transparent;
 }
 

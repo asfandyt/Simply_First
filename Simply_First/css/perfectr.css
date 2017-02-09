@@ -404,6 +404,10 @@ BACKGROUNDS
   background: rgba(0,0,0,0.15);
 }
 
+.bg-fix {
+    background: #CD594A;
+}
+
 .bg-black{
   background: #000;
 }
