@@ -1,0 +1,181 @@
+﻿
+@{
+    ViewBag.Title = "Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="wrapper" class="overflow-hidden pt-40">
+
+
+    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+    <div class="navbar-default navbar-collapse" style="font-size: 14px;">
+        <ul class="nav navbar-nav side-nav pt-40 list-group">
+
+            <li class="list-group-item">
+                <a href="Employee"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+            </li>
+            <li class="list-group-item">
+                <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> Inventory <i class="fa fa-fw fa-caret-down"></i></a>
+                <ul id="demo2" class="collapse">
+                    <li class="list-group-item">
+                        <a href="#"><i class="fa fa-fw fa-edit"></i> Update Inventory</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#"><i class="fa fa-fw fa-edit"></i> Check Inventory</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#"><i class="fa fa-fw fa-edit"></i> Create Order</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="list-group-item">
+                <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-fw fa-arrows-v"></i> Manage Customer(s)<i class="fa fa-fw fa-caret-down"></i></a>
+                <ul id="demo3" class="collapse">
+                    <li class="list-group-item">
+                        <a href="#"><i class="fa fa-fw fa-edit"></i> All Customers</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#"><i class="fa fa-fw fa-edit"></i> Create Customer</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#"><i class="fa fa-fw fa-edit"></i> Edit Customer</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#"><i class="fa fa-fw fa-edit"></i> Delete Customer</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="list-group-item">
+                <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> Profile</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        Employee's Dashboard <small>Statistics Overview</small>
+                    </h1>
+                    <ol class="breadcrumb alert alert-info">
+                        <li class="active">
+                            <i class="fa fa-fw fa-dashboard"></i><i class="alert-link"><a href="Admin">Admin Dashboard</a></i>
+                        </li>
+                        <li class="active">
+                            <i class="fa fa-fw fa-dashboard"></i><i class="alert-link"><a href="Employee">Employee Dashboard</a></i>
+                        </li>
+                        <li class="active">
+                            <i class="fa fa-fw fa-dashboard"></i><i class="alert-link"><a href="Customer">Customer Dashboard</a></i>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-money fa-fw"></i>Check Products</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>Invoice Number</th>
+                                <th>Customer</th>
+                                <th>Order Date</th>
+                                <th>Quantity</th>
+                                <th>Total Price</th>
+                                <th>Edit</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>85564e</td>
+                                <td>Bob's RC</td>
+                                <td>12/08/17</td>
+                                <td>23</td>
+                                <th>$22900.52</th>
+                                <th><input type="button" value="Update" /></th>
+                                <th><input type="button" value="View" /></th>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>45667e</td>
+                                <td>Best Buy Burnaby</td>
+                                <td>11/09/17</td>
+                                <td>8</td>
+                                <th>$7900.76</th>
+                                <th><input type="button" value="Update" /></th>
+                                <th><input type="button" value="View" /></th>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>65498e</td>
+                                <td>London Drugs</td>
+                                <td>11/06/15</td>
+                                <td>200</td>
+                                <th>$198264.86</th>
+                                <th><input type="button" value="Update" /></th>
+                                <th><input type="button" value="View" /></th>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>45652e</td>
+                                <td>Best Buy Burnaby</td>
+                                <td>11/09/15</td>
+                                <td>4</td>
+                                <th>$3987.76</th>
+                                <th><input type="button" value="Update" /></th>
+                                <th><input type="button" value="View" /></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-right">
+                    <a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /#page-wrapper -->
+
+
+<!-- /#wrapper -->
+
+<div class="bg-light pt-160 pb-160">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div id="waypoints" class="col-sm-10 col-sm-offset-1 text-center scrolling-animation fade-up">
+
+                <p class="text-lg-2x">
+                    <sup><i class="fa fa-quote-left fa-fw text-color"></i></sup>
+                    <em class="text-gray"> Every problem has a solution.</em>
+                    <sup><i class="fa fa-quote-right fa-fw text-color"></i></sup>
+                </p>
+
+                <p class="text-2x"><em>You just have to be creative enough to find it.</em></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

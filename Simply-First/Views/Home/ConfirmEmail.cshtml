@@ -1,0 +1,15 @@
+﻿
+
+@{
+    ViewBag.Title = "Confirm Email";
+}
+
+<h2>Confirm Email</h2>
+
+<hr />
+
+@Html.Raw(ViewBag.Message)
+
+<br /><br />
+
+@Html.ActionLink("Return to Log In", "Index", "Home", new { @class = "btn btn-primary" })

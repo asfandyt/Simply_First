@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Simply First</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+    @* Google Captcha *@
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Simply First", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        @{
+                            if (Request.IsAuthenticated)
+                            {
+                                @Html.ActionLink("Secure Area", "SecureArea", "Home")
+                            }
+                        }
+                    </li>
+                    <li>
+                        @{
+                            if (Request.IsAuthenticated && (User.IsInRole("Admin")))
+                            {
+                                @Html.ActionLink("Admin Only", "AdminOnly", "Home")
+                            }
+                        }
+                    </li>
+                    <li>
+                        @{
+                            if (Request.IsAuthenticated)
+                            {
+                                @Html.ActionLink("Add Role", "AddRole", "Home")
+                            }
+                        }
+                    </li>
+                    <li>
+                        @{
+                            if (Request.IsAuthenticated)
+                            {
+                                @Html.ActionLink("Add User to Role", "AddUserToRole", "Home")
+                            }
+                        }
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    @{
+                        if (!Request.IsAuthenticated)
+                        {
+                            @Html.ActionLink("Login", "Index", "Home", new { @class = "btn btn-default navbar-btn" })
+                        }
+                    }
+                    @{
+                        if (!Request.IsAuthenticated)
+                        {
+                            @Html.ActionLink("Register", "Register", "Home", new { @class = "btn btn-primary navbar-btn" })
+                        }
+                    }
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <p class="navbar-text"><strong>@Html.Raw(User.Identity.Name)</strong></p>
+                    @{
+                        if (Request.IsAuthenticated)
+                        {
+                            @Html.ActionLink("Logout", "Logout", "Home", new { @class = "btn btn-primary navbar-btn" })
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Simply First</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
