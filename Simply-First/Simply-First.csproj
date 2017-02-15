@@ -159,6 +159,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\sidebar.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -223,6 +224,8 @@
     <Content Include="Views\Home\ConfirmEmail.cshtml" />
     <Content Include="Views\Home\ResetPassword.cshtml" />
     <Content Include="Views\Home\ForgotPassword.cshtml" />
+    <Content Include="Views\Sidebar\_Sidebar-top.cshtml" />
+    <Content Include="Views\Sidebar\_Sidebar-bottom.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

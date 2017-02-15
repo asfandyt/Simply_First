@@ -7,6 +7,7 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Content/sidebar.css" rel="stylesheet" />
 
     @* Google Captcha *@
     <script src="https://www.google.com/recaptcha/api.js"></script>
@@ -24,75 +25,61 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>
-                        @{
-                            if (Request.IsAuthenticated)
-                            {
-                                @Html.ActionLink("Secure Area", "SecureArea", "Home")
-                            }
-                        }
-                    </li>
-                    <li>
-                        @{
-                            if (Request.IsAuthenticated && (User.IsInRole("Admin")))
-                            {
-                                @Html.ActionLink("Admin Only", "AdminOnly", "Home")
-                            }
-                        }
-                    </li>
-                    <li>
-                        @{
-                            if (Request.IsAuthenticated)
-                            {
-                                @Html.ActionLink("Add Role", "AddRole", "Home")
-                            }
-                        }
-                    </li>
-                    <li>
-                        @{
-                            if (Request.IsAuthenticated)
-                            {
-                                @Html.ActionLink("Add User to Role", "AddUserToRole", "Home")
-                            }
-                        }
-                    </li>
+                    
                 </ul>
 
-                <ul class="nav navbar-nav navbar-right">
-                    @{
-                        if (!Request.IsAuthenticated)
-                        {
-                            @Html.ActionLink("Login", "Index", "Home", new { @class = "btn btn-default navbar-btn" })
-                        }
-                    }
-                    @{
-                        if (!Request.IsAuthenticated)
-                        {
-                            @Html.ActionLink("Register", "Register", "Home", new { @class = "btn btn-primary navbar-btn" })
-                        }
-                    }
-                </ul>
+                <div class="col-sm-3 col-md-3">
+                    <form class="navbar-form" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Enter Query" name="search">
+                            <div class="input-group-btn">
+                                @Html.ActionLink("Search", "Search", "Home", new { @class = "btn btn-default" })
+                                @*<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>*@
+                            </div>
+                        </div>
+                    </form>
+                </div>        
 
                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        @{
+                            if (!Request.IsAuthenticated)
+                            {
+                                @Html.ActionLink("Login", "Index", "Home")
+                            }
+                        }
+                    </li>
+                    <li>
+                        @{
+                            if (!Request.IsAuthenticated)
+                            {
+                                @Html.ActionLink("Register", "Register", "Home")
+                            }
+                        }
+                    </li>
+
                     <p class="navbar-text"><strong>@Html.Raw(User.Identity.Name)</strong></p>
-                    @{
-                        if (Request.IsAuthenticated)
-                        {
-                            @Html.ActionLink("Logout", "Logout", "Home", new { @class = "btn btn-primary navbar-btn" })
+                    
+                    <li>
+                        @{
+                            if (Request.IsAuthenticated)
+                            {
+                                @Html.ActionLink("Logout", "Logout", "Home")
+                            }
                         }
-                    }
+                    </li>                           
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Simply First</p>
-        </footer>
-    </div>
+<div class="container body-content">
+    @RenderBody()
+    <hr/>
+    <footer>
+        <p class="text-center">&copy; @DateTime.Now.Year - Simply First</p>
+    </footer>
+</div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>

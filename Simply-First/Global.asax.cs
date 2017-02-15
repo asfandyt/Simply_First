@@ -21,7 +21,7 @@ namespace Simply_First
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            //RoleVM roleVM = new RoleVM();
+            RoleVM roleVM = new RoleVM();
 
             using (var db = new SimplyFirstVMContext())
             {
@@ -63,7 +63,7 @@ namespace Simply_First
                 {
                     db.AspNetRoles.Add(standardRole);
                     db.SaveChanges();
-                }                
+                }
             }
         }
 
@@ -83,13 +83,13 @@ namespace Simply_First
                     var roleQuery = identityUser.Roles.Where(u => u.UserId == identityUser.Id).ToList();
 
                     string[] roles = new string[roleQuery.Count];
+
                     for (int i = 0; i < roleQuery.Count; i++)
                     {
                         roles[i] = roleQuery[i].RoleId;
                     }
 
-                    HttpContext.Current.User = Thread.CurrentPrincipal =
-                                               new GenericPrincipal(User.Identity, roles);
+                    HttpContext.Current.User = Thread.CurrentPrincipal = new GenericPrincipal(User.Identity, roles);
                 }
             }
         }
