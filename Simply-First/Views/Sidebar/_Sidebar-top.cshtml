@@ -1,0 +1,45 @@
+﻿<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li>
+                @{
+                    if (Request.IsAuthenticated)
+                    {
+                        @Html.ActionLink("Secure Area", "SecureArea", "Home")
+                    }
+                }
+            </li>
+            <li>
+                @{
+                    if (Request.IsAuthenticated && (User.IsInRole("Admin")))
+                    {
+                        @Html.ActionLink("Admin Only", "AdminOnly", "Home")
+                    }
+                }
+            </li>
+            <li>
+                @{
+                    if (Request.IsAuthenticated)
+                    {
+                        @Html.ActionLink("Add Role", "AddRole", "Home")
+                    }
+                }
+            </li>
+            <li>
+                @{
+                    if (Request.IsAuthenticated)
+                    {
+                        @Html.ActionLink("Add User to Role", "AddUserToRole", "Home")
+                    }
+                }
+            </li>
+
+        </ul>
+    </div>
+
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
