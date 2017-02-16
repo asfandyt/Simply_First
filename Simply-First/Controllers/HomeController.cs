@@ -218,19 +218,19 @@ namespace Simply_First.Controllers
 
                     var code = manager.GenerateEmailConfirmationToken(identityUser.Id);
 
-                    using (var db = new SimplyFirstVMContext())
-                    {
-                        AspNetUsers user = db.AspNetUsers.Where(e => e.Email == newUserRole.Email).FirstOrDefault();
-                        AspNetRoles role = db.AspNetRoles.Where(r => r.Name == newUserRole.RoleName).FirstOrDefault();
+                    //using (var db = new SimplyFirstVMContext())
+                    //{
+                    //    AspNetUsers user = db.AspNetUsers.Where(e => e.Email == newUserRole.Email).FirstOrDefault();
+                    //    AspNetRoles role = db.AspNetRoles.Where(r => r.Name == newUserRole.RoleName).FirstOrDefault();
 
-                        AspNetUserRoles userRole = new AspNetUserRoles();
-                        userRole.RoleId = "Standard";
-                        userRole.UserId = user.Id;
+                    //    AspNetUserRoles userRole = new AspNetUserRoles();
+                    //    userRole.RoleId = "Standard";
+                    //    userRole.UserId = user.Id;
 
-                        db.AspNetUserRoles.Add(userRole);
+                    //    db.AspNetUserRoles.Add(userRole);
 
-                        db.SaveChanges();
-                    }
+                    //    db.SaveChanges();
+                    //}
 
                     var callbackUrl = Url.Action("ConfirmEmail", "Home", new { userId = identityUser.Id, code = code },
                                                                                protocol: Request.Url.Scheme);

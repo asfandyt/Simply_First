@@ -30,7 +30,7 @@
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background: #f5f5f5;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -71,17 +71,23 @@
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: #337ab7;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #fff;
+    color: #337ab7;
     background: rgba(255,255,255,0.2);
 }
 
-.sidebar-nav li a:active,
+.sidebar-nav li a:active{
+    background: #428bca;
+    color: #fff;
+}
+
 .sidebar-nav li a:focus {
+    background: #428bca;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -96,6 +102,7 @@
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
+    background: #428bca;
     color: #fff;
     background: none;
 }

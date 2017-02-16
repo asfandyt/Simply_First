@@ -3,8 +3,12 @@
     ViewBag.Title = "Admin Only";
 }
 
+@Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")
+
 <h2>Admin Only</h2>
 
 <hr />
 
 <p>This page is only for Admins Only.</p>
+
+@Html.Partial("~/Views/Sidebar/_Sidebar-bottom.cshtml")

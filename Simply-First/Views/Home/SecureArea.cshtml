@@ -4,14 +4,13 @@
 }
 
 
-@*@{
-    Layout = "~/Views/Sidebar/_Sidebar-top.cshtml";
-}*@
+@Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")
 
-    <h2>Secure Area</h2>
 
-    <p>This is a secure area.</p>
+<h2>Secure Area</h2>
 
-@*@{
-    Layout = "~/Views/Sidebar/_Sidebar-bottom.cshtml";
-}*@
+<hr />
+
+<p>This is a secure area.</p>
+
+@Html.Partial("~/Views/Sidebar/_Sidebar-bottom.cshtml")

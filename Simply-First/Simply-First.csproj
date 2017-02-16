@@ -226,6 +226,7 @@
     <Content Include="Views\Home\ForgotPassword.cshtml" />
     <Content Include="Views\Sidebar\_Sidebar-top.cshtml" />
     <Content Include="Views\Sidebar\_Sidebar-bottom.cshtml" />
+    <Content Include="Views\Shared\_Layout-bottom.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

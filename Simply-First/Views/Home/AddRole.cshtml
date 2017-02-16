@@ -4,6 +4,8 @@
     ViewBag.Title = "Add Role";
 }
 
+@Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")
+
 <h2>Add Role</h2>
 
 @using (Html.BeginForm()) 
@@ -33,3 +35,5 @@
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@Html.Partial("~/Views/Sidebar/_Sidebar-bottom.cshtml")
