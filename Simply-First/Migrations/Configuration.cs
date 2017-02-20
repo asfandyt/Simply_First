@@ -13,58 +13,39 @@ namespace Simply_First.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(SimplyFirstVMContext context)
         {
-            //This method will be called after migrating to the latest version.
+            // This method will be called after migrating to the latest version.
 
-            //if (!context.AspNetUsers.Any(r => r.Email == "gbola4@my.bcit.ca"))
-            //{
-            //    var store = new RoleStore<IdentityRole>(context);
-            //    var manager = new RoleManager<IdentityRole>(store);
-            //    var role = new IdentityRole { Name = "Admin" };
+            // Create a user on start
+            var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
 
-            //    manager.Create(role);
-            //}
+            var admin = new IdentityUser()
+            {
+                UserName = "gbola4@my.bcit.ca",
+                Email = "gbola4@my.bcit.ca",
+                EmailConfirmed = true,
+            };
 
-            //var manager = new UserManager<AspNetUsers>(new UserStore<AspNetUsers>(new SimplyFirstVMContext()));
+            // Assign user password on start
+            userManager.Create(admin, "password");
 
-            ////var user = new ApplicationUser()
-            ////{
-            ////    UserName = "SuperPowerUser",
-            ////    Email = "taiseer.joudeh@mymail.com",
-            ////    EmailConfirmed = true,
-            ////    FirstName = "Taiseer",
-            ////    LastName = "Joudeh",
-            ////    Level = 1,
-            ////    JoinDate = DateTime.Now.AddYears(-3)
-            ////};
+            // Create roles on start
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new SimplyFirstVMContext()));
 
-            //var admin = new AspNetUsers()
-            //{
-            //    Email = "gbola4@my.bcit.ca",
-            //    EmailConfirmed = true,
-            //};
+            if (roleManager.Roles.Count() == 0)
+            {
+                roleManager.Create(new IdentityRole { Name = "Admin" });
+                roleManager.Create(new IdentityRole { Name = "Employee" });
+                roleManager.Create(new IdentityRole { Name = "User" });
+            }
 
-            ////manager.Create(user, "MySuperP@ssword!");
-            //manager.Create(admin, "password");
-
-            //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new SimplyFirstVMContext()));
-
-            //if (roleManager.Roles.Count() == 0)
-            //{
-            //    roleManager.Create(new IdentityRole { Name = "Admin" });
-            //    roleManager.Create(new IdentityRole { Name = "Employee" });
-            //    roleManager.Create(new IdentityRole { Name = "User" });
-            //}
-
-            ////var adminUser = manager.FindByName("SuperPowerUser");
-            //var adminUserGurkirat = manager.FindByName("Gurkirat");
-
-            ////manager.AddToRoles(adminUser.Id, new string[] { "SuperAdmin", "Admin" });
-            //manager.AddToRoles(adminUserGurkirat.Id, new string[] { "Admin" });
+            // Assign User admin on start
+            var adminUserGurkirat = userManager.FindByName("gbola4@my.bcit.ca");
+            userManager.AddToRoles(adminUserGurkirat.Id, new string[] { "Admin" });
         }
     }
 }
