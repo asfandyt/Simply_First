@@ -44,10 +44,13 @@ namespace Simply_First.Controllers
                     db.AspNetRoles.Add(role);
 
                     db.SaveChanges();
+
+                    TempData["AddRoleSuccess"] = "Added <strong>'" + role.Id + "'</strong> to the Simply First Role!";
+                    return RedirectToAction("AddRole");
                 }
             }
 
-            return View();
+            return View(roleVM);
         }
 
         [HttpGet]
@@ -75,9 +78,12 @@ namespace Simply_First.Controllers
                     db.AspNetUserRoles.Add(userRole);
 
                     db.SaveChanges();
+
+                    TempData["AddUserToRoleSuccess"] = "Added '" + userRole.UserId + "' to the " + userRole.RoleId + " Simply First Role!";
+                    return RedirectToAction("AddUserToRole");
                 }
             }
-            return View();
+            return View(userRoleVM);
         }
 
         [HttpGet]
@@ -99,11 +105,9 @@ namespace Simply_First.Controllers
             {
                 if (ValidLogin(login))
                 {
-                    IAuthenticationManager authenticationManager
-                                           = HttpContext.GetOwinContext()
-                                            .Authentication;
-                    authenticationManager
-                   .SignOut(DefaultAuthenticationTypes.ExternalCookie);
+                    IAuthenticationManager authenticationManager = HttpContext.GetOwinContext().Authentication;
+
+                    authenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
 
                     var identity = new ClaimsIdentity(new[] 
                     {
@@ -166,9 +170,20 @@ namespace Simply_First.Controllers
 
                 if (userManager.SupportsUserLockout && userManager.GetLockoutEnabled(user.Id))
                 {
+                    TempData["LoginError"] = "Invalid email or password!";
                     userManager.AccessFailed(user.Id);
-                    return false;
+                    //return false;
                 }
+                else if(!userManager.SupportsUserLockout && userManager.GetLockoutEnabled(user.Id))
+                {
+                    TempData["LoginError"] = "Invalid email or password!";
+                }
+                else
+                {
+                    TempData["LoginError"] = "Unexpected Error, please try again!";
+                }
+
+                return false;
             }
             return true;
         }
@@ -183,12 +198,20 @@ namespace Simply_First.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisteredUserVM newUser, UserRoleVM newUserRole, RoleVM newRole)
         {
+            SimplyFirstVMContext context = new SimplyFirstVMContext();
+
+            var checkEmail = context.AspNetUsers.Where(e => e.Email == newUser.Email).FirstOrDefault();
+
+            if(checkEmail != null)
+            {
+                TempData["RegisterError"] = "The email address is already in use.";
+            }
+
             var userStore = new UserStore<IdentityUser>();
             var manager = new UserManager<IdentityUser>(userStore);
 
             var identityUser = new IdentityUser()
             {
-                //UserName = newUser.UserName,
                 UserName = newUser.Email,
                 Email = newUser.Email
             };
@@ -200,12 +223,6 @@ namespace Simply_First.Controllers
             string captchaResponse = captchaHelper.CheckRecaptcha();
             ViewBag.CaptchaResponse = captchaResponse;
 
-            //if (result.Succeeded)
-            //{
-            //    var authenticationManager = HttpContext.Request.GetOwinContext().Authentication;
-            //    var userIdentity = manager.CreateIdentity(identityUser, DefaultAuthenticationTypes.ApplicationCookie);
-            //    authenticationManager.SignIn(new AuthenticationProperties() { }, userIdentity);
-            //}
             if (!captchaResponse.Equals("Valid"))
             {
                 TempData["CaptchaError"] = "Please fill out all the form fields correctly!";
@@ -246,7 +263,7 @@ namespace Simply_First.Controllers
                     return RedirectToAction("Register");
                 }
 
-                TempData["RegisterError"] = ((string[])result.Errors)[0].ToString();
+                TempData["RegisterError"] = result.Errors.FirstOrDefault().ToString();
             }
 
             return View();
@@ -275,7 +292,9 @@ namespace Simply_First.Controllers
                 IdentityResult result = manager.ConfirmEmail(userId, code);
 
                 if (result.Succeeded)
+                {
                     ViewBag.Message = "You are now registered!";
+                }                  
             }
             catch
             {
@@ -353,7 +372,6 @@ namespace Simply_First.Controllers
         [HttpPost]
         public ActionResult ResetPassword(string password, string passwordConfirm, string passwordToken, string userId)
         {
-
             var userStore = new UserStore<IdentityUser>();
             UserManager<IdentityUser> manager = new UserManager<IdentityUser>(userStore);
             var user = manager.FindById(userId);
