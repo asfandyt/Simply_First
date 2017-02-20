@@ -5,7 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using System.Web;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Simply_First.Models
 {
@@ -34,7 +38,7 @@ namespace Simply_First.Models
         public string PhoneNumber { get; set; }
         public bool PhoneNumberConfirmed { get; set; }
         public bool TwoFactorEnabled { get; set; }
-        public Nullable<System.DateTime> LockoutEndDateUtc { get; set; }
+        public DateTime? LockoutEndDateUtc { get; set; }
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
         //public string UserName { get; set; }
@@ -104,6 +108,13 @@ namespace Simply_First.Models
             //// Prevent the framework from trying to auto-generate a primary key
             //// for Student since the Student table does not use IDENTITY.
             //modelBuilder.Configurations.Add(new StudentConfiguration());  
+
+            base.OnModelCreating(modelBuilder);
+        }
+
+        public static SimplyFirstVMContext Create()
+        {
+            return new SimplyFirstVMContext();
         }
 
         public DbSet<AspNetRoles> AspNetRoles { get; set; }
