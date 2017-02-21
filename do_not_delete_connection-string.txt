@@ -1,1 +1,0 @@
-<add name="DefaultConnection" connectionString="Data Source=simplyfirst.database.windows.net;Initial Catalog=SimplyFirstDB;Persist Security Info=True;User ID=simply_admin;Password=Qwerty123@#;Integrated Security=True"

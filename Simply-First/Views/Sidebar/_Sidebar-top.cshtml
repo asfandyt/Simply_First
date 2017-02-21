@@ -10,7 +10,7 @@
             </li>
             <li>
                 @{
-                    if (Request.IsAuthenticated && (User.IsInRole("23bb4c16-7d62-4463-9f5f-e14b45c73650")))
+                    if (Request.IsAuthenticated && (User.IsInRole("c702d844-1930-4217-bcf3-d3990009e059")))
                     {
                         @Html.ActionLink("Admin Only", "AdminOnly", "Admin")
                     }
@@ -27,7 +27,7 @@
             
             <li>
                 @{
-                    if (Request.IsAuthenticated)
+                    if (Request.IsAuthenticated && (User.IsInRole("c702d844-1930-4217-bcf3-d3990009e059")))
                     {
                         @Html.ActionLink("Add Role", "AddRole", "Admin")
                     }
@@ -35,7 +35,7 @@
             </li>
             <li>
                 @{
-                    if (Request.IsAuthenticated)
+                    if (Request.IsAuthenticated && (User.IsInRole("c702d844-1930-4217-bcf3-d3990009e059")))
                     {
                         @Html.ActionLink("Add User to Role", "AddUserToRole", "Admin")
                     }
