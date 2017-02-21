@@ -229,7 +229,7 @@ namespace Simply_First.Controllers
                     CreateTokenProvider(manager, PASSWORD_RESET);
 
                     var code = manager.GeneratePasswordResetToken(user.Id);
-                    var callbackUrl = Url.Action("ResetPassword", "Home", new { userId = user.Id, code = code },
+                    var callbackUrl = Url.Action("ResetPassword", "Accounts", new { userId = user.Id, code = code },
                                                                                 protocol: Request.Url.Scheme);
 
                     EmailRepo emailRepo = new EmailRepo();
