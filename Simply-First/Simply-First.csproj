@@ -182,6 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -203,6 +204,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\AccountRepo.cs" />
     <Compile Include="Repositories\EmailRepo.cs" />
     <Compile Include="Services\CaptchaHelper.cs" />
   </ItemGroup>
@@ -215,9 +217,7 @@
     </None>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\AddRole.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Home\AddUserToRole.cshtml" />
     <Content Include="Views\Home\AdminOnly.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
@@ -229,6 +229,8 @@
     <Content Include="Views\Sidebar\_Sidebar-top.cshtml" />
     <Content Include="Views\Sidebar\_Sidebar-bottom.cshtml" />
     <Content Include="Views\Shared\_Layout-bottom.cshtml" />
+    <Content Include="Views\Admin\AddRole.cshtml" />
+    <Content Include="Views\Admin\AddUserToRole.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

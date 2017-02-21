@@ -14,7 +14,7 @@
             </li>
             <li>
                 @{
-                    if (Request.IsAuthenticated && (User.IsInRole("Admin")))
+                    if (Request.IsAuthenticated)
                     {
                         @Html.ActionLink("Admin Only", "AdminOnly", "Home")
                     }
@@ -24,7 +24,7 @@
                 @{
                     if (Request.IsAuthenticated)
                     {
-                        @Html.ActionLink("Add Role", "AddRole", "Home")
+                        @Html.ActionLink("Add Role", "AddRole", "Admin")
                     }
                 }
             </li>
@@ -32,7 +32,7 @@
                 @{
                     if (Request.IsAuthenticated)
                     {
-                        @Html.ActionLink("Add User to Role", "AddUserToRole", "Home")
+                        @Html.ActionLink("Add User to Role", "AddUserToRole", "Admin")
                     }
                 }
             </li>

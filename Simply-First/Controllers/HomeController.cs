@@ -14,76 +14,14 @@ namespace Simply_First.Controllers
 {
     public class HomeController : Controller
     {
+        // ReSharper disable once InconsistentNaming
         const string EMAIL_CONFIRMATION = "EmailConfirmation";
+        // ReSharper disable once InconsistentNaming
         const string PASSWORD_RESET = "ResetPassword";
 
         void CreateTokenProvider(UserManager<IdentityUser> manager, string tokenType)
         {
             manager.UserTokenProvider = new EmailTokenProvider<IdentityUser>();
-        }
-        
-        [Authorize]
-        public ActionResult AddRole()
-        {
-            return View();
-        }
-
-        [Authorize]
-        public ActionResult AddRole(RoleVM roleVM)
-        {
-            if (ModelState.IsValid)
-            {
-                // *** New: Connect to AspNetRole using code first.
-                using (var db = new SimplyFirstVMContext())
-                {
-                    var role = new IdentityRole();
-                    role.Id = roleVM.RoleName;
-                    role.Name = roleVM.RoleName;
-                    db.Roles.Add(role);
-
-                    db.SaveChanges();
-
-                    TempData["AddRoleSuccess"] = "Added '" + role.Id + "' to the Simply First Role!";
-                    return RedirectToAction("AddRole");
-                }
-            }
-
-            return View(roleVM);
-        }
-
-        [Authorize]
-        [HttpGet]
-        public ActionResult AddUserToRole()
-        {
-            return View();
-        }
-
-        [Authorize]
-        [HttpPost]
-        public ActionResult AddUserToRole(UserRoleVM userRoleVM)
-        {
-            if (ModelState.IsValid)
-            {
-                using (var db = new SimplyFirstVMContext())
-                {
-                    var user = db.Users.Where(e => e.Email == userRoleVM.Email).FirstOrDefault();
-                    var role = db.Roles.Where(r => r.Name == userRoleVM.RoleName).FirstOrDefault();
-
-                    //var userRole = new IdentityRole();
-                    //userRole.Id = role.Id;
-                    //userRole.Name = user.Id;
-                    //db.Roles.Add(userRole);
-                    //db.SaveChanges();
-
-                    var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
-                    userManager.AddToRoles(user.Id, new string[] { userRoleVM.RoleName });
-
-                    TempData["AddUserToRoleSuccess"] = "Added '" + user.Id + "' to the " + user.Email + " Simply First Role!";
-
-                    return RedirectToAction("AddUserToRole");
-                }
-            }
-            return View(userRoleVM);
         }
 
         [HttpGet]
@@ -101,9 +39,13 @@ namespace Simply_First.Controllers
             UserManager<IdentityUser> manager = new UserManager<IdentityUser>(userStore);
             IdentityUser identityUser = manager.Find(login.Email, login.Password);
 
+            AccountRepo accountRepo = new AccountRepo();
+
             if (ModelState.IsValid)
             {
-                if (ValidLogin(login))
+                string loginError;
+
+                if (accountRepo.ValidLogin(login, out loginError))
                 {
                     IAuthenticationManager authenticationManager = HttpContext.GetOwinContext().Authentication;
 
@@ -128,64 +70,6 @@ namespace Simply_First.Controllers
             }
 
             return View();
-        }
-
-        bool ValidLogin(LoginVM login)
-        {
-            UserStore<IdentityUser> userStore = new UserStore<IdentityUser>();
-
-            UserManager<IdentityUser> userManager = new UserManager<IdentityUser>(userStore)
-            {
-                UserLockoutEnabledByDefault = true,
-                DefaultAccountLockoutTimeSpan = new TimeSpan(0, 10, 0),
-                MaxFailedAccessAttemptsBeforeLockout = 3
-            };
-
-            var user = userManager.FindByName(login.Email);
-
-            if (user == null)
-            {
-                TempData["LoginError"] = "Invalid email or password!";
-                return false;
-            }
-
-            // User is locked out.
-            if (userManager.SupportsUserLockout && userManager.IsLockedOut(user.Id))
-            {
-                return false;
-            }
-
-            // Validated user was locked out but now can be reset.
-            if (userManager.CheckPassword(user, login.Password) && userManager.IsEmailConfirmed(user.Id))
-            {
-                if (userManager.SupportsUserLockout && userManager.GetAccessFailedCount(user.Id) > 0)
-                {
-                    userManager.ResetAccessFailedCount(user.Id);
-                }
-            }
-            // Login is invalid so increment failed attempts.
-            else
-            {
-                bool lockoutEnabled = userManager.GetLockoutEnabled(user.Id);
-
-                if (userManager.SupportsUserLockout && userManager.GetLockoutEnabled(user.Id))
-                {
-                    TempData["LoginError"] = "Invalid email or password!";
-                    userManager.AccessFailed(user.Id);
-                    //return false;
-                }
-                else if(!userManager.SupportsUserLockout && userManager.GetLockoutEnabled(user.Id))
-                {
-                    TempData["LoginError"] = "Invalid email or password!";
-                }
-                else
-                {
-                    TempData["LoginError"] = "Unexpected Error, please try again!";
-                }
-
-                return false;
-            }
-            return true;
         }
 
         [HttpGet]
@@ -231,17 +115,6 @@ namespace Simply_First.Controllers
             {
                 if (result.Succeeded)
                 {
-                    //using (var db = new SimplyFirstVMContext())
-                    //{
-                    //    var newUserRole = new UserRoleVM();
-
-                    //    var user = db.Users.Where(e => e.Email == newUserRole.Email).FirstOrDefault();
-                    //    var role = db.Roles.Where(r => r.Name == newUserRole.RoleName).FirstOrDefault();
-
-                    //    var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
-                    //    userManager.AddToRoles(user.Id, new string[] { "User" });
-                    //}
-
                     CreateTokenProvider(manager, EMAIL_CONFIRMATION);
 
                     var code = manager.GenerateEmailConfirmationToken(identityUser.Id);
@@ -254,6 +127,23 @@ namespace Simply_First.Controllers
                     string subject = "Please confirm email for your Simply First ID";
 
                     emailRepo.SendEmail(newUser.Email, subject, email);
+
+                    // DOES NOT WORK
+
+                    //using (var db = new SimplyFirstVMContext())
+                    //{
+                    //    var newUserRole = new UserRoleVM();
+
+                    //    IdentityUser user = db.Users.Where(e => e.Email == newUserRole.Email).FirstOrDefault();
+                    //    //var role = db.Roles.Where(r => r.Name == newUserRole.RoleName).FirstOrDefault();
+
+                    //    var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
+
+                    //    if (user != null)
+                    //    {
+                    //        userManager.AddToRoles(user.Id, "User");
+                    //    }                      
+                    //}
 
                     TempData["RegisterSuccess"] = "Registered successfully, check your email for confirmation link!";
 
@@ -284,6 +174,7 @@ namespace Simply_First.Controllers
             UserManager<IdentityUser> manager = new UserManager<IdentityUser>(userStore);
 
             var user = manager.FindById(userId);
+
             CreateTokenProvider(manager, EMAIL_CONFIRMATION);
 
             try
@@ -378,14 +269,7 @@ namespace Simply_First.Controllers
 
             IdentityResult result = manager.ResetPassword(userId, passwordToken, password);
 
-            if (result.Succeeded)
-            {
-                ViewBag.Result = "The password has been reset.";
-            }
-            else
-            {
-                ViewBag.Result = "The password has not been reset.";
-            }
+            ViewBag.Result = result.Succeeded ? "The password has been reset." : "The password has not been reset.";
 
             return View();
         }
@@ -393,15 +277,26 @@ namespace Simply_First.Controllers
         [Authorize]
         public ActionResult SecureArea()
         {
+            Page_Load();
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         // To allow more than one role access use syntax like the following:
         // [Authorize(Roles="Admin, Staff")]
         public ActionResult AdminOnly()
         {
+            Page_Load();
             return View();
+        }
+
+        protected void Page_Load()
+        {
+            Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
+            Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetValidUntilExpires(false);
+            Response.Cache.SetNoStore();
         }
     }
 }
