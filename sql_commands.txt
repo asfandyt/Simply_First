@@ -1,0 +1,6 @@
+SELECT 'DROP TABLE [' + SCHEMA_NAME(schema_id) + '].[' + name + ']' FROM sys.tables
+SELECT 'DROP PROCEDURE [' + SCHEMA_NAME(schema_id) + '].[' + name + ']' FROM sys.procedures
+
+SELECT * FROM AspNetUsers
+SELECT * FROM AspNetUserRoles
+SELECT * FROM AspNetRoles

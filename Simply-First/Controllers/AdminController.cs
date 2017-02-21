@@ -11,14 +11,14 @@ namespace Simply_First.Controllers
 {
     public class AdminController : Controller
     {
-        [Authorize]
+        [Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
         [HttpGet]
         public ActionResult AddRole()
         {
             return View();
         }
 
-        [Authorize]
+        [Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
         [HttpPost]
         public ActionResult AddRole(RoleVM roleVM)
         {
@@ -45,14 +45,14 @@ namespace Simply_First.Controllers
             return View(roleVM);
         }
 
-        [Authorize]
+        [Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
         [HttpGet]
         public ActionResult AddUserToRole()
         {
             return View();
         }
 
-        [Authorize]
+        [Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
         [HttpPost]
         public ActionResult AddUserToRole(UserRoleVM userRoleVM)
         {
@@ -85,7 +85,7 @@ namespace Simply_First.Controllers
         }
 
         // To allow more than one role access use syntax like the following:
-        [Authorize(Roles = "23bb4c16-7d62-4463-9f5f-e14b45c73650")]
+        [Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
         public ActionResult AdminOnly()
         {
             return View();
