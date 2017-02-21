@@ -83,5 +83,12 @@ namespace Simply_First.Controllers
 
             return View(userRoleVM);
         }
+
+        // To allow more than one role access use syntax like the following:
+        [Authorize(Roles = "23bb4c16-7d62-4463-9f5f-e14b45c73650")]
+        public ActionResult AdminOnly()
+        {
+            return View();
+        }
     }
 }

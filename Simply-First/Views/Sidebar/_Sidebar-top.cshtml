@@ -3,12 +3,16 @@
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <li>-</li>
+            <li>
+                <form class="navbar-form navbar-nav nav-right">
+                    <input type="text" class="form-control" placeholder="Search" />
+                </form>
+            </li>
             <li>
                 @{
                     if (Request.IsAuthenticated && (User.IsInRole("23bb4c16-7d62-4463-9f5f-e14b45c73650")))
                     {
-                        @Html.ActionLink("Admin Only", "AdminOnly", "Home")
+                        @Html.ActionLink("Admin Only", "AdminOnly", "Admin")
                     }
                 }
             </li>
@@ -16,7 +20,7 @@
                 @{
                     if (Request.IsAuthenticated)
                     {
-                        @Html.ActionLink("Secure Area", "SecureArea", "Home")
+                        @Html.ActionLink("Secure Area", "SecureArea", "Accounts")
                     }
                 }
             </li>

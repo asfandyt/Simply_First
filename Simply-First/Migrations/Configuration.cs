@@ -4,8 +4,6 @@ using Simply_First.Models;
 
 namespace Simply_First.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -37,9 +35,17 @@ namespace Simply_First.Migrations
                 EmailConfirmed = true,
             };
 
+            var admin_three = new IdentityUser()
+            {
+                UserName = "admin@sf.com",
+                Email = "admin@sf.com",
+                EmailConfirmed = true,
+            };
+
             // Assign user password on start
             userManager.Create(admin, "password");
             userManager.Create(admin_two, "password");
+            userManager.Create(admin_three, "password");
 
             // Create roles on start
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new SimplyFirstVMContext()));
@@ -57,6 +63,9 @@ namespace Simply_First.Migrations
 
             var adminUserCusson = userManager.FindByName("ccheung120@my.bcit.ca");
             userManager.AddToRoles(adminUserCusson.Id, new string[] { "Admin" });
+
+            var adminUser = userManager.FindByName("admin@sf.com");
+            userManager.AddToRoles(adminUser.Id, new string[] { "Admin" });
         }
     }
 }

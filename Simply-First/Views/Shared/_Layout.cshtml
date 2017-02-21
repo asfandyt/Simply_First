@@ -21,16 +21,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Simply First", "SecureArea", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Simply First", "SecureArea", "Accounts", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav nav-right">
-                    <li><a href="#">Home</a></li>
+                    <li>@Html.ActionLink("Home", "SecureArea", "Accounts")</ li >
                 </ul>
-
-                <form class="navbar-form navbar-nav nav-right">
-                    <input type="text" class="form-control" placeholder="Search" />
-                </form>
 
                 @*<div class="col-sm-3 col-md-3">
                     <form class="navbar-form" role="search">
@@ -49,7 +45,7 @@
                         @{
                             if (!Request.IsAuthenticated)
                             {
-                                @Html.ActionLink("Login", "Index", "Home")
+                                @Html.ActionLink("Login", "Index", "Accounts")
                             }
                         }
                     </li>
@@ -57,7 +53,7 @@
                         @{
                             if (!Request.IsAuthenticated)
                             {
-                                @Html.ActionLink("Register", "Register", "Home")
+                                @Html.ActionLink("Register", "Register", "Accounts")
                             }
                         }
                     </li>
@@ -68,7 +64,7 @@
                         @{
                             if (Request.IsAuthenticated)
                             {
-                                @Html.ActionLink("Logout", "Logout", "Home")
+                                @Html.ActionLink("Logout", "Logout", "Accounts")
                             }
                         }
                     </li>                           
