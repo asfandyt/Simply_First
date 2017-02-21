@@ -67,31 +67,31 @@ namespace Simply_First
             //}
         }
 
-        //void Application_PostAuthenticateRequest()
-        //{
-        //    if (User.Identity.IsAuthenticated)
-        //    {
-        //        var name = User.Identity.Name; // Get current user name.
+        void Application_PostAuthenticateRequest()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var name = User.Identity.Name; // Get current user name.
 
-        //        UserStore<IdentityUser> userStore = new UserStore<IdentityUser>();
-        //        UserManager<IdentityUser> manager = new UserManager<IdentityUser>(userStore);
-        //        IdentityUser identityUser = manager.FindByName(User.Identity.GetUserName());
+                UserStore<IdentityUser> userStore = new UserStore<IdentityUser>();
+                UserManager<IdentityUser> manager = new UserManager<IdentityUser>(userStore);
+                IdentityUser identityUser = manager.FindByName(User.Identity.GetUserName());
 
-        //        System.Web.HttpContext.Current.User.Identity.GetUserId();
-        //        if (identityUser != null)
-        //        {
-        //            var roleQuery = identityUser.Roles.Where(u => u.UserId == identityUser.Id).ToList();
+                System.Web.HttpContext.Current.User.Identity.GetUserId();
+                if (identityUser != null)
+                {
+                    var roleQuery = identityUser.Roles.Where(u => u.UserId == identityUser.Id).ToList();
 
-        //            string[] roles = new string[roleQuery.Count];
+                    string[] roles = new string[roleQuery.Count];
 
-        //            for (int i = 0; i < roleQuery.Count; i++)
-        //            {
-        //                roles[i] = roleQuery[i].RoleId;
-        //            }
+                    for (int i = 0; i < roleQuery.Count; i++)
+                    {
+                        roles[i] = roleQuery[i].RoleId;
+                    }
 
-        //            HttpContext.Current.User = Thread.CurrentPrincipal = new GenericPrincipal(User.Identity, roles);
-        //        }
-        //    }
-        //}
+                    HttpContext.Current.User = Thread.CurrentPrincipal = new GenericPrincipal(User.Identity, roles);
+                }
+            }
+        }
     }
 }

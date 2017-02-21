@@ -6,9 +6,9 @@
             <li>-</li>
             <li>
                 @{
-                    if (Request.IsAuthenticated)
+                    if (Request.IsAuthenticated && (User.IsInRole("23bb4c16-7d62-4463-9f5f-e14b45c73650")))
                     {
-                        @Html.ActionLink("Secure Area", "SecureArea", "Home")
+                        @Html.ActionLink("Admin Only", "AdminOnly", "Home")
                     }
                 }
             </li>
@@ -16,10 +16,11 @@
                 @{
                     if (Request.IsAuthenticated)
                     {
-                        @Html.ActionLink("Admin Only", "AdminOnly", "Home")
+                        @Html.ActionLink("Secure Area", "SecureArea", "Home")
                     }
                 }
             </li>
+            
             <li>
                 @{
                     if (Request.IsAuthenticated)

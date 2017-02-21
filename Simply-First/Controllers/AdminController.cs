@@ -27,6 +27,7 @@ namespace Simply_First.Controllers
                 // *** New: Connect to AspNetRole using code first.
                 using (var db = new SimplyFirstVMContext())
                 {
+                //    AspNetRoles role = new AspNetRoles();
                     var role = new IdentityRole
                     {
                         Id = roleVM.RoleName,
