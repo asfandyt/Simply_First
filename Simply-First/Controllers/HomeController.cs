@@ -21,69 +21,70 @@ namespace Simply_First.Controllers
         {
             manager.UserTokenProvider = new EmailTokenProvider<IdentityUser>();
         }
+        
+        [Authorize]
+        public ActionResult AddRole()
+        {
+            return View();
+        }
 
-        //[Authorize]
-        //public ActionResult AddRole()
-        //{
-        //    return View();
-        //}
+        [Authorize]
+        public ActionResult AddRole(RoleVM roleVM)
+        {
+            if (ModelState.IsValid)
+            {
+                // *** New: Connect to AspNetRole using code first.
+                using (var db = new SimplyFirstVMContext())
+                {
+                    var role = new IdentityRole();
+                    role.Id = roleVM.RoleName;
+                    role.Name = roleVM.RoleName;
+                    db.Roles.Add(role);
 
-        //[HttpPost]
-        //[Authorize]
-        //public ActionResult AddRole(RoleVM roleVM)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        // *** New: Connect to AspNetRole using code first.
-        //        using (var db = new SimplyFirstVMContext())
-        //        {
-        //            AspNetRoles role = new AspNetRoles();
-        //            role.Id = roleVM.RoleName;
-        //            role.Name = roleVM.RoleName;
-        //            db.Roles.Add(role);
+                    db.SaveChanges();
 
-        //            db.SaveChanges();
+                    TempData["AddRoleSuccess"] = "Added '" + role.Id + "' to the Simply First Role!";
+                    return RedirectToAction("AddRole");
+                }
+            }
 
-        //            TempData["AddRoleSuccess"] = "Added <strong>'" + role.Id + "'</strong> to the Simply First Role!";
-        //            return RedirectToAction("AddRole");
-        //        }
-        //    }
+            return View(roleVM);
+        }
 
-        //    return View(roleVM);
-        //}
+        [Authorize]
+        [HttpGet]
+        public ActionResult AddUserToRole()
+        {
+            return View();
+        }
 
-        //[HttpGet]
-        //[Authorize]
-        //public ActionResult AddUserToRole()
-        //{
-        //    return View();
-        //}
+        [Authorize]
+        [HttpPost]
+        public ActionResult AddUserToRole(UserRoleVM userRoleVM)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var db = new SimplyFirstVMContext())
+                {
+                    var user = db.Users.Where(e => e.Email == userRoleVM.Email).FirstOrDefault();
+                    var role = db.Roles.Where(r => r.Name == userRoleVM.RoleName).FirstOrDefault();
 
-        //[HttpPost]
-        //[Authorize]
-        //public ActionResult AddUserToRole(UserRoleVM userRoleVM)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        using (var db = new SimplyFirstVMContext())
-        //        {
-        //            AspNetUsers user = db.Users.Where(e => e.Email == userRoleVM.Email).FirstOrDefault();
-        //            AspNetRoles role = db.Roles.Where(r => r.Name == userRoleVM.RoleName).FirstOrDefault();
+                    //var userRole = new IdentityRole();
+                    //userRole.Id = role.Id;
+                    //userRole.Name = user.Id;
+                    //db.Roles.Add(userRole);
+                    //db.SaveChanges();
 
-        //            AspNetUserRoles userRole = new AspNetUserRoles();
-        //            userRole.RoleId = role.Id;
-        //            userRole.UserId = user.Id;
+                    var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
+                    userManager.AddToRoles(user.Id, new string[] { userRoleVM.RoleName });
 
-        //            db.AspNetUserRoles.Add(userRole);
+                    TempData["AddUserToRoleSuccess"] = "Added '" + user.Id + "' to the " + user.Email + " Simply First Role!";
 
-        //            db.SaveChanges();
-
-        //            TempData["AddUserToRoleSuccess"] = "Added '" + userRole.UserId + "' to the " + userRole.RoleId + " Simply First Role!";
-        //            return RedirectToAction("AddUserToRole");
-        //        }
-        //    }
-        //    return View(userRoleVM);
-        //}
+                    return RedirectToAction("AddUserToRole");
+                }
+            }
+            return View(userRoleVM);
+        }
 
         [HttpGet]
         public ActionResult Index()
@@ -195,7 +196,7 @@ namespace Simply_First.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisteredUserVM newUser, UserRoleVM newUserRole, RoleVM newRole)
+        public ActionResult Register(RegisteredUserVM newUser)
         {
             SimplyFirstVMContext context = new SimplyFirstVMContext();
 
@@ -230,36 +231,35 @@ namespace Simply_First.Controllers
             {
                 if (result.Succeeded)
                 {
+                    //using (var db = new SimplyFirstVMContext())
+                    //{
+                    //    var newUserRole = new UserRoleVM();
+
+                    //    var user = db.Users.Where(e => e.Email == newUserRole.Email).FirstOrDefault();
+                    //    var role = db.Roles.Where(r => r.Name == newUserRole.RoleName).FirstOrDefault();
+
+                    //    var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
+                    //    userManager.AddToRoles(user.Id, new string[] { "User" });
+                    //}
+
                     CreateTokenProvider(manager, EMAIL_CONFIRMATION);
 
                     var code = manager.GenerateEmailConfirmationToken(identityUser.Id);
-
-                    //using (var db = new SimplyFirstVMContext())
-                    //{
-                    //    AspNetUsers user = db.AspNetUsers.Where(e => e.Email == newUserRole.Email).FirstOrDefault();
-                    //    AspNetRoles role = db.AspNetRoles.Where(r => r.Name == newUserRole.RoleName).FirstOrDefault();
-
-                    //    AspNetUserRoles userRole = new AspNetUserRoles();
-                    //    userRole.RoleId = "Standard";
-                    //    userRole.UserId = user.Id;
-
-                    //    db.AspNetUserRoles.Add(userRole);
-
-                    //    db.SaveChanges();
-                    //}
 
                     var callbackUrl = Url.Action("ConfirmEmail", "Home", new { userId = identityUser.Id, code = code },
                                                                                protocol: Request.Url.Scheme);
 
                     EmailRepo emailRepo = new EmailRepo();
-                    string email = "Please confirm your email address \n You have created a Simply First ID" +  "\n" + callbackUrl;
+                    string email = "Please confirm your email address \n You have created a Simply First ID" + "\n" + callbackUrl;
                     string subject = "Please confirm email for your Simply First ID";
 
                     emailRepo.SendEmail(newUser.Email, subject, email);
 
-                    //ViewBag.FakeConfirmation = email;
                     TempData["RegisterSuccess"] = "Registered successfully, check your email for confirmation link!";
+
                     return RedirectToAction("Register");
+
+                    //ViewBag.FakeConfirmation = email;
                 }
 
                 TempData["RegisterError"] = result.Errors.FirstOrDefault().ToString();

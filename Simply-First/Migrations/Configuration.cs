@@ -30,8 +30,16 @@ namespace Simply_First.Migrations
                 EmailConfirmed = true,
             };
 
+            var admin_two = new IdentityUser()
+            {
+                UserName = "ccheung120@my.bcit.ca",
+                Email = "ccheung120@my.bcit.ca",
+                EmailConfirmed = true,
+            };
+
             // Assign user password on start
             userManager.Create(admin, "password");
+            userManager.Create(admin_two, "password");
 
             // Create roles on start
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new SimplyFirstVMContext()));
@@ -46,6 +54,9 @@ namespace Simply_First.Migrations
             // Assign User admin on start
             var adminUserGurkirat = userManager.FindByName("gbola4@my.bcit.ca");
             userManager.AddToRoles(adminUserGurkirat.Id, new string[] { "Admin" });
+
+            var adminUserCusson = userManager.FindByName("ccheung120@my.bcit.ca");
+            userManager.AddToRoles(adminUserCusson.Id, new string[] { "Admin" });
         }
     }
 }
