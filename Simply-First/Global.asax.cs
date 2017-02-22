@@ -21,50 +21,7 @@ namespace Simply_First
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            //RoleVM roleVM = new RoleVM();
-
-            //using (var db = new SimplyFirstVMContext())
-            //{
-            //    AspNetRoles adminRole = new AspNetRoles();
-            //    adminRole.Id = "Admin";
-            //    adminRole.Name = "Admin";
-
-            //    if (!db.AspNetRoles.Any(a => a.Id == "Admin"))
-            //    {
-            //        db.AspNetRoles.Add(adminRole);
-            //        db.SaveChanges();
-            //    }
-
-            //    AspNetRoles employeeRole = new AspNetRoles();
-            //    employeeRole.Id = "Employee";
-            //    employeeRole.Name = "Employee";
-
-            //    if (!db.AspNetRoles.Any(a => a.Id == "Employee"))
-            //    {
-            //        db.AspNetRoles.Add(employeeRole);
-            //        db.SaveChanges();
-            //    }
-
-            //    AspNetRoles distributor = new AspNetRoles();
-            //    distributor.Id = "Distributor";
-            //    distributor.Name = "Distributor";
-
-            //    if (!db.AspNetRoles.Any(a => a.Id == "Distributor"))
-            //    {
-            //        db.AspNetRoles.Add(distributor);
-            //        db.SaveChanges();
-            //    }
-
-            //    AspNetRoles standardRole = new AspNetRoles();
-            //    standardRole.Id = "Standard";
-            //    standardRole.Name = "Standard";
-
-            //    if (!db.AspNetRoles.Any(a => a.Id == "Standard"))
-            //    {
-            //        db.AspNetRoles.Add(standardRole);
-            //        db.SaveChanges();
-            //    }
-            //}
+            
         }
 
         void Application_PostAuthenticateRequest()

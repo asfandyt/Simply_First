@@ -130,17 +130,17 @@ namespace Simply_First.Controllers
                     emailRepo.SendEmail(newUser.Email, subject, email);
 
                     // Adding Registered User to Default Role of: User
-                    var adminUserGurkirat = manager.FindByName(newUser.Email);
-                    manager.AddToRoles(adminUserGurkirat.Id, new string[] { "User" });
+                    var standardUser = manager.FindByName(newUser.Email);
+                    manager.AddToRoles(standardUser.Id, new string[] { "User" });
 
                     TempData["RegisterSuccess"] = "Registered successfully, check your email for confirmation link!";
 
-                    return RedirectToAction("Register");
-
-                    //ViewBag.FakeConfirmation = email;
+                    return RedirectToAction("Index");
                 }
 
                 TempData["RegisterError"] = result.Errors.FirstOrDefault().ToString();
+
+
             }
 
             return View();
