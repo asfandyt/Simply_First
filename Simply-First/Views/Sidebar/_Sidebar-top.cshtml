@@ -18,6 +18,14 @@
             </li>
             <li>
                 @{
+                    if (Request.IsAuthenticated && (User.IsInRole("c702d844-1930-4217-bcf3-d3990009e059")))
+                    {
+                        @Html.ActionLink("User List", "Index", "Admin")
+                    }
+                }
+            </li>
+            <li>
+                @{
                     if (Request.IsAuthenticated)
                     {
                         @Html.ActionLink("Secure Area", "SecureArea", "Accounts")

@@ -209,6 +209,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Repositories\AccountRepo.cs" />
+    <Compile Include="Repositories\DatabaseUsersVM.cs" />
     <Compile Include="Repositories\EmailRepo.cs" />
     <Compile Include="Services\CaptchaHelper.cs" />
   </ItemGroup>
@@ -236,6 +237,7 @@
     <Content Include="Views\Accounts\SecureArea.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Admin\AdminOnly.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
