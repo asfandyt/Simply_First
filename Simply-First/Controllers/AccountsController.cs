@@ -91,8 +91,9 @@ namespace Simply_First.Controllers
                 TempData["RegisterError"] = "The email address is already in use.";
             }
 
-            var userStore = new UserStore<IdentityUser>();
+            var userStore = new UserStore<IdentityUser>(new SimplyFirstVMContext());
             var manager = new UserManager<IdentityUser>(userStore);
+            //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new SimplyFirstVMContext()));
 
             var identityUser = new IdentityUser()
             {
@@ -119,7 +120,7 @@ namespace Simply_First.Controllers
 
                     var code = manager.GenerateEmailConfirmationToken(identityUser.Id);
 
-                    var callbackUrl = Url.Action("ConfirmEmail", "Home", new { userId = identityUser.Id, code = code },
+                    var callbackUrl = Url.Action("ConfirmEmail", "Accounts", new { userId = identityUser.Id, code = code },
                                                                                protocol: Request.Url.Scheme);
 
                     EmailRepo emailRepo = new EmailRepo();
@@ -128,22 +129,9 @@ namespace Simply_First.Controllers
 
                     emailRepo.SendEmail(newUser.Email, subject, email);
 
-                    // DOES NOT WORK
-
-                    //using (var db = new SimplyFirstVMContext())
-                    //{
-                    //    var newUserRole = new UserRoleVM();
-
-                    //    IdentityUser user = db.Users.Where(e => e.Email == newUserRole.Email).FirstOrDefault();
-                    //    //var role = db.Roles.Where(r => r.Name == newUserRole.RoleName).FirstOrDefault();
-
-                    //    var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
-
-                    //    if (user != null)
-                    //    {
-                    //        userManager.AddToRoles(user.Id, "User");
-                    //    }                      
-                    //}
+                    // Adding Registered User to Default Role of: User
+                    var adminUserGurkirat = manager.FindByName(newUser.Email);
+                    manager.AddToRoles(adminUserGurkirat.Id, new string[] { "User" });
 
                     TempData["RegisterSuccess"] = "Registered successfully, check your email for confirmation link!";
 
@@ -229,7 +217,7 @@ namespace Simply_First.Controllers
                     CreateTokenProvider(manager, PASSWORD_RESET);
 
                     var code = manager.GeneratePasswordResetToken(user.Id);
-                    var callbackUrl = Url.Action("ResetPassword", "Home", new { userId = user.Id, code = code },
+                    var callbackUrl = Url.Action("ResetPassword", "Accounts", new { userId = user.Id, code = code },
                                                                                 protocol: Request.Url.Scheme);
 
                     EmailRepo emailRepo = new EmailRepo();
