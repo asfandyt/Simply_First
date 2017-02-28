@@ -3,27 +3,12 @@
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <li>
+            @*<li>
                 <form class="navbar-form navbar-nav nav-right">
                     <input type="text" class="form-control" placeholder="Search" />
                 </form>
-            </li>
-            <li>
-                @{
-                    if (Request.IsAuthenticated && (User.IsInRole("c702d844-1930-4217-bcf3-d3990009e059")))
-                    {
-                        @Html.ActionLink("Admin Only", "AdminOnly", "Admin")
-                    }
-                }
-            </li>
-            <li>
-                @{
-                    if (Request.IsAuthenticated && (User.IsInRole("c702d844-1930-4217-bcf3-d3990009e059")))
-                    {
-                        @Html.ActionLink("User List", "Index", "Admin")
-                    }
-                }
-            </li>
+            </li>*@
+            <li> - </li>
             <li>
                 @{
                     if (Request.IsAuthenticated)
@@ -32,10 +17,25 @@
                     }
                 }
             </li>
-            
             <li>
                 @{
-                    if (Request.IsAuthenticated && (User.IsInRole("c702d844-1930-4217-bcf3-d3990009e059")))
+                    if (Request.IsAuthenticated && (User.IsInRole("18786b31-a57a-4276-8913-6e8d15ea896d")))
+                    {
+                        @Html.ActionLink("Home", "AdminOnly", "Admin")
+                    }
+                }
+            </li>
+            <li>
+                @{
+                    if (Request.IsAuthenticated && (User.IsInRole("18786b31-a57a-4276-8913-6e8d15ea896d")))
+                    {
+                        @Html.ActionLink("User List", "Index", "Admin")
+                    }
+                }
+            </li>            
+            <li>
+                @{
+                    if (Request.IsAuthenticated && (User.IsInRole("18786b31-a57a-4276-8913-6e8d15ea896d")))
                     {
                         @Html.ActionLink("Add Role", "AddRole", "Admin")
                     }
@@ -43,7 +43,7 @@
             </li>
             <li>
                 @{
-                    if (Request.IsAuthenticated && (User.IsInRole("c702d844-1930-4217-bcf3-d3990009e059")))
+                    if (Request.IsAuthenticated && (User.IsInRole("18786b31-a57a-4276-8913-6e8d15ea896d")))
                     {
                         @Html.ActionLink("Add User to Role", "AddUserToRole", "Admin")
                     }

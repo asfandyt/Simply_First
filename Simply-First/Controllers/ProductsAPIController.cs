@@ -27,11 +27,14 @@ namespace Simply_First.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Products products = db.Products.Find(id);
+
             if (products == null)
             {
                 return HttpNotFound();
             }
+
             return View(products);
         }
 

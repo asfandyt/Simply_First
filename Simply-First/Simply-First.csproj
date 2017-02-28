@@ -180,7 +180,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Views\Users\SecureArea.cshtml" />
-    <Content Include="Views\Admin\AdminConsole.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
@@ -208,6 +207,7 @@
     <Compile Include="Models\RegisteredUserVM.cs" />
     <Compile Include="Models\RoleVM.cs" />
     <Compile Include="Models\SimplyFirstVM.cs" />
+    <Compile Include="Models\SiteUserVM.cs" />
     <Compile Include="Models\UserRoleVM.cs" />
     <Compile Include="OwinStartup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

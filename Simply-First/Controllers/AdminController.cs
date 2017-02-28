@@ -6,14 +6,16 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Simply_First.Models;
+using Newtonsoft.Json.Linq;
 
 namespace Simply_First.Controllers
 {
-    [Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
+    [Authorize(Roles = "18786b31-a57a-4276-8913-6e8d15ea896d")]
     public class AdminController : Controller
     {
+        private SimplyFirstVMContext db = new SimplyFirstVMContext();
 
-        //[Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
+        [Authorize(Roles = "18786b31-a57a-4276-8913-6e8d15ea896d")]
         public ActionResult Index()
         {
             var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
@@ -21,27 +23,39 @@ namespace Simply_First.Controllers
 
             var user = userManager.Users.ToList();
             var role = roleManager.Roles.ToList();
+            
+            // This code could go in a repo.
+            List<SiteUserVM> siteUsers = new List<SiteUserVM>();
 
-            ////var query = user.Select(r=> r.Roles);
+            foreach (var users in user)
+            {
+                SiteUserVM siteUser = new SiteUserVM();
+                siteUser.UserId = users.Id;
+                siteUser.Email = users.Email;
+                siteUser.UserName = users.UserName;
+                siteUser.EmailConfirmed = users.EmailConfirmed;
+                siteUser.TwoFactorEnabled = users.TwoFactorEnabled;
+                siteUser.PhoneNumber = users.PhoneNumber;
 
-            //foreach (var item in user)
-            //{
-            //    Console.WriteLine(item.Email + item.Roles);
-            //}
-            TempData["Roles"] = user;
+                foreach (var roles in role)
+                {
+                    siteUser.RoleName = roles.Name;
+                }
 
-
-            return View();
+                siteUsers.Add(siteUser);
+            }
+            
+            return View(siteUsers);
         }
 
-        //[Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
+        //[Authorize(Roles = "18786b31-a57a-4276-8913-6e8d15ea896d")]
         [HttpGet]
         public ActionResult AddRole()
         {
             return View();
         }
 
-        //[Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
+        //[Authorize(Roles = "18786b31-a57a-4276-8913-6e8d15ea896d")]
         [HttpPost]
         public ActionResult AddRole(RoleVM roleVM)
         {
@@ -67,14 +81,14 @@ namespace Simply_First.Controllers
             return View(roleVM);
         }
 
-        //[Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
+        //[Authorize(Roles = "18786b31-a57a-4276-8913-6e8d15ea896d")]
         [HttpGet]
         public ActionResult AddUserToRole()
         {
             return View();
         }
 
-        //[Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
+        //[Authorize(Roles = "18786b31-a57a-4276-8913-6e8d15ea896d")]
         [HttpPost]
         public ActionResult AddUserToRole(UserRoleVM userRoleVM)
         {
@@ -107,13 +121,8 @@ namespace Simply_First.Controllers
         }
 
         // To allow more than one role access use syntax like the following:
-        //[Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
+        //[Authorize(Roles = "18786b31-a57a-4276-8913-6e8d15ea896d")]
         public ActionResult AdminOnly()
-        {
-            return View();
-        }
-
-        public ActionResult AdminConsole()
         {
             return View();
         }
