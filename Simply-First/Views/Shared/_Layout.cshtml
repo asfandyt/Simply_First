@@ -7,6 +7,7 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/app.js"></script>
     <link href="~/Content/sidebar.css" rel="stylesheet" />
 
     @* Google Captcha *@
@@ -25,7 +26,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav nav-right">
-                    <li>@Html.ActionLink("Home", "SecureArea", "Accounts")</ li >
+                    <li>@Html.ActionLink("Home", "SecureArea", "Accounts")</li>
+                    <li>@Html.ActionLink("Products", "Index", "Products")</li>
+                    <li>@Html.ActionLink("Buy Product", "BuyProducts", "Users")</li>
+                       
                 </ul>
 
                 @*<div class="col-sm-3 col-md-3">
