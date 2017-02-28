@@ -28,26 +28,11 @@ namespace Simply_First.Controllers
         [ResponseType(typeof(Products))]
         public IHttpActionResult GetProducts(int id)
         {
-<<<<<<< HEAD
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-=======
->>>>>>> e2a7c7f8aad29cd5a52bb7e8c98d4f538ade8757
             Products products = db.Products.Find(id);
-
             if (products == null)
             {
                 return NotFound();
             }
-<<<<<<< HEAD
-
-            return View(products);
-        }
-=======
->>>>>>> e2a7c7f8aad29cd5a52bb7e8c98d4f538ade8757
 
             return Ok(products);
         }
