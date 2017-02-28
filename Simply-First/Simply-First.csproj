@@ -180,6 +180,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Views\Users\SecureArea.cshtml" />
+    <Content Include="Views\Admin\AdminConsole.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -63,7 +63,14 @@ namespace Simply_First.Controllers
                         IsPersistent = false
                     }, identity);
 
-                    return RedirectToAction("SecureArea", "Accounts");
+                    if (User.IsInRole("c702d844-1930-4217-bcf3-d3990009e05"))
+                    {
+                        return RedirectToAction("AdminConsole", "Admin");
+                    }
+                    else
+                    {
+                        return RedirectToAction("SecureArea", "Accounts");
+                    }
                 }
 
                 TempData["LoginError"] = "Invalid email or password!";

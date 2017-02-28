@@ -9,9 +9,11 @@ using Simply_First.Models;
 
 namespace Simply_First.Controllers
 {
+    [Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
     public class AdminController : Controller
     {
-        [Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
+
+        //[Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
         public ActionResult Index()
         {
             var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
@@ -32,14 +34,14 @@ namespace Simply_First.Controllers
             return View();
         }
 
-        [Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
+        //[Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
         [HttpGet]
         public ActionResult AddRole()
         {
             return View();
         }
 
-        [Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
+        //[Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
         [HttpPost]
         public ActionResult AddRole(RoleVM roleVM)
         {
@@ -65,14 +67,14 @@ namespace Simply_First.Controllers
             return View(roleVM);
         }
 
-        [Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
+        //[Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
         [HttpGet]
         public ActionResult AddUserToRole()
         {
             return View();
         }
 
-        [Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
+        //[Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
         [HttpPost]
         public ActionResult AddUserToRole(UserRoleVM userRoleVM)
         {
@@ -105,8 +107,13 @@ namespace Simply_First.Controllers
         }
 
         // To allow more than one role access use syntax like the following:
-        [Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
+        //[Authorize(Roles = "c702d844-1930-4217-bcf3-d3990009e059")]
         public ActionResult AdminOnly()
+        {
+            return View();
+        }
+
+        public ActionResult AdminConsole()
         {
             return View();
         }
