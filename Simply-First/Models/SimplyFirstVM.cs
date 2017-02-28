@@ -13,9 +13,34 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Simply_First.Models
 {
+    public class Products
+    {
+        [Key]
+        [Required]
+        [Display(Name = "Product ID")]
+        public int ProductId { get; set; }
+        [Required]
+        [Display(Name = "Product Name")]
+        public string ProductName { get; set; }
+        [Required]
+        [Display(Name = "Product Description")]
+        public string ProductDescription { get; set; }
+        [Required]
+        [Display(Name = "Product Manufacturer")]
+        public string Manufacturer { get; set; }
+        [Required]
+        [Display(Name = "Quantity")]
+        public int Quantity { get; set; }
+        [Required]
+        [Range(0, int.MaxValue, ErrorMessage = "A value bigger than 0 is needed.")]
+        [Display(Name = "Price")]
+        public decimal Price { get; set; }
+    }
     public class SimplyFirstVMContext : IdentityDbContext<IdentityUser>
     {
         public SimplyFirstVMContext() : base("DefaultConnection") { }
+
+        public DbSet<Products> Products { get; set; }
 
         // This method overrides some framework default behaviour.
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -35,5 +60,6 @@ namespace Simply_First.Models
         {
             return new SimplyFirstVMContext();
         }
+        
     }
 }

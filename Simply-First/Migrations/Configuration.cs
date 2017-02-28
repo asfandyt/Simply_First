@@ -1,4 +1,3 @@
-using System.Data.Entity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Simply_First.Models;
@@ -43,10 +42,53 @@ namespace Simply_First.Migrations
                 EmailConfirmed = true,
             };
 
+            var admin_four = new IdentityUser()
+            {
+                UserName = "game.design.ty@gmail.com",
+                Email = "game.design.ty@gmail.com",
+                EmailConfirmed = true,
+            };
+
             // Assign user password on start
             userManager.Create(admin, "password");
             userManager.Create(admin_two, "password");
             userManager.Create(admin_three, "password");
+            userManager.Create(admin_four, "password");
+            // adding products
+
+            var p1 = new Products()
+            {
+                ProductId = 1,
+                ProductName = "Mavic Pro",
+                ProductDescription = "The best light weight drone tech",
+                Manufacturer = "DJI",
+                Quantity = 99,
+                Price = 799.99M
+            };
+            var p2 = new Products()
+            {
+                ProductId = 2,
+                ProductName = "Phantom 4",
+                ProductDescription = "DJI staple products",
+                Manufacturer = "DJI",
+                Quantity = 29,
+                Price = 629.99M
+            };
+            var p3 = new Products()
+            {
+                ProductId = 3,
+                ProductName = "Inspire II",
+                ProductDescription = "The best professional drone on the market",
+                Manufacturer = "DJI",
+                Quantity = 39,
+                Price = 3999.99M
+            };
+
+            // Assign user password on start
+            context.Products.Add(p1);
+            context.Products.Add(p2);
+            context.Products.Add(p3);
+
 
             // Create roles on start
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new SimplyFirstVMContext()));
@@ -67,6 +109,9 @@ namespace Simply_First.Migrations
 
             var adminUser = userManager.FindByName("admin@sf.com");
             userManager.AddToRoles(adminUser.Id, new string[] { "Admin" });
+
+            var adminUserTy = userManager.FindByName("game.design.ty@gmail.com");
+            userManager.AddToRoles(adminUserTy.Id, new string[] { "Admin" });
         }
     }
 }
