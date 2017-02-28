@@ -23,7 +23,7 @@ function sendRequest() {
 function callback(val) {
     //  $("#manufacturers").replaceWith("<span id='value1'>(Result)</span>");
     $("#value1").replaceWith("<ul id='products' />");
-    var str = "Product ID: " + val.ProductId + " Description: " + val.ProductDescription + " Manufacturer: " + val.Manufacturer;
+    var str = "Product ID: " + val.ProductName + " Description: " + val.ProductDescription + " Manufacturer: " + val.Manufacturer;
     $('<li/>', { text: str }).appendTo($('#products'));
 }
 
