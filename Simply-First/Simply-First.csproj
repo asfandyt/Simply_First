@@ -210,6 +210,7 @@
     <Content Include="Views\Users\BuyProducts.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Purchase.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
