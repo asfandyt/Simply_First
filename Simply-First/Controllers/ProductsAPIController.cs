@@ -21,6 +21,7 @@ namespace Simply_First.Controllers
         // GET: api/ProductsAPI
         public IQueryable<Products> GetProducts()
         {
+            db.Configuration.LazyLoadingEnabled = false;
             return db.Products;
         }
 
@@ -28,6 +29,7 @@ namespace Simply_First.Controllers
         [ResponseType(typeof(Products))]
         public IHttpActionResult GetProducts(int id)
         {
+            db.Configuration.LazyLoadingEnabled = false;
             Products products = db.Products.Find(id);
             if (products == null)
             {
