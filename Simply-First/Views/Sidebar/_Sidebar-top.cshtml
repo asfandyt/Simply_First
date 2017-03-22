@@ -6,15 +6,15 @@
                     @{
                         if (Request.IsAuthenticated)
                         {
-                            @Html.ActionLink("Secure Area", "SecureArea", "Accounts", null, new { @class = "nav-link" })
+                            @Html.ActionLink("Control Panel", "SecureArea", "Accounts", null, new { @class = "nav-link" })
                         }
                     }
                 </li>
                 <li class="nav-item">
                     @{
-                        if (Request.IsAuthenticated && (User.IsInRole("20d75ec5-13d8-451e-aaca-154a64111711")))
+                        if (Request.IsAuthenticated)
                         {
-                            @Html.ActionLink("Home", "AdminOnly", "Admin", null, new { @class = "nav-link" })
+                            @Html.ActionLink("Change Password", "ForgotPassword", "Accounts", null, new { @class = "nav-link" })
                         }
                     }
                 </li>

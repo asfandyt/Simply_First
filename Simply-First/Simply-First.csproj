@@ -190,6 +190,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Documents\documentation.pdf" />
+    <Content Include="Images\1.jpg" />
+    <Content Include="Images\2.jpeg" />
+    <Content Include="Images\3.jpg" />
     <Content Include="Scripts\app.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -273,7 +276,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Sidebar\_Sidebar-top.cshtml" />
     <Content Include="Views\Sidebar\_Sidebar-bottom.cshtml" />
-    <Content Include="Views\Shared\_Layout-bottom.cshtml" />
     <Content Include="Views\Admin\AddRole.cshtml" />
     <Content Include="Views\Admin\AddUserToRole.cshtml" />
     <Content Include="Views\Accounts\Index.cshtml" />
@@ -284,7 +286,6 @@
     <Content Include="Views\Accounts\ResetPassword.cshtml" />
     <Content Include="Views\Accounts\SecureArea.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Admin\AdminOnly.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

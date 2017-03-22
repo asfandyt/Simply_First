@@ -1,68 +1,33 @@
 ﻿
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Contact";
 }
 
-<!-- ==============================================
-CONTACT
-=============================================== -->
-<div id="contact" class="bg-image pt-160 pb-120 fixed-bg" style="background-image:url('../images/contact-bg.jpg')">
+<h1 class="display-4 pb-3">Contact Us!</h1>
 
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col-md-6 col-lg-5 col-md-offset-1">
-
-                <h2 class="text-uppercase text-bold mb-40 scrolling-animation fade-up">Drop us a line</h2>
-
-                <form class="contact-form text-dark mb-120 scrolling-animation fade-up d1" action="#" method="post" novalidate>
-
-                    <div class="form-i-right">
-                        <input class="form-control input-rect input-solid-white mb-20 requiredField" placeholder="Your Name" type="text" name="name">
-                        <i class="fa fa-user"></i>
-                    </div>
-
-                    <div class="form-i-right">
-                        <input class="form-control input-rect input-solid-white mb-20 requiredField" placeholder="Your Email" type="email" name="email">
-                        <i class="fa fa-envelope"></i>
-                    </div>
-
-                    <div class="form-i-right">
-                        <textarea class="mb-20 form-control input-rect input-solid-white requiredField" rows="5" placeholder="Your Message" name="message"></textarea>
-                        <i class="fa fa-comments"></i>
-                    </div>
-
-                    <button type="submit" class="btn btn-block btn-rect btn-3d">Send Message</button>
-                    <input type="hidden" name="submitted" id="submitted" value="true" />
-
-                    <p class="form-error empty-fields"><i class="fa fa-exclamation-triangle"></i>Please fill the required fields</p>
-                    <p class="form-error email-error"><i class="fa fa-exclamation-triangle"></i>Email looks invalid</p>
-                    <p class="form-success"><i class="fa fa-check"></i>Your message has been sent</p>
-
-                </form>
-
-                <h2 class="text-uppercase text-bold mb-20 scrolling-animation fade-up">Contact Information</h2>
-
-                <div class="scrolling-animation fade-up d1">
-                    <p>250 W Broadway</p>
-                    <p>New York, NY 10013</p>
-                    <p>(123) 456 - 7890 </p>
-                    <p><a href="mailto:drones@simplyfirst.com" class="text-hover-color">drones@simplyfirst.com</a></p>
-                </div>
-
-            </div>
-
+<form class="col-6 pt-3">
+    <div class="form-group row">
+        <label for="name" class="col-2 col-form-label">Name</label>
+        <div class="col-10">
+            <input class="form-control" type="text" value="Enter your name" id="name" required />
         </div>
-
     </div>
-
-</div>
-
-<div class="text-center">
-    <a class="btn btn-rect btn-xl btn-block" href="http://www.simplyfirst.azurewebsites.net/home/purchaseproduct" target="_blank">
-        Buy DJI Mavic Now<br>
-        <span class="btn-subtext">You won't regret it</span>
-    </a>
-</div>
+    <div class="form-group row">
+        <label for="email" class="col-2 col-form-label">Email</label>
+        <div class="col-10">
+            <input class="form-control" type="email" value="Enter your email" id="email" required>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="message" class="col-2 col-form-label">Message</label>
+        <div class="col-10">
+            <textarea class="form-control" type="text" placeholder="Enter your message" id="message" rows="5" required></textarea>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <div class="col-md-10">
+            <input class="btn btn-primary" type="button" value="Submit" id="submit">
+        </div>
+    </div>
+</form>

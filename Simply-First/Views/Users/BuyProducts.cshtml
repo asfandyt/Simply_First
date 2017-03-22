@@ -1,17 +1,13 @@
 ﻿@model IEnumerable<Simply_First.Models.Products>
 
 @{
-    ViewBag.Title = "BuyProducts";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Purchase";
 }
 
-<h2>BuyProducts</h2>
+<h1 class="display-4 text-center">Purchase Products</h1>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
+<table class="table table-bordered">
+    <tr class="table-info">
         <th>
             @Html.DisplayNameFor(model => model.ProductName)
         </th>
@@ -28,6 +24,7 @@
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th></th>
+        <th class="hidden-md-up hidden-xs-up"></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -48,8 +45,10 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
+            <input type="button" class="btn btn-success" value="Add to Cart" />
+        </td>
+        <td class="hidden-md-up	hidden-xs-up">
             @Html.ActionLink("Purchase", "Purchase", new { id= item.ProductId }) 
-          
         </td>
     </tr>
 }

@@ -29,35 +29,37 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         
-        <div class="container">
-            @Html.ActionLink("Simply First", "SecureArea", "Accounts", null, new { @class = "navbar-brand" })
+        @*<div class="container">*@
+            @Html.ActionLink("Simply First", "Index", "Home", null, new { @class = "navbar-brand" })
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Products", "Index", "Products", null, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Buy Product", "BuyProducts", "Users", null, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Purchase", "BuyProducts", "Users", null, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Document", "Document", "Home", null, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
             </ul>
 
-            <ul class="navbar-nav mr-auto mt-6 mt-lg-0">
+            <ul class="navbar-nav mr-4 mt-lg-0">
                 <form class="form-inline mt-2 mt-md-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search">
                     <button class="btn btn-outline-inverse my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </ul>
                 
-            <ul class="navbar-nav mr-auto">
-                <span class="navbar-text">@Html.Raw(User.Identity.Name)</span>
-            </ul>
-            
             <ul class="navbar-nav">
+                @{
+                    if (Request.IsAuthenticated)
+                    {
+                        <span class="navbar-text mr-3"><strong>[@Html.Raw(User.Identity.Name)]</strong></span>
+                    }
+                }      
                 <li class="nav-item">
                     @{
                         if (!Request.IsAuthenticated)
                         {
-                            @Html.ActionLink("Login", "Index", "Accounts", null, new { @class = "nav-link" })
+                            @Html.ActionLink("Login", "Index", "Accounts", null, new {@class = "nav-link"})
                         }
                     }
                 </li>
@@ -65,7 +67,7 @@
                     @{
                         if (!Request.IsAuthenticated)
                         {
-                            @Html.ActionLink("Register", "Register", "Accounts", null, new { @class = "nav-link" })
+                            @Html.ActionLink("Register", "Register", "Accounts", null, new {@class = "nav-link"})
                         }
                     }
                 </li>
@@ -73,13 +75,21 @@
                     @{
                         if (Request.IsAuthenticated)
                         {
-                            @Html.ActionLink("Logout", "Logout", "Accounts", null, new { @class = "nav-link" })
+                            @Html.ActionLink("Control Panel", "SecureArea", "Accounts", null, new {@class = "nav-link"})
+                        }
+                    }
+                </li>
+                <li class="nav-item">
+                    @{
+                        if (Request.IsAuthenticated)
+                        {
+                            @Html.ActionLink("Logout", "Logout", "Accounts", null, new {@class = "nav-link"})
                         }
                     }
                 </li>
             </ul>
         </div>
-    </div>
+    @*</div>*@
 </nav>
 
     <div class="container">
