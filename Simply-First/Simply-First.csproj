@@ -178,6 +178,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Boostrap 4\boostrap.min.css" />
+    <Content Include="Content\Boostrap 4\bootstrap.css" />
+    <Content Include="Content\Boostrap 4\dashboard.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\sidebar.css" />
@@ -211,6 +214,7 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Purchase.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Document.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

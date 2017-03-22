@@ -26,7 +26,8 @@ namespace Simply_First.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DTC01L0382-15;Initial Catalog=SimplyFirst;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-IMEHHG4\\SQLEXPRESS;Initial Catalog=SimplyFirst;Integrated Sec" +
+            "urity=True")]
         public string Setting {
             get {
                 return ((string)(this["Setting"]));

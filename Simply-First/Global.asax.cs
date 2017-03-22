@@ -26,8 +26,6 @@ namespace Simply_First
             AntiForgeryConfig.SuppressIdentityHeuristicChecks = true;
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-
-            
         }
 
         void Application_PostAuthenticateRequest()
