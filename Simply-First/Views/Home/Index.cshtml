@@ -2,9 +2,19 @@
     ViewBag.Title = "Home";
 }
 
-<h1 class="display-4">Home Page</h1>
+<div class="jumbotron">
+    <h1 class="display-3 text-center">DJI Mavic Pro</h1>
 
-<p>This is a placeholder</p>
+    <p class="lead text-center">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+
+    <hr class="my-4">
+
+    <p>The DJI Mavic Pro is a small yet powerful drone that turns the sky into your creative canvas easily and without worry, helping you make every moment an aerial moment. Its compact size hides a high degree of complexity that makes it one of DJI’s most sophisticated flying cameras ever. 24 high-performance computing cores, an all-new transmission system with a 4.3mi (7km) *range, 5 vision sensors, and a 4K camera stabilized by a 3-axis mechanical gimbal, are at your command with just a push of your thumb or a tap of your finger. Unobstructed, free of interference, when FCC compliant.</p>
+
+    <p class="lead text-center">
+        @Html.ActionLink("Documentation", "Document", "Home", null, new { @class = "btn btn-success btn-lg" })
+    </p>
+</div>
 
 @*<style>
     body {

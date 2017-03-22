@@ -51,6 +51,14 @@ a {
     color: #FFF;
 }
 
+.dashboard-link, a:hover {
+    color: #fafad2;
+}
+
+.dashboard-link, a:active {
+    color: #6495ed;
+}
+
 .sidebar .nav-item + .nav-item {
   margin-left: 0;
 }

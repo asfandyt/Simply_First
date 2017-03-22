@@ -10,12 +10,12 @@ using Newtonsoft.Json.Linq;
 
 namespace Simply_First.Controllers
 {
-    [Authorize(Roles = "18786b31-a57a-4276-8913-6e8d15ea896d")]
+    [Authorize(Roles = "20d75ec5-13d8-451e-aaca-154a64111711")]
     public class AdminController : Controller
     {
         private SimplyFirstVMContext db = new SimplyFirstVMContext();
 
-        [Authorize(Roles = "18786b31-a57a-4276-8913-6e8d15ea896d")]
+        [Authorize(Roles = "20d75ec5-13d8-451e-aaca-154a64111711")]
         public ActionResult Index()
         {
             var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
@@ -48,14 +48,14 @@ namespace Simply_First.Controllers
             return View(siteUsers);
         }
 
-        //[Authorize(Roles = "18786b31-a57a-4276-8913-6e8d15ea896d")]
+        [Authorize(Roles = "20d75ec5-13d8-451e-aaca-154a64111711")]
         [HttpGet]
         public ActionResult AddRole()
         {
             return View();
         }
 
-        //[Authorize(Roles = "18786b31-a57a-4276-8913-6e8d15ea896d")]
+        [Authorize(Roles = "20d75ec5-13d8-451e-aaca-154a64111711")]
         [HttpPost]
         public ActionResult AddRole(RoleVM roleVM)
         {
@@ -81,14 +81,14 @@ namespace Simply_First.Controllers
             return View(roleVM);
         }
 
-        //[Authorize(Roles = "18786b31-a57a-4276-8913-6e8d15ea896d")]
+        [Authorize(Roles = "20d75ec5-13d8-451e-aaca-154a64111711")]
         [HttpGet]
         public ActionResult AddUserToRole()
         {
             return View();
         }
 
-        //[Authorize(Roles = "18786b31-a57a-4276-8913-6e8d15ea896d")]
+        [Authorize(Roles = "20d75ec5-13d8-451e-aaca-154a64111711")]
         [HttpPost]
         public ActionResult AddUserToRole(UserRoleVM userRoleVM)
         {
@@ -121,7 +121,7 @@ namespace Simply_First.Controllers
         }
 
         // To allow more than one role access use syntax like the following:
-        //[Authorize(Roles = "18786b31-a57a-4276-8913-6e8d15ea896d")]
+        [Authorize(Roles = "20d75ec5-13d8-451e-aaca-154a64111711")]
         public ActionResult AdminOnly()
         {
             return View();

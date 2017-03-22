@@ -12,7 +12,7 @@
                 </li>
                 <li class="nav-item">
                     @{
-                        if (Request.IsAuthenticated && (User.IsInRole("18786b31-a57a-4276-8913-6e8d15ea896d")))
+                        if (Request.IsAuthenticated && (User.IsInRole("20d75ec5-13d8-451e-aaca-154a64111711")))
                         {
                             @Html.ActionLink("Home", "AdminOnly", "Admin", null, new { @class = "nav-link" })
                         }
@@ -20,7 +20,7 @@
                 </li>
                 <li class="nav-item">
                     @{
-                        if (Request.IsAuthenticated && (User.IsInRole("18786b31-a57a-4276-8913-6e8d15ea896d")))
+                        if (Request.IsAuthenticated && (User.IsInRole("20d75ec5-13d8-451e-aaca-154a64111711")))
                         {
                             @Html.ActionLink("User List", "Index", "Admin", null, new { @class = "nav-link" })
                         }
@@ -28,7 +28,7 @@
                 </li>
                 <li class="nav-item">
                     @{
-                        if (Request.IsAuthenticated && (User.IsInRole("18786b31-a57a-4276-8913-6e8d15ea896d")))
+                        if (Request.IsAuthenticated && (User.IsInRole("20d75ec5-13d8-451e-aaca-154a64111711")))
                         {
                             @Html.ActionLink("Add Role", "AddRole", "Admin", null, new { @class = "nav-link" })
                         }
@@ -36,7 +36,7 @@
                 </li>
                 <li class="nav-item">
                     @{
-                        if (Request.IsAuthenticated && (User.IsInRole("18786b31-a57a-4276-8913-6e8d15ea896d")))
+                        if (Request.IsAuthenticated && (User.IsInRole("20d75ec5-13d8-451e-aaca-154a64111711")))
                         {
                             @Html.ActionLink("Add User to Role", "AddUserToRole", "Admin", null, new { @class = "nav-link" })
                         }
@@ -45,4 +45,4 @@
             </ul>
         </nav>
 
-    <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+    <main class="col-sm-9 offset-sm-3 offset-md-0 col-md-12 offset-md-0 pt-3">
