@@ -10,12 +10,12 @@ using Newtonsoft.Json.Linq;
 
 namespace Simply_First.Controllers
 {
-    [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
+    [Authorize(Roles = "e03c1cb5-7d0a-428d-b3bd-e31b149ff984")]
     public class AdminController : Controller
     {
         private SimplyFirstVMContext db = new SimplyFirstVMContext();
 
-        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
+        [Authorize(Roles = "e03c1cb5-7d0a-428d-b3bd-e31b149ff984")]
         public ActionResult Index()
         {
             var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
@@ -38,7 +38,7 @@ namespace Simply_First.Controllers
             return View(siteUsers);
         }
 
-        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
+        [Authorize(Roles = "e03c1cb5-7d0a-428d-b3bd-e31b149ff984")]
         public ActionResult UserRoles()
         {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new SimplyFirstVMContext()));
@@ -60,14 +60,14 @@ namespace Simply_First.Controllers
             return View(siteUsersRoles);
         }
 
-        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
+        [Authorize(Roles = "e03c1cb5-7d0a-428d-b3bd-e31b149ff984")]
         [HttpGet]
         public ActionResult AddRole()
         {
             return View();
         }
 
-        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
+        [Authorize(Roles = "e03c1cb5-7d0a-428d-b3bd-e31b149ff984")]
         [HttpPost]
         public ActionResult AddRole(RoleVM roleVM)
         {
@@ -93,14 +93,14 @@ namespace Simply_First.Controllers
             return View(roleVM);
         }
 
-        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
+        [Authorize(Roles = "e03c1cb5-7d0a-428d-b3bd-e31b149ff984")]
         [HttpGet]
         public ActionResult AddUserToRole()
         {
             return View();
         }
 
-        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
+        [Authorize(Roles = "e03c1cb5-7d0a-428d-b3bd-e31b149ff984")]
         [HttpPost]
         public ActionResult AddUserToRole(UserRoleVM userRoleVM)
         {

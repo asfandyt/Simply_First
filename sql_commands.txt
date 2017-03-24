@@ -1,6 +1,10 @@
 SELECT 'DROP TABLE [' + SCHEMA_NAME(schema_id) + '].[' + name + ']' FROM sys.tables
 SELECT 'DROP PROCEDURE [' + SCHEMA_NAME(schema_id) + '].[' + name + ']' FROM sys.procedures
 
-SELECT * FROM AspNetUsers
-SELECT * FROM AspNetUserRoles
-SELECT * FROM AspNetRoles
+DROP TABLE [dbo].[Products]
+DROP TABLE [dbo].[AspNetUserRoles]
+DROP TABLE [dbo].[AspNetUserClaims]
+DROP TABLE [dbo].[AspNetUserLogins]
+DROP TABLE [dbo].[__MigrationHistory]
+DROP TABLE [dbo].[AspNetRoles]
+DROP TABLE [dbo].[AspNetUsers]

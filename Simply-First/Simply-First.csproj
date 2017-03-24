@@ -249,9 +249,9 @@
     <Compile Include="Migrations\201702281830077_FirstMigration.Designer.cs">
       <DependentUpon>201702281830077_FirstMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703240141048_AddedProductImage.cs" />
-    <Compile Include="Migrations\201703240141048_AddedProductImage.Designer.cs">
-      <DependentUpon>201703240141048_AddedProductImage.cs</DependentUpon>
+    <Compile Include="Migrations\201703240156380_AddingColumn.cs" />
+    <Compile Include="Migrations\201703240156380_AddingColumn.Designer.cs">
+      <DependentUpon>201703240156380_AddingColumn.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LoginVM.cs" />
@@ -311,8 +311,8 @@
     <EmbeddedResource Include="Migrations\201702281830077_FirstMigration.resx">
       <DependentUpon>201702281830077_FirstMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703240141048_AddedProductImage.resx">
-      <DependentUpon>201703240141048_AddedProductImage.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703240156380_AddingColumn.resx">
+      <DependentUpon>201703240156380_AddingColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

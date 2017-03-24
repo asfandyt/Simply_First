@@ -65,7 +65,7 @@ namespace Simply_First.Controllers
 
                     if (User.Identity.IsAuthenticated)
                     {
-                        if (User.IsInRole("e44638ee-cd89-4482-af88-ad8bb9af3f63"))
+                        if (User.IsInRole("e03c1cb5-7d0a-428d-b3bd-e31b149ff984"))
                         {
                             return RedirectToAction("Index", "Admin");
                         }
