@@ -4,399 +4,65 @@
     ViewBag.Title = "Products";
 }
 
-<img src="http://eftm.com.au/wp-content/uploads/2016/11/DSC05369-1920x1080.jpg" class="img-responsive img-fluid" />
+@Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")
 
-<br /><br />
+<h1 class="text-center display-4 pb-3">Products Inventory</h1>
 
-<h1 class="display-4 text-center">Product Description</h1>
-
-<p class="text-justify">
-    Wherever You Go The DJI Mavic Pro is a small yet powerful drone that turns the sky into your creative canvass easily and without worry, helping you make every moment an aerial moment. Its compact size hides a high degree of complexity that makes it one of DJI’s most sophisticated flying cameras ever. 24 high-performance computing cores, an all-new transmission system with a 4.3mi (7Km) range, 4 vision sensors, and a 4K camera stabilized by a 3-axis mechanical gimbal, are at your command with just a push of your thumb or a tap of your finger. POWERFUL Fly for miles. From your pocket. Inside the Mavic’s pocket-sized remote controller is DJI’s brand new OcuSync transmission technology, with a range of 4.3mi (7km) and Full HD 1080p video streaming. No bumps and scrapes When you know what’s in front of you, you won’t bump into it. The same is true of the Mavic. Using Flight Autonomy it can see obstacles as far away as 49ft (15m) in front, so that it can fly at up to 22mph (36kph) while avoiding the things it sees. Absolute Precision Flight Autonomy technology means the Mavic can hover precisely in more environments, and automatically land almost exactly where you took off. Stay flying longer Why fly for 10 or 15 minutes when you can fly for up to 27? With the Mavic you can. Use every single pixel The Mavic is the only drone of its size to carry an integrated high-precision 3-axis mechanical camera stabilization system, giving you crystal clear photos and smooth videos, without losing a single pixel.
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-lg" })
 </p>
 
-<br /><br />
+<table class="table table-bordered">
+    <tr class="bg-inverse text-white text-center">
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th class="hidden-md-up hidden-xs-up"></th>
+        <th class="hidden-md-up hidden-xs-up"></th>
+        <th class="hidden-md-up hidden-xs-up"></th>
+    </tr>
 
-<div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/p1d_ptE6yrc"></iframe>
-</div>
+@foreach (var item in Model) {
+    <tr class="text-center">
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manufacturer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }, new { @class = "btn btn-success btn-sm" })
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.ProductId }, new { @class = "btn btn-secondary text-muted btn-sm" })
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId }, new { @class = "btn btn-danger btn-sm" })
+        </td>
+    </tr>
+}
 
-<div class="container">
-    <div class="row pt-md-5">
-        <div class="col-md-6 col-xs-12">
-        <h3>Aircraft</h3>
-            <table class="table table-bordered">
-                <tbody>
-                <tr>
-                    <th>Folded</th>
-                    <td>H83mm x W83mm x L198mm</td>
-                </tr>
-                <tr>
-                    <th>Diagonal Size (Excluding Propellers)</th>
-                    <td>335 mm</td>
-                </tr>
-                <tr>
-                    <th>Weight (including battery and propellers)</th>
-                    <td>
-                        1.62 lbs (734 g) (exclude gimbal cover)
-                        <br>1.64 lbs (743 g) (include gimbal cover)
-                    </td>
-                </tr>
-                <tr>
-                    <th>Max Ascent Speed</th>
-                    <td>16.4 ft/s (5 m/s) in Sport mode</td>
-                </tr>
-                <tr>
-                    <th>Max Descent Speed</th>
-                    <td>9.8 ft/s (3 m/s)</td>
-                </tr>
-                <tr>
-                    <th>Max Speed</th>
-                    <td>40 mph (65 kph) in Sport mode without wind</td>
-                </tr>
-                <tr>
-                    <th>Max Service Ceiling Above Sea Level</th>
-                    <td>16404 feet (5000 m)</td>
-                </tr>
-                <tr>
-                    <th>Max Flight Time</th>
-                    <td>27 minutes (0 wind at a consistent 15.5 mph (25 kph))</td>
-                </tr>
-                <tr>
-                    <th>Max Hovering Time</th>
-                    <td>24 minutes (0 wind)</td>
-                </tr>
-                <tr>
-                    <th>Overall flight time</th>
-                    <td>21 minutes ( In normal flight, 15% remaining battery level )</td>
-                </tr>
-                <tr>
-                    <th>Max Flight Distance</th>
-                    <td>8 mi (13 km, 0 wind)</td>
-                </tr>
-                <tr>
-                    <th>Operating Temperature</th>
-                    <td>32° to 104° F (0° to 40° C)</td>
-                </tr>
-                <tr>
-                    <th>GPS Mode</th>
-                    <td>GPS / GLONASS</td>
-                </tr>
-                <tr>
-                    <th>Hover Accuracy</th>
-                    <td>
-                        Vertical:
-                        <br>+/- 0.1 m (when Vision Positioning is active) or +/-0.5 m
-                        <br>Horizontal:
-                        <br>+/- 0.3 m (when Vision Positioning is active) or +/-1.5 m
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="col-md-6 col-xs-12">
-            <h3>Remote Controller</h3>
-            <table class="table table-bordered">
-                <tbody>
-                <tr>
-                    <th>Operating Frequency</th>
-                    <td>2.4 GHz to 2.483 GHz</td>
-                </tr>
-                <tr>
-                    <th>Max Transmission Distance</th>
-                    <td>
-                        FCC Compliant: 4.3 mi (7 km);&nbsp;
-                        <br>CE Compliant: 2.5 mi (4 km) (Unobstructed, free of interference)
-                    </td>
-                </tr>
-                <tr>
-                    <th>Operating Temperature</th>
-                    <td>32° to 104° F ( 0° to 40° C )</td>
-                </tr>
-                <tr>
-                    <th>Battery</th>
-                    <td>2970mAh</td>
-                </tr>
-                <tr>
-                    <th>Transmitter Power (EIRP)</th>
-                    <td>
-                        FCC：≤26 dBm
-                        <br>CE：≤20 dBm
-                    </td>
-                </tr>
-                <tr>
-                    <th>Operating Voltage</th>
-                    <td>950mA 3.7V</td>
-                </tr>
-                <tr>
-                    <th>Supported Mobile Device Size</th>
-                    <td>
-                        Thickness Supported:6.5-8.5mm
-                        <br>Max length: 160mm
-                        <br>Supported USB port types: Lightning, Micro USB(Type-B),USB(Type-C)™
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="col-md-6 col-xs-12">
-            <h3>Gimbal</h3>
-            <table class="table table-bordered">
-                <tbody>
-                <tr>
-                    <th>Controllable Range</th>
-                    <td>
-                        Pitch: -90° to +30°
-                        <br>Roll: 0° or 90° (Horizontally and vertically)
-                    </td>
-                </tr>
-                <tr>
-                    <th>Stabilization</th>
-                    <td>3-axis (pitch, roll, yaw)</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+</table>
 
-        <div class="col-md-6 col-xs-12">
-            <h3>Forward Vision System</h3>
-            <table class="table table-bordered">
-                <tbody>
-                <tr>
-                    <th>Obstacle Sensory Range</th>
-                    <td>
-                        Precision measurement range: 2 ft (0.7 m) to 49 ft (15 m)
-                        <br>Detectable range: 49 ft (15 m) to 98 ft (30 m)
-                    </td>
-                </tr>
-                <tr>
-                    <th>Operating Environment</th>
-                    <td>Surface with clear pattern and adequate lighting (lux &gt; 15)</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="col-md-6 col-xs-12">
-            <h3>Downward Vision System</h3>
-            <table class="table table-bordered">
-                <tbody>
-                    <tr>
-                        <th>Velocity Range</th>
-                        <td>≤22.4 mph (36 kph) at 6.6 ft (2 m) above ground </td>
-                    </tr>
-                    <tr>
-                        <th>Altitude Range</th>
-                        <td>1 - 43 feet (0.3 - 13 m)</td>
-                    </tr>
-                    <tr>
-                        <th>Operating Range</th>
-                        <td>1 - 43 feet (0.3 - 13 m)</td>
-                    </tr>
-                    <tr>
-                        <th>Operating Environment</th>
-                        <td>Surface with clear pattern and adequate lighting (lux &gt; 15)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="col-md-6 col-xs-12">
-            <h3>Camera</h3>
-            <table class="table table-bordered">
-                <tbody>
-                <tr>
-                    <th>Sensor</th>
-                    <td>1/2.3” (CMOS), Effective pixels:12.35 M (Total pixels:12.71M)</td>
-                </tr>
-                <tr>
-                    <th>Lens</th>
-                    <td>
-                        FOV 78.8° 28 mm (35 mm format equivalent) f/2.2
-                        <br>Distortion &lt; 1.5% Focus from 0.5 m to ∞
-                    </td>
-                </tr>
-                <tr>
-                    <th>ISO Range</th>
-                    <td>
-                        100-3200 (video)
-                        <br>100-1600 (photo)
-                    </td>
-                </tr>
-                <tr>
-                    <th>Shutter Speed</th>
-                    <td>8s -1/8000s</td>
-                </tr>
-                <tr>
-                    <th>Image Max Size</th>
-                    <td>4000×3000</td>
-                </tr>
-                <tr>
-                    <th>Still Photography Modes</th>
-                    <td>
-                        Single shot
-                        <br>Burst shooting: 3/5/7 frames
-                        <br>Auto Exposure Bracketing (AEB): 3/5 bracketed frames at 0.7 EV Bias
-                        <br>Interval
-                    </td>
-                </tr>
-                <tr>
-                    <th>Video Recording Modes</th>
-                    <td>
-                        C4K: 4096×2160 24p
-                        <br>4K: 3840×2160 24/25/30p
-                        <br>2.7K: 2704×1520 24/25/30p
-                        <br>FHD: 1920×1080 24/25/30/48/50/60/96p
-                        <br>HD: 1280×720 24/25/30/48/50/60/120p
-                    </td>
-                </tr>
-                <tr>
-                    <th>Max Video Bitrate</th>
-                    <td>60 Mbps</td>
-                </tr>
-                <tr>
-                    <th>Supported File Formats</th>
-                    <td>FAT32 ( ≤ 32 GB ); exFAT ( &gt; 32 GB )</td>
-                </tr>
-                <tr>
-                    <th>Photo</th>
-                    <td>JPEG, DNG</td>
-                </tr>
-                <tr>
-                    <th>Video</th>
-                    <td>MP4, MOV (MPEG-4 AVC/H.264)</td>
-                </tr>
-                <tr>
-                    <th>Supported SD Card Types</th>
-                    <td>
-                        Micro SD™
-                        <br>Max capacity: 64 GB. Class 10 or UHS-1 rating required
-                    </td>
-                </tr>
-                <tr>
-                    <th>Operating Temperature</th>
-                    <td>32° to 104° F ( 0° to 40° C )</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="col-md-6 col-xs-12">
-            <h3>Wi-Fi</h3>
-            <table class="table table-bordered">
-                <tbody>
-                <tr>
-                    <th> Operating Frequency</th>
-                    <td>2.4G/5G</td>
-                </tr>
-                <tr>
-                    <th>Max Transmission Distance</th>
-                    <td>80m(Distance),50m(Height) (Unobstructed, free of interference)</td>
-                </tr>
-                <tr>
-                    <th>Max Speed</th>
-                    <td>14 km/h (9 mph)</td>
-                </tr>
-                <tr>
-                    <th>Max Ascent Speed</th>
-                    <td>6.6 ft/s(2 m/s)</td>
-                </tr>
-                <tr>
-                    <th>Max Descent Speed</th>
-                    <td>3.3 ft/s(1 m/s)</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="col-md-6 col-xs-12">
-            <h3>Charger</h3>
-            <table class="table table-bordered">
-                <tbody>
-                    <tr>
-                        <th>Voltage</th>
-                        <td>13.05 V</td>
-                    </tr>
-                    <tr>
-                        <th>Rated Power</th>
-                        <td>50 W</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3>Intelligent Flight Battery</h3>
-            <table class="table table-bordered">
-                <tbody>
-                <tr>
-                    <th>Capacity</th>
-                    <td>3830 mAh</td>
-                </tr>
-                <tr>
-                    <th>Voltage</th>
-                    <td>11.4 V</td>
-                </tr>
-                <tr>
-                    <th>Battery Type</th>
-                    <td>LiPo 3S</td>
-                </tr>
-                <tr>
-                    <th>Energy</th>
-                    <td>43.6 Wh</td>
-                </tr>
-                <tr>
-                    <th>Net Weight</th>
-                    <td>Approx.0.5 lbs(240 g)</td>
-                </tr>
-                <tr>
-                    <th>Operating Temperature</th>
-                    <td>41° to 104° F ( 5° to 40° C )</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="col-md-6 col-xs-12">
-            <h3>App / Live View</h3>
-            <table class="table table-bordered">
-                <tbody>
-                    <tr>
-                        <th>Mobile App</th>
-                        <td>DJI GO</td>
-                    </tr>
-                    <tr>
-                        <th>Live View Quality</th>
-                        <td>
-                            720p@30fps、1080p@30fps（Remote Controller）
-                            <br>720p@30fps(Wi-Fi)
-                            <br>720p@60fps、1080p@30fps（DJI Goggles）
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Latency</th>
-                        <td>160-170ms (depending on conditions and mobile device)</td>
-                    </tr>
-                    <tr>
-                        <th>Required Operating Systems</th>
-                        <td>
-                            <ul>
-                                <li>iOS 8.0 or later</li>
-                                <li>Android 4.1.2 or later</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Recommended Devices</th>
-                        <td>
-                            <ul>
-                                <li>ios: iPhone 5s, iPhone 6, iPhone 6 Plus, iPhone 6s, iPhone 6s Plus, iPhone 7, iPhone 7 Plus, iPod touch 6, iPad Pro, iPad Air, iPad Air Wi-Fi + Cellular, iPad mini 2, iPad mini 2 Wi-Fi + Cellular, iPad Air 2, iPad Air 2 Wi-Fi + Cellular, iPad mini 3, iPad mini 3 Wi-Fi + Cellular, iPad mini 4, and iPad mini 4 Wi-Fi + Cellular. This app is optimized for iPhone 5s, iPhone 6, iPhone 6 Plus, iPhone 6s, iPhone 6s Plus, iPhone 7 and iPhone 7 Plus.</li>
-                                <li>Android: Samsung tabs 705c, Samsung S6, Samsung S5, Samsung NOTE4, Samsung NOTE3, Google Nexus 9, Google Nexus 7 II, Ascend Mate7, Huawei P8 Max, Huawei Mate 8, Nubia Z7 mini, SONY Xperia Z3, MI 3, MI PAD, Smartisan T1.</li>
-                            </ul>
-                            <p>*Support for additional Android devices available as testing and development continues.</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+@Html.Partial("~/Views/Sidebar/_Sidebar-bottom.cshtml")

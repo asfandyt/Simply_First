@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Simply_First.Models.SiteUsersRoleVM>
+
+@{
+    ViewBag.Title = "Users Roles";
+}
+
+@Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")
+
+<h1 class="text-center display-4 pb-3">Users Roles</h1>
+
+<table class="table table-bordered">
+    <tr class="bg-primary text-white">
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users)
+        </th>
+        @*<th></th>*@
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Users)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new {  id= item.UserId  }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.UserId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
+                </td>*@
+        </tr>
+    }
+
+</table>
+
+@Html.Partial("~/Views/Sidebar/_Sidebar-bottom.cshtml")

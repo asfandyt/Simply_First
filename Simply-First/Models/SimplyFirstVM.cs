@@ -37,6 +37,10 @@ namespace Simply_First.Models
         public int Quantity { get; set; }
 
         [Required]
+        [Display(Name="Product Image")]
+        public string ProductImage { get; set; }
+
+        [Required]
         [Range(0, int.MaxValue, ErrorMessage = "A value bigger than 0 is needed.")]
         [Display(Name = "Price")]
         public decimal Price { get; set; }

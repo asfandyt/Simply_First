@@ -35,8 +35,8 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Products", "Index", "Products", null, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Purchase", "BuyProducts", "Users", null, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Products", "Product", "Home", null, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Purchase", "Purchase", "Home", null, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Document", "Document", "Home", null, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
             </ul>
@@ -75,7 +75,7 @@
                     @{
                         if (Request.IsAuthenticated)
                         {
-                            @Html.ActionLink("Control Panel", "SecureArea", "Accounts", null, new {@class = "nav-link"})
+                            @Html.ActionLink("Profile", "SecureArea", "Accounts", null, new {@class = "nav-link"})
                         }
                     }
                 </li>

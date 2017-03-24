@@ -63,13 +63,16 @@ namespace Simply_First.Controllers
                         IsPersistent = false
                     }, identity);
 
-                    if (User.IsInRole("c702d844-1930-4217-bcf3-d3990009e05"))
+                    if (User.Identity.IsAuthenticated)
                     {
-                        return RedirectToAction("AdminConsole", "Admin");
-                    }
-                    else
-                    {
-                        return RedirectToAction("SecureArea", "Accounts");
+                        if (User.IsInRole("e44638ee-cd89-4482-af88-ad8bb9af3f63"))
+                        {
+                            return RedirectToAction("Index", "Admin");
+                        }
+                        else
+                        {
+                            return RedirectToAction("SecureArea", "Accounts");
+                        }
                     }
                 }
 

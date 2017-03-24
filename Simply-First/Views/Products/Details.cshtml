@@ -1,59 +1,54 @@
 ﻿@model Simply_First.Models.Products
 
 @{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Product Details";
 }
 
-<h2>Details</h2>
+@Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")
 
-<div>
-    <h4>Products</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
+<h1 class="text-center display-4 pb-3">Product Details</h1>
+
+<table class="table table-bordered">
+    <tr class="bg-inverse text-white text-center">
+        <th>
             @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ProductDescription)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductDescription)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Manufacturer)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Manufacturer)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Price)
-        </dt>
+        </th>
+    </tr>
 
-        <dd>
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.ProductDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Manufacturer)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Quantity)
+        </td>
+        <td>
             @Html.DisplayFor(model => model.Price)
-        </dd>
+        </td>
+    </tr>
+</table>
 
-    </dl>
-</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }, new { @class = "btn btn-success" })
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-danger" })
 </p>
+
+@Html.Partial("~/Views/Sidebar/_Sidebar-bottom.cshtml")

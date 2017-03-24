@@ -14,9 +14,21 @@ namespace Simply_First.Controllers
 {
     public class HomeController : Controller
     {
+        private SimplyFirstVMContext db = new SimplyFirstVMContext();
+
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Product()
+        {
+            return View();
+        }
+
+        public ActionResult Purchase()
+        {
+            return View(db.Products.ToList());
         }
 
         public ActionResult Document()

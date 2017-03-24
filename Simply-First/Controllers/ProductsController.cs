@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -10,24 +11,27 @@ using Simply_First.Models;
 
 namespace Simply_First.Controllers
 {
+    [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
     public class ProductsController : Controller
     {
         private SimplyFirstVMContext db = new SimplyFirstVMContext();
 
         // GET: Products
-        public ActionResult Index()
+        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
+        public async Task<ActionResult> Index()
         {
-            return View(db.Products.ToList());
+            return View(await db.Products.ToListAsync());
         }
 
         // GET: Products/Details/5
-        public ActionResult Details(int? id)
+        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Products products = db.Products.Find(id);
+            Products products = await db.Products.FindAsync(id);
             if (products == null)
             {
                 return HttpNotFound();
@@ -36,6 +40,7 @@ namespace Simply_First.Controllers
         }
 
         // GET: Products/Create
+        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
         public ActionResult Create()
         {
             return View();
@@ -44,14 +49,15 @@ namespace Simply_First.Controllers
         // POST: Products/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,ProductName,ProductDescription,Manufacturer,Quantity,Price")] Products products)
+        public async Task<ActionResult> Create([Bind(Include = "ProductId,ProductName,ProductDescription,Manufacturer,Quantity,Price")] Products products)
         {
             if (ModelState.IsValid)
             {
                 db.Products.Add(products);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -59,13 +65,14 @@ namespace Simply_First.Controllers
         }
 
         // GET: Products/Edit/5
-        public ActionResult Edit(int? id)
+        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Products products = db.Products.Find(id);
+            Products products = await db.Products.FindAsync(id);
             if (products == null)
             {
                 return HttpNotFound();
@@ -76,27 +83,29 @@ namespace Simply_First.Controllers
         // POST: Products/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductName,ProductDescription,Manufacturer,Quantity,Price")] Products products)
+        public async Task<ActionResult> Edit([Bind(Include = "ProductId,ProductName,ProductDescription,Manufacturer,Quantity,Price")] Products products)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(products).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(products);
         }
 
         // GET: Products/Delete/5
-        public ActionResult Delete(int? id)
+        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Products products = db.Products.Find(id);
+            Products products = await db.Products.FindAsync(id);
             if (products == null)
             {
                 return HttpNotFound();
@@ -105,13 +114,14 @@ namespace Simply_First.Controllers
         }
 
         // POST: Products/Delete/5
+        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Products products = db.Products.Find(id);
+            Products products = await db.Products.FindAsync(id);
             db.Products.Remove(products);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 

@@ -1,65 +1,59 @@
 ﻿@model Simply_First.Models.Products
 
 @{
-    ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Delete Product";
 }
 
-<h2>Delete</h2>
+@Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Products</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
+<h1 class="text-center display-4 pb-3">Delete Product</h1>
+
+<p class="h3 pb-3 text-danger">Are you sure you want to delete this?</p>
+
+<table class="table table-bordered">
+    <tr class="bg-inverse text-white text-center">
+        <th>
             @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ProductDescription)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductDescription)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Manufacturer)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Manufacturer)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Price)
-        </dt>
+        </th>
+    </tr>
 
-        <dd>
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.ProductDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Manufacturer)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Quantity)
+        </td>
+        <td>
             @Html.DisplayFor(model => model.Price)
-        </dd>
+        </td>
+    </tr>
+</table>
 
-    </dl>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary" })
+}
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
+@Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")

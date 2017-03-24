@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Simply_First.Models.Products>
+
+@{
+    ViewBag.Title = "Purchase Product";
+}
+
+<h1 class="text-center display-4 pb-3">Purchase Product</h1>
+
+<table class="table table-bordered">
+    <tr class="bg-primary text-white text-center">
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th class="hidden-md-up hidden-xs-up"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="text-center">
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Add To Cart", "Purchase", new { id = item.ProductId }, new { @class = "btn btn-success btn-sm" })
+            </td>
+        </tr>
+    }
+
+</table>

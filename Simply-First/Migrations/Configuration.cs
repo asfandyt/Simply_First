@@ -63,6 +63,7 @@ namespace Simply_First.Migrations
                 ProductDescription = "The best light weight drone tech",
                 Manufacturer = "DJI",
                 Quantity = 99,
+                ProductImage = "",
                 Price = 799.99M
             };
             var p2 = new Products()
@@ -72,6 +73,7 @@ namespace Simply_First.Migrations
                 ProductDescription = "DJI staple products",
                 Manufacturer = "DJI",
                 Quantity = 29,
+                ProductImage = "",
                 Price = 629.99M
             };
             var p3 = new Products()
@@ -81,6 +83,7 @@ namespace Simply_First.Migrations
                 ProductDescription = "The best professional drone on the market",
                 Manufacturer = "DJI",
                 Quantity = 39,
+                ProductImage = "",
                 Price = 3999.99M
             };
 

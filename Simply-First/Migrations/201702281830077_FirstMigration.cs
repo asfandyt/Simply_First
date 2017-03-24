@@ -16,6 +16,7 @@ namespace Simply_First.Migrations
                         ProductDescription = c.String(nullable: false),
                         Manufacturer = c.String(nullable: false),
                         Quantity = c.Int(nullable: false),
+                        ProductImage = c.String(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
                 .PrimaryKey(t => t.ProductId);

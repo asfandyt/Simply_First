@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Simply_First.Models
 {
@@ -15,17 +16,19 @@ namespace Simply_First.Models
 
         [Display(Name = "Email")]
         public string Email { get; set; }
-
-        [Display(Name = "Role Name")]
-        public string RoleName { get; set; }
         
         [Display(Name = "Email Confirmed")]
         public bool EmailConfirmed { get; set; }
+    }
 
-        [Display(Name = "Two Factor Authentication")]
-        public bool TwoFactorEnabled { get; set; }
+    public class SiteUsersRoleVM
+    {
+        public string UserId { get; set; }
 
-        [Display(Name = "Phone Number")]
-        public string PhoneNumber { get; set; }
+        [Display(Name = "Role Name")]
+        public string RoleId { get; set; }
+
+        [Display(Name = "User Name")]
+        public List<IdentityUserRole> Users { get; set; }
     }
 }

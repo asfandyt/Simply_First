@@ -1,25 +1,20 @@
 ﻿@model IEnumerable<Simply_First.Models.SiteUserVM>
 
 @{
-    ViewBag.Title = "Site Users List";
+    ViewBag.Title = "Users";
 }
 
 @Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")
 
-<h2>Site Users List</h2>
+<h1 class="text-center display-4 pb-3">Users List</h1>
 
-<br />
-
-<table class="table">
-    <tr>
+<table class="table table-bordered">
+    <tr class="bg-primary text-white">
         <th>
             @Html.DisplayNameFor(model => model.UserName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RoleName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EmailConfirmed)
@@ -34,9 +29,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RoleName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EmailConfirmed)

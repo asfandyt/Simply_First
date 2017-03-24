@@ -6,14 +6,13 @@
 
 @Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")
 
-<h2>Add Role</h2>
+<h1 class="text-center display-4 pb-3">Add Role</h1>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.RoleName, htmlAttributes: new { @class = "control-label col-md-2" })

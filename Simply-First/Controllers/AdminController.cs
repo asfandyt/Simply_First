@@ -10,19 +10,17 @@ using Newtonsoft.Json.Linq;
 
 namespace Simply_First.Controllers
 {
-    [Authorize(Roles = "20d75ec5-13d8-451e-aaca-154a64111711")]
+    [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
     public class AdminController : Controller
     {
         private SimplyFirstVMContext db = new SimplyFirstVMContext();
 
-        [Authorize(Roles = "20d75ec5-13d8-451e-aaca-154a64111711")]
+        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
         public ActionResult Index()
         {
             var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new SimplyFirstVMContext()));
 
             var user = userManager.Users.ToList();
-            var role = roleManager.Roles.ToList();
             
             // This code could go in a repo.
             List<SiteUserVM> siteUsers = new List<SiteUserVM>();
@@ -34,28 +32,42 @@ namespace Simply_First.Controllers
                 siteUser.Email = users.Email;
                 siteUser.UserName = users.UserName;
                 siteUser.EmailConfirmed = users.EmailConfirmed;
-                siteUser.TwoFactorEnabled = users.TwoFactorEnabled;
-                siteUser.PhoneNumber = users.PhoneNumber;
-
-                foreach (var roles in role)
-                {
-                    siteUser.RoleName = roles.Name;
-                }
-
                 siteUsers.Add(siteUser);
             }
             
             return View(siteUsers);
         }
 
-        [Authorize(Roles = "20d75ec5-13d8-451e-aaca-154a64111711")]
+        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
+        public ActionResult UserRoles()
+        {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new SimplyFirstVMContext()));
+
+            var role = roleManager.Roles.ToList();
+
+            List<SiteUsersRoleVM> siteUsersRoles = new List<SiteUsersRoleVM>();
+
+            foreach (var roles in role)
+            {
+                SiteUsersRoleVM userRoles = new SiteUsersRoleVM();
+
+                userRoles.UserId = roles.Id;
+                userRoles.RoleId = roles.Name;
+                userRoles.Users = roles.Users.ToList();
+                siteUsersRoles.Add(userRoles);
+            }
+
+            return View(siteUsersRoles);
+        }
+
+        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
         [HttpGet]
         public ActionResult AddRole()
         {
             return View();
         }
 
-        [Authorize(Roles = "20d75ec5-13d8-451e-aaca-154a64111711")]
+        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
         [HttpPost]
         public ActionResult AddRole(RoleVM roleVM)
         {
@@ -81,14 +93,14 @@ namespace Simply_First.Controllers
             return View(roleVM);
         }
 
-        [Authorize(Roles = "20d75ec5-13d8-451e-aaca-154a64111711")]
+        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
         [HttpGet]
         public ActionResult AddUserToRole()
         {
             return View();
         }
 
-        [Authorize(Roles = "20d75ec5-13d8-451e-aaca-154a64111711")]
+        [Authorize(Roles = "e44638ee-cd89-4482-af88-ad8bb9af3f63")]
         [HttpPost]
         public ActionResult AddUserToRole(UserRoleVM userRoleVM)
         {
