@@ -63,17 +63,17 @@ namespace Simply_First.Controllers
                         IsPersistent = false
                     }, identity);
 
-                    if (User.Identity.IsAuthenticated)
-                    {
-                        if (User.IsInRole("e03c1cb5-7d0a-428d-b3bd-e31b149ff984"))
-                        {
-                            return RedirectToAction("Index", "Admin");
-                        }
-                        else
-                        {
+                    //if (User.Identity.IsAuthenticated)
+                    //{
+                    //    if (User.IsInRole("e03c1cb5-7d0a-428d-b3bd-e31b149ff984"))
+                    //    {
+                    //        return RedirectToAction("Index", "Admin");
+                    //    }
+                    //    else
+                    //    {
                             return RedirectToAction("SecureArea", "Accounts");
-                        }
-                    }
+                    //    }
+                    //}
                 }
 
                 TempData["LoginError"] = "Invalid email or password!";

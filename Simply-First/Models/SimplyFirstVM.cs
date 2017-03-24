@@ -46,11 +46,45 @@ namespace Simply_First.Models
         public decimal Price { get; set; }
     }
 
+    public class Address
+    {
+        [Key]
+        [Required]
+        [ForeignKey("UserId")]
+        public IdentityUser User { get; set; }
+
+        [Required]
+        [Display(Name = "Street Address")]
+        public string StreetAddress { get; set; }
+
+        [Required]
+        [Display(Name = "City")]
+        public string City { get; set; }
+
+        [Required]
+        [Display(Name = "Province")]
+        public string Province { get; set; }
+
+        [Required]
+        [Display(Name = "Postal Code")]
+        public string PostalCode { get; set; }
+
+        [Required]
+        [Display(Name = "Country")]
+        public string Country { get; set; }
+
+        [Required]
+        [Display(Name = "Phone Number")]
+        [Range(0, 10, ErrorMessage = "A value bigger than 0 is needed.")]
+        public int PhoneNumber { get; set; }
+    }
+
     public class SimplyFirstVMContext : IdentityDbContext<IdentityUser>
     {
         public SimplyFirstVMContext() : base("DefaultConnection") { }
 
         public DbSet<Products> Products { get; set; }
+        public DbSet<Address> Address { get; set; }
 
         // This method overrides some framework default behaviour.
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
