@@ -31,11 +31,14 @@ namespace Simply_First.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Products products = await db.Products.FindAsync(id);
+
             if (products == null)
             {
                 return HttpNotFound();
             }
+
             return View(products);
         }
 
@@ -52,7 +55,7 @@ namespace Simply_First.Controllers
         [Authorize(Roles = "e03c1cb5-7d0a-428d-b3bd-e31b149ff984")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProductId,ProductName,ProductDescription,Manufacturer,Quantity,Price")] Products products)
+        public async Task<ActionResult> Create([Bind(Include = "ProductId,ProductName,ProductImage,ProductDescription,Manufacturer,Quantity,Price")] Products products)
         {
             if (ModelState.IsValid)
             {
@@ -72,11 +75,13 @@ namespace Simply_First.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Products products = await db.Products.FindAsync(id);
             if (products == null)
             {
                 return HttpNotFound();
             }
+
             return View(products);
         }
 
@@ -86,7 +91,7 @@ namespace Simply_First.Controllers
         [Authorize(Roles = "e03c1cb5-7d0a-428d-b3bd-e31b149ff984")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ProductId,ProductName,ProductDescription,Manufacturer,Quantity,Price")] Products products)
+        public async Task<ActionResult> Edit([Bind(Include = "ProductId,ProductName,ProductImage,ProductDescription,Manufacturer,Quantity,Price")] Products products)
         {
             if (ModelState.IsValid)
             {
@@ -94,6 +99,7 @@ namespace Simply_First.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+
             return View(products);
         }
 
@@ -105,11 +111,13 @@ namespace Simply_First.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Products products = await db.Products.FindAsync(id);
             if (products == null)
             {
                 return HttpNotFound();
             }
+
             return View(products);
         }
 
@@ -122,6 +130,7 @@ namespace Simply_First.Controllers
             Products products = await db.Products.FindAsync(id);
             db.Products.Remove(products);
             await db.SaveChangesAsync();
+
             return RedirectToAction("Index");
         }
 
@@ -131,6 +140,7 @@ namespace Simply_First.Controllers
             {
                 db.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }

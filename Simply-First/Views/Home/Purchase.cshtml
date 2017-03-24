@@ -11,14 +11,14 @@
         <th>
             @Html.DisplayNameFor(model => model.ProductName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductImage)
+        </th>
         <th class="text-center">
             @Html.DisplayNameFor(model => model.ProductDescription)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Manufacturer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quantity)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
@@ -33,13 +33,13 @@
                 @Html.DisplayFor(modelItem => item.ProductName)
             </td>
             <td>
+                <img src="@Html.DisplayFor(modelItem => item.ProductImage)" />
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.ProductDescription)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Manufacturer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)

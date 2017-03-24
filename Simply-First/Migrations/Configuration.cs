@@ -63,7 +63,7 @@ namespace Simply_First.Migrations
                 ProductDescription = "The best light weight drone tech",
                 Manufacturer = "DJI",
                 Quantity = 99,
-                ProductImage = "11",
+                ProductImage = "http://djireview.com/wp-content/uploads/2016/12/1280805548-1-300x300.jpg",
                 Price = 799.99M
             };
             var p2 = new Products()
@@ -73,7 +73,7 @@ namespace Simply_First.Migrations
                 ProductDescription = "DJI staple products",
                 Manufacturer = "DJI",
                 Quantity = 29,
-                ProductImage = "22",
+                ProductImage = "https://dronenetwork.uk.com/wp-content/uploads/2016/03/phantom4-1-300x300.jpg",
                 Price = 629.99M
             };
             var p3 = new Products()
@@ -83,7 +83,7 @@ namespace Simply_First.Migrations
                 ProductDescription = "The best professional drone on the market",
                 Manufacturer = "DJI",
                 Quantity = 39,
-                ProductImage = "33",
+                ProductImage = "https://cdn.shopify.com/s/files/1/1277/8269/products/Inspire_1_Black_Cover_300x.png?v=1484036994",
                 Price = 3999.99M
             };
 

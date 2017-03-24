@@ -21,15 +21,15 @@ namespace Simply_First.Models
         public int ProductId { get; set; }
 
         [Required]
-        [Display(Name = "Product Name")]
+        [Display(Name = "Name")]
         public string ProductName { get; set; }
 
         [Required]
-        [Display(Name = "Product Description")]
+        [Display(Name = "Description")]
         public string ProductDescription { get; set; }
 
         [Required]
-        [Display(Name = "Product Manufacturer")]
+        [Display(Name = "Manufacturer")]
         public string Manufacturer { get; set; }
 
         [Required]
@@ -37,7 +37,7 @@ namespace Simply_First.Models
         public int Quantity { get; set; }
 
         [Required]
-        [Display(Name="Product Image")]
+        [Display(Name="Image")]
         public string ProductImage { get; set; }
 
         [Required]

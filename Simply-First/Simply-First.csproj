@@ -190,9 +190,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Documents\documentation.pdf" />
-    <Content Include="Images\1.jpg" />
-    <Content Include="Images\2.jpeg" />
-    <Content Include="Images\3.jpg" />
+    <Content Include="Images\1.png" />
+    <Content Include="Images\2.png" />
     <Content Include="Scripts\app.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
