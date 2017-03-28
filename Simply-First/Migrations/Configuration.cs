@@ -42,10 +42,10 @@ namespace Simply_First.Migrations
                 EmailConfirmed = true,
             };
 
-            var admin_four = new IdentityUser()
+            var user = new IdentityUser()
             {
-                UserName = "game.design.ty@gmail.com",
-                Email = "game.design.ty@gmail.com",
+                UserName = "user@sf.com",
+                Email = "user@sf.com",
                 EmailConfirmed = true,
             };
 
@@ -53,7 +53,7 @@ namespace Simply_First.Migrations
             userManager.Create(admin, "password");
             userManager.Create(admin_two, "password");
             userManager.Create(admin_three, "password");
-            userManager.Create(admin_four, "password");
+            userManager.Create(user, "password");
             // adding products
 
             var p1 = new Products()
@@ -113,8 +113,8 @@ namespace Simply_First.Migrations
             var adminUser = userManager.FindByName("admin@sf.com");
             userManager.AddToRoles(adminUser.Id, new string[] { "Admin" });
 
-            var adminUserTy = userManager.FindByName("game.design.ty@gmail.com");
-            userManager.AddToRoles(adminUserTy.Id, new string[] { "Admin" });
+            var dbuser = userManager.FindByName("user@sf.com");
+            userManager.AddToRoles(dbuser.Id, new string[] { "User" });
         }
     }
 }

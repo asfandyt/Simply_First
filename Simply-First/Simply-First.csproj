@@ -247,9 +247,9 @@
     <Compile Include="Migrations\201702281830077_FirstMigration.Designer.cs">
       <DependentUpon>201702281830077_FirstMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703250239325_Reset.cs" />
-    <Compile Include="Migrations\201703250239325_Reset.Designer.cs">
-      <DependentUpon>201703250239325_Reset.cs</DependentUpon>
+    <Compile Include="Migrations\201703281839589_ResetData.cs" />
+    <Compile Include="Migrations\201703281839589_ResetData.Designer.cs">
+      <DependentUpon>201703281839589_ResetData.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LoginVM.cs" />
@@ -309,8 +309,8 @@
     <EmbeddedResource Include="Migrations\201702281830077_FirstMigration.resx">
       <DependentUpon>201702281830077_FirstMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703250239325_Reset.resx">
-      <DependentUpon>201703250239325_Reset.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703281839589_ResetData.resx">
+      <DependentUpon>201703281839589_ResetData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
