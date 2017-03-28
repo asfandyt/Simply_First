@@ -20,7 +20,23 @@ namespace Simply_First.Migrations
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
                 .PrimaryKey(t => t.ProductId);
-            
+
+            CreateTable(
+                    "dbo.Address",
+                    c => new
+                    {
+                        PhoneNumber = c.Int(nullable: false),
+                        StreetAddress = c.String(nullable: false),
+                        City = c.String(nullable: false),
+                        Province = c.String(nullable: false),
+                        PostalCode = c.String(nullable: false),
+                        Country = c.String(nullable: false),
+                        UserId = c.String(nullable: false, maxLength: 128)
+                    })
+                .PrimaryKey(t => t.PhoneNumber)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId);
+
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
@@ -105,6 +121,7 @@ namespace Simply_First.Migrations
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
+            DropTable("dbo.Address");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");

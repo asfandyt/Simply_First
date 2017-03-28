@@ -50,8 +50,11 @@ namespace Simply_First.Models
     {
         [Key]
         [Required]
-        [ForeignKey("UserId")]
-        public IdentityUser User { get; set; }
+        [Display(Name = "Phone Number")]
+        [Range(0, 10, ErrorMessage = "A value bigger than 0 is needed.")]
+        public int PhoneNumber { get; set; }
+
+        public string UserId { get; set; }
 
         [Required]
         [Display(Name = "Street Address")]
@@ -73,18 +76,12 @@ namespace Simply_First.Models
         [Display(Name = "Country")]
         public string Country { get; set; }
 
-        [Required]
-        [Display(Name = "Phone Number")]
-        [Range(0, 10, ErrorMessage = "A value bigger than 0 is needed.")]
-        public int PhoneNumber { get; set; }
+        public virtual ICollection<IdentityUser> IdentityUser { get; set; }
     }
 
     public class SimplyFirstVMContext : IdentityDbContext<IdentityUser>
     {
         public SimplyFirstVMContext() : base("DefaultConnection") { }
-
-        public DbSet<Products> Products { get; set; }
-        public DbSet<Address> Address { get; set; }
 
         // This method overrides some framework default behaviour.
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -104,6 +101,8 @@ namespace Simply_First.Models
         {
             return new SimplyFirstVMContext();
         }
-        
+
+        public DbSet<Products> Products { get; set; }
+        public DbSet<Address> Address { get; set; }
     }
 }

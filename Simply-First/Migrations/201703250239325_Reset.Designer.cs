@@ -7,13 +7,13 @@ namespace Simply_First.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddingColumn : IMigrationMetadata
+    public sealed partial class Reset : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddingColumn));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Reset));
         
         string IMigrationMetadata.Id
         {
-            get { return "201703240156380_AddingColumn"; }
+            get { return "201703250239325_Reset"; }
         }
         
         string IMigrationMetadata.Source

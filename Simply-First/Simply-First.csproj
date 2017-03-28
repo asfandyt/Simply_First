@@ -240,7 +240,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsAPIController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -248,9 +247,9 @@
     <Compile Include="Migrations\201702281830077_FirstMigration.Designer.cs">
       <DependentUpon>201702281830077_FirstMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703240156380_AddingColumn.cs" />
-    <Compile Include="Migrations\201703240156380_AddingColumn.Designer.cs">
-      <DependentUpon>201703240156380_AddingColumn.cs</DependentUpon>
+    <Compile Include="Migrations\201703250239325_Reset.cs" />
+    <Compile Include="Migrations\201703250239325_Reset.Designer.cs">
+      <DependentUpon>201703250239325_Reset.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LoginVM.cs" />
@@ -310,8 +309,8 @@
     <EmbeddedResource Include="Migrations\201702281830077_FirstMigration.resx">
       <DependentUpon>201702281830077_FirstMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703240156380_AddingColumn.resx">
-      <DependentUpon>201703240156380_AddingColumn.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703250239325_Reset.resx">
+      <DependentUpon>201703250239325_Reset.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
