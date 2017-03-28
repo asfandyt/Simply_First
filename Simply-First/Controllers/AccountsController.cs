@@ -65,13 +65,13 @@ namespace Simply_First.Controllers
 
                     //if (User.Identity.IsAuthenticated)
                     //{
-                    //    if (User.IsInRole("e03c1cb5-7d0a-428d-b3bd-e31b149ff984"))
+                    //    if (User.IsInRole("3d50c8fc-ae81-4f7f-b328-1ce5ca630662"))
                     //    {
                     //        return RedirectToAction("Index", "Admin");
                     //    }
                     //    else
                     //    {
-                            return RedirectToAction("SecureArea", "Accounts");
+                    return RedirectToAction("SecureArea", "Accounts");
                     //    }
                     //}
                 }

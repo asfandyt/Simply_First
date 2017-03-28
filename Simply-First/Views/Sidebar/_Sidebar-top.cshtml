@@ -23,7 +23,7 @@
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
                     @{
-                        if (Request.IsAuthenticated && (User.IsInRole("e03c1cb5-7d0a-428d-b3bd-e31b149ff984")))
+                        if (Request.IsAuthenticated && (User.IsInRole("3d50c8fc-ae81-4f7f-b328-1ce5ca630662")))
                         {
                             @Html.ActionLink("User List", "Index", "Admin", null, new { @class = "nav-link" })
                         }
@@ -31,7 +31,7 @@
                 </li>
                 <li class="nav-item">
                     @{
-                        if (Request.IsAuthenticated && (User.IsInRole("e03c1cb5-7d0a-428d-b3bd-e31b149ff984")))
+                        if (Request.IsAuthenticated && (User.IsInRole("3d50c8fc-ae81-4f7f-b328-1ce5ca630662")))
                         {
                             @Html.ActionLink("User Roles", "UserRoles", "Admin", null, new { @class = "nav-link" })
                         }
@@ -42,7 +42,7 @@
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
                     @{
-                        if (Request.IsAuthenticated && (User.IsInRole("e03c1cb5-7d0a-428d-b3bd-e31b149ff984")))
+                        if (Request.IsAuthenticated && (User.IsInRole("3d50c8fc-ae81-4f7f-b328-1ce5ca630662")))
                         {
                             @Html.ActionLink("Product Inventory", "Index", "Products", null, new { @class = "nav-link" })
                         }
@@ -53,7 +53,7 @@
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
                     @{
-                        if (Request.IsAuthenticated && (User.IsInRole("e03c1cb5-7d0a-428d-b3bd-e31b149ff984")))
+                        if (Request.IsAuthenticated && (User.IsInRole("3d50c8fc-ae81-4f7f-b328-1ce5ca630662")))
                         {
                             @Html.ActionLink("Add Role", "AddRole", "Admin", null, new { @class = "nav-link" })
                         }
@@ -61,7 +61,7 @@
                 </li>
                 <li class="nav-item">
                     @{
-                        if (Request.IsAuthenticated && (User.IsInRole("e03c1cb5-7d0a-428d-b3bd-e31b149ff984")))
+                        if (Request.IsAuthenticated && (User.IsInRole("3d50c8fc-ae81-4f7f-b328-1ce5ca630662")))
                         {
                             @Html.ActionLink("Add User to Role", "AddUserToRole", "Admin", null, new { @class = "nav-link" })
                         }
