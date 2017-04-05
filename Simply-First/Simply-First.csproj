@@ -243,9 +243,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704052018045_Reset.cs" />
-    <Compile Include="Migrations\201704052018045_Reset.Designer.cs">
-      <DependentUpon>201704052018045_Reset.cs</DependentUpon>
+    <Compile Include="Migrations\201704052250100_Reset.cs" />
+    <Compile Include="Migrations\201704052250100_Reset.Designer.cs">
+      <DependentUpon>201704052250100_Reset.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LoginVM.cs" />
@@ -302,8 +302,8 @@
     <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704052018045_Reset.resx">
-      <DependentUpon>201704052018045_Reset.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704052250100_Reset.resx">
+      <DependentUpon>201704052250100_Reset.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -60,6 +60,13 @@ namespace Simply_First.Migrations
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
                         UserName = c.String(nullable: false, maxLength: 256),
+                        StreetAddress = c.String(),
+                        City = c.String(),
+                        Province = c.String(),
+                        PostalCode = c.String(),
+                        Country = c.String(),
+                        JoinDate = c.DateTime(),
+                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");

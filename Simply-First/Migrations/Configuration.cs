@@ -23,20 +23,6 @@ namespace Simply_First.Migrations
 
             var admin = new IdentityUser()
             {
-                UserName = "gbola4@my.bcit.ca",
-                Email = "gbola4@my.bcit.ca",
-                EmailConfirmed = true,
-            };
-
-            var admin_two = new IdentityUser()
-            {
-                UserName = "ccheung120@my.bcit.ca",
-                Email = "ccheung120@my.bcit.ca",
-                EmailConfirmed = true,
-            };
-
-            var admin_three = new IdentityUser()
-            {
                 UserName = "admin@sf.com",
                 Email = "admin@sf.com",
                 EmailConfirmed = true,
@@ -51,8 +37,6 @@ namespace Simply_First.Migrations
 
             // Assign user password on start
             userManager.Create(admin, "password");
-            userManager.Create(admin_two, "password");
-            userManager.Create(admin_three, "password");
             userManager.Create(user, "password");
             // adding products
 
@@ -104,12 +88,6 @@ namespace Simply_First.Migrations
             }
 
             // Assign User admin on start
-            var adminUserGurkirat = userManager.FindByName("gbola4@my.bcit.ca");
-            userManager.AddToRoles(adminUserGurkirat.Id, new string[] { "Admin" });
-
-            var adminUserCusson = userManager.FindByName("ccheung120@my.bcit.ca");
-            userManager.AddToRoles(adminUserCusson.Id, new string[] { "Admin" });
-
             var adminUser = userManager.FindByName("admin@sf.com");
             userManager.AddToRoles(adminUser.Id, new string[] { "Admin" });
 
