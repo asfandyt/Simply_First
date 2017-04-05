@@ -10,12 +10,12 @@ using Newtonsoft.Json.Linq;
 
 namespace Simply_First.Controllers
 {
-    [Authorize(Roles = "3d50c8fc-ae81-4f7f-b328-1ce5ca630662")]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private SimplyFirstVMContext db = new SimplyFirstVMContext();
 
-        [Authorize(Roles = "3d50c8fc-ae81-4f7f-b328-1ce5ca630662")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
@@ -38,7 +38,7 @@ namespace Simply_First.Controllers
             return View(siteUsers);
         }
 
-        [Authorize(Roles = "3d50c8fc-ae81-4f7f-b328-1ce5ca630662")]
+        [Authorize(Roles = "Admin")]
         public ActionResult UserRoles()
         {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new SimplyFirstVMContext()));
@@ -60,14 +60,14 @@ namespace Simply_First.Controllers
             return View(siteUsersRoles);
         }
 
-        [Authorize(Roles = "3d50c8fc-ae81-4f7f-b328-1ce5ca630662")]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult AddRole()
         {
             return View();
         }
 
-        [Authorize(Roles = "3d50c8fc-ae81-4f7f-b328-1ce5ca630662")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult AddRole(RoleVM roleVM)
         {
@@ -76,12 +76,19 @@ namespace Simply_First.Controllers
                 // *** New: Connect to AspNetRole using code first.
                 using (var db = new SimplyFirstVMContext())
                 {
-                    var role = new IdentityRole
-                    {
-                        Id = roleVM.RoleName,
-                        Name = roleVM.RoleName
-                    };
+                    IdentityRole role = new IdentityRole();
 
+                    Guid g = Guid.NewGuid();
+
+                    // See if role exists.
+                    var existingRoles = db.Roles.Where(r => r.Id == g.ToString() || r.Name == roleVM.RoleName);
+
+                    if (existingRoles.Count() > 0)
+                    {
+                        return View();
+                    }
+                    role.Id = g.ToString();
+                    role.Name = roleVM.RoleName;
                     db.Roles.Add(role);
                     db.SaveChanges();
 
@@ -93,14 +100,14 @@ namespace Simply_First.Controllers
             return View(roleVM);
         }
 
-        [Authorize(Roles = "3d50c8fc-ae81-4f7f-b328-1ce5ca630662")]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult AddUserToRole()
         {
             return View();
         }
 
-        [Authorize(Roles = "3d50c8fc-ae81-4f7f-b328-1ce5ca630662")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult AddUserToRole(UserRoleVM userRoleVM)
         {

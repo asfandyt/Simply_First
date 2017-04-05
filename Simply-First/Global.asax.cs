@@ -38,19 +38,21 @@ namespace Simply_First
                 UserManager<IdentityUser> manager = new UserManager<IdentityUser>(userStore);
                 IdentityUser identityUser = manager.FindByName(User.Identity.GetUserName());
 
-                System.Web.HttpContext.Current.User.Identity.GetUserId();
                 if (identityUser != null)
                 {
+                    var db = new SimplyFirstVMContext();
                     var roleQuery = identityUser.Roles.Where(u => u.UserId == identityUser.Id).ToList();
-
-                    string[] roles = new string[roleQuery.Count];
+                    var roles = db.Roles.ToList();
+                    string[] roleNames = new string[roleQuery.Count()];
 
                     for (int i = 0; i < roleQuery.Count; i++)
                     {
-                        roles[i] = roleQuery[i].RoleId;
+                        IdentityRole usrRole = roles.Where(r => r.Id == roleQuery[i].RoleId).FirstOrDefault();
+                        roleNames[i] = usrRole.Name;
                     }
 
-                    HttpContext.Current.User = Thread.CurrentPrincipal = new GenericPrincipal(User.Identity, roles);
+                    HttpContext.Current.User = Thread.CurrentPrincipal =
+                                               new GenericPrincipal(User.Identity, roleNames);
                 }
             }
         }
