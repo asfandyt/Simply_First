@@ -76,12 +76,19 @@ namespace Simply_First.Controllers
                 // *** New: Connect to AspNetRole using code first.
                 using (var db = new SimplyFirstVMContext())
                 {
-                    var role = new IdentityRole
-                    {
-                        Id = roleVM.RoleName,
-                        Name = roleVM.RoleName
-                    };
+                    IdentityRole role = new IdentityRole();
 
+                    Guid g = Guid.NewGuid();
+
+                    // See if role exists.
+                    var existingRoles = db.Roles.Where(r => r.Id == g.ToString() || r.Name == roleVM.RoleName);
+
+                    if (existingRoles.Count() > 0)
+                    {
+                        return View();
+                    }
+                    role.Id = g.ToString();
+                    role.Name = roleVM.RoleName;
                     db.Roles.Add(role);
                     db.SaveChanges();
 
