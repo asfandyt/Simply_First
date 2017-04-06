@@ -7,6 +7,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Simply_First.Models;
 using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
+using System.Net;
+using Simply_First.Repositories;
 
 namespace Simply_First.Controllers
 {
@@ -28,7 +31,7 @@ namespace Simply_First.Controllers
             foreach (var users in user)
             {
                 SiteUserVM siteUser = new SiteUserVM();
-                siteUser.UserId = users.Id;
+                siteUser.Id = users.Id;
                 siteUser.Email = users.Email;
                 siteUser.UserName = users.UserName;
                 siteUser.EmailConfirmed = users.EmailConfirmed;
@@ -36,6 +39,25 @@ namespace Simply_First.Controllers
             }
             
             return View(siteUsers);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult UserDetails(string id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);    
+            }
+
+            DatabaseUsersVM dbUsers = new DatabaseUsersVM();
+            var users = dbUsers.GetAll(id);
+            
+            if(users == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(users);
         }
 
         [Authorize(Roles = "Admin")]

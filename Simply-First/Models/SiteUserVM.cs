@@ -9,7 +9,7 @@ namespace Simply_First.Models
 {
     public class SiteUserVM
     {
-        public string UserId { get; set; }
+        public string Id { get; set; }
 
         [Display(Name ="User Name")]
         public string UserName { get; set; }

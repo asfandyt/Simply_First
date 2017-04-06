@@ -12,9 +12,19 @@ namespace Simply_First.Repositories
     {
         private SimplyFirstVMContext db = new SimplyFirstVMContext();
 
-        //public IEnumerable<IdentityUser> GetAll(string roleName)
-        //{
-        //    var role =              
-        //}
+        public SiteUserVM GetAll(string UserId)
+        {
+            SiteUserVM user = db.Users.Where(a => a.Id == UserId)
+                                                     .Select(u =>
+                                                     new SiteUserVM()
+                                                     {
+                                                         UserName = u.UserName,
+                                                         Email = u.Email,
+                                                         EmailConfirmed = u.EmailConfirmed,
+                                                         Id = u.Id
+                                                     }).FirstOrDefault();
+
+            return user;
+        }
     }
 }
