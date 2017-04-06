@@ -4,45 +4,39 @@
     ViewBag.Title = "User Details";
 }
 
-<h2>User Details</h2>
+@Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")
 
-<div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
+<h1 class="text-center display-4 pb-3">User Details</h1>
 
-        <dd>
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-
-        <dt>
+<table class="table table-bordered">
+    <tr class="bg-inverse text-white text-center">
+        <th>
             @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.EmailConfirmed)
-        </dt>
+        </th>
+    </tr>
 
-        <dd>
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Email)
+        </td>
+        <td>
             @Html.DisplayFor(model => model.EmailConfirmed)
-        </dd>
+        </td>
+    </tr>
+</table>
 
-    </dl>
-</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "EditUser", new { id = Model.Id }, new { @class = "btn btn-success" })
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-danger" })
 </p>
+
+@Html.Partial("~/Views/Sidebar/_Sidebar-bottom.cshtml")

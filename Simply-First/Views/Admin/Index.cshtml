@@ -19,7 +19,9 @@
         <th>
             @Html.DisplayNameFor(model => model.EmailConfirmed)
         </th>
-        <th></th>
+        <th class="hidden-md-up hidden-xs-up"></th>
+        <th class="hidden-md-up hidden-xs-up"></th>
+        <th class="hidden-md-up hidden-xs-up"></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -34,9 +36,13 @@
             @Html.DisplayFor(modelItem => item.EmailConfirmed)
         </td>
         <td>
-            @*@Html.ActionLink("Edit", "Edit", new {  id= item.UserId  })*@ 
-            @Html.ActionLink("Details", "UserDetails", new { id = item.Id }, new { @class = "btn btn-secondary text-muted btn-sml" }) 
-            @*@Html.ActionLink("Delete", "Delete", new { id = item.UserId })*@
+            @Html.ActionLink("Edit", "EditUser", new { id = item.Id }, new { @class = "btn btn-success btn-sm" })
+        </td>
+        <td>
+            @Html.ActionLink("Details", "UserDetails", new { id = item.Id }, new { @class = "btn btn-secondary text-muted btn-sm" })
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "DeleteUser", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
         </td>
     </tr>
 }
