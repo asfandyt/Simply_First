@@ -134,6 +134,20 @@ namespace Simply_First.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult AddtoCart(int id)
+        {
+            ShoppingCart.Instance.AddItem(id);
+            //Console.WriteLine("SOMETHING HAPPENED");
+            return RedirectToAction("Purchase", "Home");
+        }
+
+        public ActionResult ViewCart()
+        {
+
+            //Console.WriteLine("SOMETHING HAPPENED");
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
