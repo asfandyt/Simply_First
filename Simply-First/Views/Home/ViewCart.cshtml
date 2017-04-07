@@ -30,6 +30,7 @@
             Total Price
         </th>
         <th class="hidden-md-up hidden-xs-up"></th>
+        <th class="hidden-md-up hidden-xs-up"></th>
     </tr>
 
     @foreach (var item in ViewBag.Shopping)
@@ -59,7 +60,12 @@
                 @(item.TotalPrice)
             </td>
             <td>
-                @Html.ActionLink("Purchase", "AddToCart", "Products", new { id = item.ProductId }, new { @class = "btn btn-success btn-sm" })
+                @Html.ActionLink("Delete", "RemoveItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-success btn-sm" }) 
+              
+            </td>
+            <td>
+                @Html.ActionLink("Add One", "AddItem", "Home", new { id = item.ProductId},  new { @class = "btn btn-success btn-sm" }) 
+
             </td>
         </tr>
     }

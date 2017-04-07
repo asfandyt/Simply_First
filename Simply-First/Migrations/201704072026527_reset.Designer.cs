@@ -7,13 +7,13 @@ namespace Simply_First.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Reset : IMigrationMetadata
+    public sealed partial class reset : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Reset));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(reset));
         
         string IMigrationMetadata.Id
         {
-            get { return "201704052250100_Reset"; }
+            get { return "201704072026527_reset"; }
         }
         
         string IMigrationMetadata.Source

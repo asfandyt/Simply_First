@@ -3,10 +3,22 @@ namespace Simply_First.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Reset : DbMigration
+    public partial class reset : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.CartItem",
+                c => new
+                    {
+                        ProductId = c.Int(nullable: false, identity: true),
+                        Quantity = c.Int(nullable: false),
+                        ShoppingCart_ShoppingCartId = c.Int(),
+                    })
+                .PrimaryKey(t => t.ProductId)
+                .ForeignKey("dbo.ShoppingCart", t => t.ShoppingCart_ShoppingCartId)
+                .Index(t => t.ShoppingCart_ShoppingCartId);
+            
             CreateTable(
                 "dbo.Products",
                 c => new
@@ -43,6 +55,14 @@ namespace Simply_First.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
+            
+            CreateTable(
+                "dbo.ShoppingCart",
+                c => new
+                    {
+                        ShoppingCartId = c.Int(nullable: false, identity: true),
+                    })
+                .PrimaryKey(t => t.ShoppingCartId);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -103,6 +123,7 @@ namespace Simply_First.Migrations
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.CartItem", "ShoppingCart_ShoppingCartId", "dbo.ShoppingCart");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
@@ -110,12 +131,15 @@ namespace Simply_First.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.CartItem", new[] { "ShoppingCart_ShoppingCartId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
+            DropTable("dbo.ShoppingCart");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Products");
+            DropTable("dbo.CartItem");
         }
     }
 }

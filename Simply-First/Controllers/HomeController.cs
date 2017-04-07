@@ -73,5 +73,24 @@ namespace Simply_First.Controllers
             // Pass the model to the View
             return View();
         }
+        public ActionResult RemoveItem(int id)
+        {
+          
+            ShoppingCart.Instance.RemoveItem(id);
+            return RedirectToAction("ViewCart", "Home");
+        }
+        public ActionResult UpdateItem(int id, int quantity)
+        {
+
+            ShoppingCart.Instance.SetItemQuantity(id, quantity);
+            return RedirectToAction("ViewCart", "Home");
+        }
+        public ActionResult AddItem(int id)
+        {
+
+            ShoppingCart.Instance.AddItem(id);
+            return RedirectToAction("ViewCart", "Home");
+        }
+        
     }
 }
