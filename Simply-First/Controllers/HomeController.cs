@@ -79,18 +79,20 @@ namespace Simply_First.Controllers
             ShoppingCart.Instance.RemoveItem(id);
             return RedirectToAction("ViewCart", "Home");
         }
-        public ActionResult UpdateItem(int id, int quantity)
-        {
-
-            ShoppingCart.Instance.SetItemQuantity(id, quantity);
-            return RedirectToAction("ViewCart", "Home");
-        }
+       
         public ActionResult AddItem(int id)
         {
 
             ShoppingCart.Instance.AddItem(id);
             return RedirectToAction("ViewCart", "Home");
         }
-        
+        [HttpPost]
+        public ActionResult UpdateQuantity(int id, int quantity)
+        {
+
+            ShoppingCart.Instance.SetItemQuantity(id,quantity);
+            return RedirectToAction("ViewCart", "Home");
+        }
+
     }
 }

@@ -6,72 +6,71 @@
 
 <h1 class="text-center display-4 pb-3">Shopping Cart</h1>
 
-<table class="table table-bordered">
-    <tr class="bg-primary text-white text-center">
-        <th>
-            Image
-        </th>
-        <th>
-            Name
-        </th>
-        <th>
-            Description
-        </th>
-        <th class="text-center">
-            Manufacturer
-        </th>
-        <th>
-            Quantity
-        </th>
-        <th>
-            Price
-        </th>
-        <th>
-            Total Price
-        </th>
-        <th class="hidden-md-up hidden-xs-up"></th>
-        <th class="hidden-md-up hidden-xs-up"></th>
-    </tr>
 
-    @foreach (var item in ViewBag.Shopping)
-    {
-        <tr class="text-center">
-            <td>
-                <img src="@(item.Prod.ProductImage)" />
-            </td>
-            <td>
-                @(item.Prod.ProductName)
-            </td>
-            <td>
-                @(item.Prod.ProductDescription)
-
-            </td>
-            <td>
-                @(item.Prod.Manufacturer)
-
-            </td>
-            <td>
-                @(item.Quantity)
-            </td>
-            <td>
-                @(item.UnitPrice)
-            </td>
-            <td>
-                @(item.TotalPrice)
-            </td>
-            <td>
-                @Html.ActionLink("Delete", "RemoveItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-success btn-sm" }) 
-              
-            </td>
-            <td>
-                @Html.ActionLink("Add One", "AddItem", "Home", new { id = item.ProductId},  new { @class = "btn btn-success btn-sm" }) 
-
-            </td>
+<form action="/Home/UpdateQuantity" method="post">
+    <table class="table table-bordered">
+        <tr class="bg-primary text-white text-center">
+            <th>
+                Image
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th class="text-center">
+                Manufacturer
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Total Price
+            </th>
+            <th class="hidden-md-up hidden-xs-up"></th>
+            <th class="hidden-md-up hidden-xs-up"></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in ViewBag.Shopping)
+        {
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+            <tr class="text-center">
+                <td>
+                    <img src="@(item.Prod.ProductImage)" />
+                </td>
+                <td>
+                    @(item.Prod.ProductName)
+                </td>
+                <td>
+                    @(item.Prod.ProductDescription)
+                </td>
+                <td>
+                    @(item.Prod.Manufacturer)
+                </td>
+                <td>
+                   <input type="number" value="@(item.Quantity)" id="quantity" name="quantity" />
+                    <input type="hidden" id="id" name="id" value="@(item.ProductId)" />
+                </td>
+                <td>
+                    @(item.UnitPrice)
+                </td>
+                <td>
+                    @(item.TotalPrice)
+                </td>
+                <td>
+                    <input type="submit" id="submit" value="Update Quantity" class="btn btn-primary btn-sm" />
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "RemoveItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </table>
+    </form>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
