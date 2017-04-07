@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Simply_First.Models.ShoppingCart>
+
+@{
+    ViewBag.Title = "ViewCart";
+}
+
+<h2>ViewCart</h2>
+
+
+
+<table class="table table-bordered">
+    <tr class="bg-primary text-white text-center">
+        <th>
+           Description
+        </th>
+        <th>
+           Stuff
+        </th>
+        <th class="text-center">
+            Stuff
+        </th>
+        <th>
+            Stuff
+        </th>
+        <th>
+            Stuff
+        </th>
+        <th class="hidden-md-up hidden-xs-up"></th>
+    </tr>
+
+ @foreach (var item in ViewBag.Shopping)
+ {
+        <tr class="text-center">
+            <td>
+                @(item.Description)
+            </td>
+            <td>
+                @(item.Prod)
+
+            </td>
+            <td>
+                @(item.Quantity)
+
+            </td>
+            <td>
+                @(item.Quantity)
+            </td>
+            <td>
+                @(item.Quantity)
+            </td>
+            <td>
+                @Html.ActionLink("Purchase", "AddToCart", "Products", new { id = item.ProductId }, new { @class = "btn btn-success btn-sm" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>

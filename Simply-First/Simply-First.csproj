@@ -231,6 +231,7 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Home\Purchase.cshtml" />
     <Content Include="Views\Admin\UserDetails.cshtml" />
+    <Content Include="Views\Products\ViewCart.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -252,6 +253,7 @@
     <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Models\RegisteredUserVM.cs" />
     <Compile Include="Models\RoleVM.cs" />
+    <Compile Include="Models\ShoppingVM.cs" />
     <Compile Include="Models\SimplyFirstVM.cs" />
     <Compile Include="Models\SiteUserVM.cs" />
     <Compile Include="Models\UserRoleVM.cs" />

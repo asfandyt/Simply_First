@@ -162,8 +162,18 @@ namespace Simply_First.Controllers
 
         public ActionResult ViewCart()
         {
+            // Build an example model
 
-            //Console.WriteLine("SOMETHING HAPPENED");
+            // var model = ShoppingCart.Instance;
+            // var model = new ShoppingVM();
+
+             ViewBag.Shopping = ShoppingCart.Instance.Items.ToList();
+         
+
+            ///model.Property = Session["ASPNETShoppingCart"];
+
+            // List<Array> shitList = new List<Array> {}
+            // Pass the model to the View
             return View();
         }
 
