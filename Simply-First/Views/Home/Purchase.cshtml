@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<Simply_First.Models.Products>
 
-
-
-
 @{
     ViewBag.Title = "Purchase Product";
 }
 
 <h1 class="text-center display-4 pb-3">Purchase Product</h1>
-@Html.ActionLink("ViewCart", "ViewCart", "Products", null, new { @class = "btn btn-success btn-sm" })
+
 <table class="table table-bordered">
     <tr class="bg-primary text-white text-center">
         <th>
@@ -19,9 +16,6 @@
         </th>
         <th class="text-center">
             @Html.DisplayNameFor(model => model.ProductDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Manufacturer)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
@@ -42,13 +36,10 @@
                 @Html.DisplayFor(modelItem => item.ProductDescription)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Manufacturer)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.ActionLink("Purchase", "AddToCart", "Products", new { id = item.ProductId }, new { @class = "btn btn-success btn-sm" })
+                @Html.ActionLink("Purchase", "AddToCart", "Home", new { id = item.ProductId }, new { @class = "btn btn-success btn-sm" })
             </td>
         </tr>
     }

@@ -11,20 +11,20 @@ using Simply_First.Models;
 
 namespace Simply_First.Controllers
 {
-    //[Authorize(Roles = "3d50c8fc-ae81-4f7f-b328-1ce5ca630662")]
+    [Authorize(Roles = "Admin")]
     public class ProductsController : Controller
     {
         private SimplyFirstVMContext db = new SimplyFirstVMContext();
 
         // GET: Products
-        // [Authorize(Roles = "3d50c8fc-ae81-4f7f-b328-1ce5ca630662")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Index()
         {
             return View(await db.Products.ToListAsync());
         }
 
         // GET: Products/Details/5
-        // [Authorize(Roles = "3d50c8fc-ae81-4f7f-b328-1ce5ca630662")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,7 +43,7 @@ namespace Simply_First.Controllers
         }
 
         // GET: Products/Create
-        // [Authorize(Roles = "3d50c8fc-ae81-4f7f-b328-1ce5ca630662")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -68,7 +68,7 @@ namespace Simply_First.Controllers
         }
 
         // GET: Products/Edit/5
-        // [Authorize(Roles = "3d50c8fc-ae81-4f7f-b328-1ce5ca630662")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -88,7 +88,7 @@ namespace Simply_First.Controllers
         // POST: Products/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[Authorize(Roles = "3d50c8fc-ae81-4f7f-b328-1ce5ca630662")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "ProductId,ProductName,ProductImage,ProductDescription,Manufacturer,Quantity,Price")] Products products)
@@ -104,7 +104,7 @@ namespace Simply_First.Controllers
         }
 
         // GET: Products/Delete/5
-        //  [Authorize(Roles = "3d50c8fc-ae81-4f7f-b328-1ce5ca630662")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -122,7 +122,7 @@ namespace Simply_First.Controllers
         }
 
         // POST: Products/Delete/5
-        //  [Authorize(Roles = "3d50c8fc-ae81-4f7f-b328-1ce5ca630662")]
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
@@ -143,40 +143,6 @@ namespace Simply_First.Controllers
 
             base.Dispose(disposing);
         }
-
-        //public void AddToCart(object sender, EventArgs e)
-        //{
-        //    // Add product 1 to the shopping cart
-        //    ShoppingCart.Instance.AddItem(1);
-
-        //    // Redirect the user to view their shopping cart
-        //   // Response.Redirect("ViewCart.aspx");
-        //}
-
-        public ActionResult AddtoCart(int id)
-        {
-            ShoppingCart.Instance.AddItem(id);
-            //Console.WriteLine("SOMETHING HAPPENED");
-            return RedirectToAction("Purchase", "Home");
-        }
-
-        public ActionResult ViewCart()
-        {
-            // Build an example model
-
-            // var model = ShoppingCart.Instance;
-            // var model = new ShoppingVM();
-
-             ViewBag.Shopping = ShoppingCart.Instance.Items.ToList();
-         
-
-            ///model.Property = Session["ASPNETShoppingCart"];
-
-            // List<Array> shitList = new List<Array> {}
-            // Pass the model to the View
-            return View();
-        }
-
     }
 
 }
