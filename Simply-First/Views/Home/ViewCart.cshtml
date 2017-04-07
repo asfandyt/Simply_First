@@ -52,7 +52,7 @@
                     @(item.Prod.Manufacturer)
                 </td>
                 <td>
-                   <input type="number" value="@(item.Quantity)" id="quantity" name="quantity" />
+                    <input type="number" value="@(item.Quantity)" id="quantity" name="quantity" class="form-control form-control-sm" />
                     <input type="hidden" id="id" name="id" value="@(item.ProductId)" />
                 </td>
                 <td>
@@ -62,7 +62,7 @@
                     @(item.TotalPrice)
                 </td>
                 <td>
-                    <input type="submit" id="submit" value="Update Quantity" class="btn btn-primary btn-sm" />
+                    <input type="submit" id="submit" value="Update Quantity" class="btn btn-success btn-sm" />
                 </td>
                 <td>
                     @Html.ActionLink("Delete", "RemoveItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
@@ -70,7 +70,5 @@
             </tr>
         }
     </table>
-    </form>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
+</form>
+
