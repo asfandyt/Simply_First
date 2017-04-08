@@ -8,5 +8,14 @@ DROP TABLE [dbo].[AspNetUserLogins]
 DROP TABLE [dbo].[__MigrationHistory]
 DROP TABLE [dbo].[AspNetRoles]
 DROP TABLE [dbo].[AspNetUsers]
+DROP TABLE [dbo].[CartItem]
+DROP TABLE [dbo].[ShoppingCart]
+DROP TABLE [dbo].[PayPal]
+
+SELECT * FROM AspNetUsers
+SELECT * FROM AspNetRoles
+SELECT * FROM AspNetUserRoles
+SELECT * FROM PayPal
+
 
 Update-Database –TargetMigration: $InitialDatabase

@@ -37,7 +37,7 @@ namespace Simply_First.Models
         public int Quantity { get; set; }
 
         [Required]
-        [Display(Name="Image")]
+        [Display(Name = "Image")]
         public string ProductImage { get; set; }
 
         [Required]
@@ -46,8 +46,14 @@ namespace Simply_First.Models
         public decimal Price { get; set; }
     }
 
-    public class Address : IdentityUser
+    public class Address
     {
+        [Key]
+        public string Id { get; set; }
+
+        [Required]
+        public string Email { get; set; }
+
         [Required]
         [Display(Name = "Street Address")]
         public string StreetAddress { get; set; }
@@ -72,8 +78,7 @@ namespace Simply_First.Models
         [Display(Name = "Date Joined")]
         public DateTime JoinDate { get; set; }
     }
-
-
+    
     public class ShoppingCart
     {
         #region Properties
@@ -286,6 +291,7 @@ namespace Simply_First.Models
             return new SimplyFirstVMContext();
         }
 
+        public DbSet<Address> Address { get; set; }
         public DbSet<Products> Products { get; set; }
         public DbSet<CartItem> CartItem { get; set; }
         public DbSet<ShoppingCart> ShoppingCart { get; set; }

@@ -8,6 +8,20 @@ namespace Simply_First.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.Address",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        StreetAddress = c.String(nullable: false),
+                        City = c.String(nullable: false),
+                        Province = c.String(nullable: false),
+                        PostalCode = c.String(nullable: false),
+                        Country = c.String(nullable: false),
+                        JoinDate = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.CartItem",
                 c => new
                     {
@@ -80,13 +94,6 @@ namespace Simply_First.Migrations
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
                         UserName = c.String(nullable: false, maxLength: 256),
-                        StreetAddress = c.String(),
-                        City = c.String(),
-                        Province = c.String(),
-                        PostalCode = c.String(),
-                        Country = c.String(),
-                        JoinDate = c.DateTime(),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");
@@ -140,6 +147,7 @@ namespace Simply_First.Migrations
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Products");
             DropTable("dbo.CartItem");
+            DropTable("dbo.Address");
         }
     }
 }

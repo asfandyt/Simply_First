@@ -38,8 +38,8 @@ namespace Simply_First.Migrations
             // Assign user password on start
             userManager.Create(admin, "password");
             userManager.Create(user, "password");
-            // adding products
 
+            // adding products
             var p1 = new Products()
             {
                 ProductId = 1,
@@ -48,7 +48,7 @@ namespace Simply_First.Migrations
                 Manufacturer = "DJI",
                 Quantity = 99,
                 ProductImage = "http://djireview.com/wp-content/uploads/2016/12/1280805548-1-300x300.jpg",
-                Price = 799.99M
+                Price = 99.99M
             };
             var p2 = new Products()
             {
@@ -58,7 +58,7 @@ namespace Simply_First.Migrations
                 Manufacturer = "DJI",
                 Quantity = 29,
                 ProductImage = "https://dronenetwork.uk.com/wp-content/uploads/2016/03/phantom4-1-300x300.jpg",
-                Price = 629.99M
+                Price = 89.99M
             };
             var p3 = new Products()
             {
@@ -68,15 +68,14 @@ namespace Simply_First.Migrations
                 Manufacturer = "DJI",
                 Quantity = 39,
                 ProductImage = "https://cdn.shopify.com/s/files/1/1277/8269/products/Inspire_1_Black_Cover_300x.png?v=1484036994",
-                Price = 3999.99M
+                Price = 109.99M
             };
 
             // Assign user password on start
             context.Products.Add(p1);
             context.Products.Add(p2);
             context.Products.Add(p3);
-
-
+            
             // Create roles on start
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new SimplyFirstVMContext()));
 
