@@ -24,6 +24,18 @@ namespace Simply_First.Controllers
             manager.UserTokenProvider = new EmailTokenProvider<IdentityUser>();
         }
 
+        public string FindUserId()
+        {
+            string name = User.Identity.Name;
+
+            SimplyFirstVMContext context = new SimplyFirstVMContext();
+
+            IdentityUser user = context.Users.Where(u => u.UserName == name).FirstOrDefault();
+            string userId = user.Id;
+
+            return userId;
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
