@@ -232,11 +232,11 @@
     <Content Include="Views\Home\Purchase.cshtml" />
     <Content Include="Views\Admin\UserDetails.cshtml" />
     <Content Include="Views\Home\ViewCart.cshtml" />
-    <Content Include="Views\UserInformations\Create.cshtml" />
-    <Content Include="Views\UserInformations\Delete.cshtml" />
-    <Content Include="Views\UserInformations\Details.cshtml" />
-    <Content Include="Views\UserInformations\Edit.cshtml" />
-    <Content Include="Views\UserInformations\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -247,7 +247,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsAPIController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="Controllers\UserInformationsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -310,7 +310,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Customer\" />
     <Folder Include="Views\ProductsAPI\" />
-    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201704082105447_Reset.resx">
