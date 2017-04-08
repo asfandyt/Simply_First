@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Simply_First.Repositories
 {
-    public class DatabaseUsersVM
+    public class DatabaseUsersRepo
     {
         private SimplyFirstVMContext db = new SimplyFirstVMContext();
 

@@ -8,20 +8,6 @@ namespace Simply_First.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Address",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        StreetAddress = c.String(nullable: false),
-                        City = c.String(nullable: false),
-                        Province = c.String(nullable: false),
-                        PostalCode = c.String(nullable: false),
-                        Country = c.String(nullable: false),
-                        JoinDate = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
                 "dbo.CartItem",
                 c => new
                     {
@@ -32,6 +18,22 @@ namespace Simply_First.Migrations
                 .PrimaryKey(t => t.ProductId)
                 .ForeignKey("dbo.ShoppingCart", t => t.ShoppingCart_ShoppingCartId)
                 .Index(t => t.ShoppingCart_ShoppingCartId);
+            
+            CreateTable(
+                "dbo.PayPal",
+                c => new
+                    {
+                        TransactionId = c.String(nullable: false, maxLength: 128),
+                        UserId = c.String(),
+                        TransactionTime = c.DateTime(nullable: false),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        Custom = c.String(),
+                        Quantity = c.String(),
+                        BuyerEmail = c.String(),
+                        Amount = c.Decimal(nullable: false, precision: 18, scale: 2),
+                    })
+                .PrimaryKey(t => t.TransactionId);
             
             CreateTable(
                 "dbo.Products",
@@ -77,6 +79,23 @@ namespace Simply_First.Migrations
                         ShoppingCartId = c.Int(nullable: false, identity: true),
                     })
                 .PrimaryKey(t => t.ShoppingCartId);
+            
+            CreateTable(
+                "dbo.UserInformation",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        FirstName = c.String(nullable: false),
+                        LastName = c.String(nullable: false),
+                        Email = c.String(nullable: false),
+                        StreetAddress = c.String(nullable: false),
+                        City = c.String(nullable: false),
+                        Province = c.String(nullable: false),
+                        PostalCode = c.String(nullable: false),
+                        Country = c.String(nullable: false),
+                        JoinDate = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.UserId);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -142,12 +161,13 @@ namespace Simply_First.Migrations
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
+            DropTable("dbo.UserInformation");
             DropTable("dbo.ShoppingCart");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Products");
+            DropTable("dbo.PayPal");
             DropTable("dbo.CartItem");
-            DropTable("dbo.Address");
         }
     }
 }

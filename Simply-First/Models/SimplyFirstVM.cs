@@ -46,12 +46,21 @@ namespace Simply_First.Models
         public decimal Price { get; set; }
     }
 
-    public class Address
+    public class UserInformation
     {
         [Key]
-        public string Id { get; set; }
+        public string UserId { get; set; }
 
         [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
@@ -78,7 +87,7 @@ namespace Simply_First.Models
         [Display(Name = "Date Joined")]
         public DateTime JoinDate { get; set; }
     }
-    
+
     public class ShoppingCart
     {
         #region Properties
@@ -268,6 +277,41 @@ namespace Simply_First.Models
         }
     }
 
+    public class PayPal
+    {
+        [Key]
+        [Display(Name = "Transaction Id")]
+        public string TransactionId { get; set; }
+
+        public string UserId { get; set; }
+
+        //[DisplayFormat(DataFormatString = "{0:dd MMM yyyy - H:mm:ss}")]
+        [Display(Name = "Purchase Time")]
+        public DateTime TransactionTime { get; set; }
+
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Display(Name = "Session Id")]
+        public string Custom { get; set; }
+
+        [Display(Name = "Total Products")]
+        public string Quantity { get; set; }
+
+        [Display(Name = "Buyer Email")]
+        public string BuyerEmail { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Transaction Amount")]
+        public decimal Amount { get; set; }
+
+        //[Display(Name = "Payment Status")]
+        //public string paymentStatus { get; set; }
+    }
+
     public class SimplyFirstVMContext : IdentityDbContext<IdentityUser>
     {
         public SimplyFirstVMContext() : base("DefaultConnection") { }
@@ -291,9 +335,10 @@ namespace Simply_First.Models
             return new SimplyFirstVMContext();
         }
 
-        public DbSet<Address> Address { get; set; }
+        public DbSet<UserInformation> UserInformation { get; set; }
         public DbSet<Products> Products { get; set; }
         public DbSet<CartItem> CartItem { get; set; }
         public DbSet<ShoppingCart> ShoppingCart { get; set; }
+        public DbSet<PayPal> PayPal { get; set; }
     }
 }

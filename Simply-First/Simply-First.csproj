@@ -232,6 +232,11 @@
     <Content Include="Views\Home\Purchase.cshtml" />
     <Content Include="Views\Admin\UserDetails.cshtml" />
     <Content Include="Views\Home\ViewCart.cshtml" />
+    <Content Include="Views\UserInformations\Create.cshtml" />
+    <Content Include="Views\UserInformations\Delete.cshtml" />
+    <Content Include="Views\UserInformations\Details.cshtml" />
+    <Content Include="Views\UserInformations\Edit.cshtml" />
+    <Content Include="Views\UserInformations\Index.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -242,12 +247,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsAPIController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\UserInformationsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704080003384_Reset.cs" />
-    <Compile Include="Migrations\201704080003384_Reset.Designer.cs">
-      <DependentUpon>201704080003384_Reset.cs</DependentUpon>
+    <Compile Include="Migrations\201704082105447_Reset.cs" />
+    <Compile Include="Migrations\201704082105447_Reset.Designer.cs">
+      <DependentUpon>201704082105447_Reset.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LoginVM.cs" />
@@ -265,10 +271,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Repositories\AccountRepo.cs" />
-    <Compile Include="Repositories\AddressRepo.cs" />
-    <Compile Include="Repositories\DatabaseUsersVM.cs" />
+    <Compile Include="Repositories\DatabaseUsersRepo.cs" />
     <Compile Include="Repositories\EmailRepo.cs" />
+    <Compile Include="Repositories\UserInformationRepo.cs" />
     <Compile Include="Services\CaptchaHelper.cs" />
+    <Compile Include="Services\PayPalService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -306,8 +313,8 @@
     <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704080003384_Reset.resx">
-      <DependentUpon>201704080003384_Reset.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704082105447_Reset.resx">
+      <DependentUpon>201704082105447_Reset.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

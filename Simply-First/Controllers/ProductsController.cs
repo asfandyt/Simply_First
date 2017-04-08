@@ -52,7 +52,7 @@ namespace Simply_First.Controllers
         // POST: Products/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        // [Authorize(Roles = "3d50c8fc-ae81-4f7f-b328-1ce5ca630662")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "ProductId,ProductName,ProductImage,ProductDescription,Manufacturer,Quantity,Price")] Products products)

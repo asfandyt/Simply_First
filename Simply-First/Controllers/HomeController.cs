@@ -73,6 +73,7 @@ namespace Simply_First.Controllers
             // Pass the model to the View
             return View();
         }
+
         public ActionResult RemoveItem(int id)
         {
           
@@ -86,6 +87,7 @@ namespace Simply_First.Controllers
             ShoppingCart.Instance.AddItem(id);
             return RedirectToAction("ViewCart", "Home");
         }
+
         [HttpPost]
         public ActionResult UpdateQuantity(int id, int quantity)
         {
@@ -93,6 +95,5 @@ namespace Simply_First.Controllers
             ShoppingCart.Instance.SetItemQuantity(id,quantity);
             return RedirectToAction("ViewCart", "Home");
         }
-
     }
 }

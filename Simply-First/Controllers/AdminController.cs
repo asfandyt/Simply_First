@@ -49,7 +49,7 @@ namespace Simply_First.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);    
             }
 
-            DatabaseUsersVM dbUsers = new DatabaseUsersVM();
+            DatabaseUsersRepo dbUsers = new DatabaseUsersRepo();
             var users = dbUsers.GetAll(id);
             
             if(users == null)
