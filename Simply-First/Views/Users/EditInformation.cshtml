@@ -1,19 +1,18 @@
 ﻿@model Simply_First.Models.UserInformation
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "EditInformation";
 }
 
-<h2>Edit</h2>
+@Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")
 
+<h1 class="text-center display-4 pb-3">Edit Information</h1>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>UserInformation</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.UserId)
 
@@ -97,9 +96,7 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+@Html.Partial("~/Views/Sidebar/_Sidebar-bottom.cshtml")
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

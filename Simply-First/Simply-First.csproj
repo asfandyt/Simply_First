@@ -232,11 +232,7 @@
     <Content Include="Views\Home\Purchase.cshtml" />
     <Content Include="Views\Admin\UserDetails.cshtml" />
     <Content Include="Views\Home\ViewCart.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\EditInformation.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -273,7 +269,7 @@
     <Compile Include="Repositories\AccountRepo.cs" />
     <Compile Include="Repositories\DatabaseUsersRepo.cs" />
     <Compile Include="Repositories\EmailRepo.cs" />
-    <Compile Include="Repositories\UserInformationRepo.cs" />
+    <Compile Include="Repositories\UserRepo.cs" />
     <Compile Include="Services\CaptchaHelper.cs" />
     <Compile Include="Services\PayPalService.cs" />
   </ItemGroup>

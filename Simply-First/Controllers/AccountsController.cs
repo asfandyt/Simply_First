@@ -44,12 +44,12 @@ namespace Simply_First.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(LoginVM login)
+        public ActionResult Index(LoginVM model)
         {
             // UserStore and UserManager manages data retreival.
             UserStore<IdentityUser> userStore = new UserStore<IdentityUser>();
             UserManager<IdentityUser> manager = new UserManager<IdentityUser>(userStore);
-            IdentityUser identityUser = manager.Find(login.Email, login.Password);
+            IdentityUser identityUser = manager.Find(model.Email, model.Password);
 
             AccountRepo accountRepo = new AccountRepo();
 
@@ -57,7 +57,7 @@ namespace Simply_First.Controllers
             {
                 string loginError;
 
-                if (accountRepo.ValidLogin(login, out loginError))
+                if (accountRepo.ValidLogin(model, out loginError))
                 {
                     IAuthenticationManager authenticationManager = HttpContext.GetOwinContext().Authentication;
 
@@ -65,7 +65,7 @@ namespace Simply_First.Controllers
 
                     var identity = new ClaimsIdentity(new[]
                     {
-                        new Claim(ClaimTypes.Name, login.Email),
+                        new Claim(ClaimTypes.Name, model.Email),
                     },
                     DefaultAuthenticationTypes.ApplicationCookie, ClaimTypes.Name, ClaimTypes.Role);
 
@@ -102,11 +102,11 @@ namespace Simply_First.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisteredUserVM newUser)
+        public ActionResult Register(RegisteredUserVM model)
         {
             SimplyFirstVMContext context = new SimplyFirstVMContext();
 
-            var checkEmail = context.Users.Where(e => e.Email == newUser.Email).FirstOrDefault();
+            var checkEmail = context.Users.Where(e => e.Email == model.Email).FirstOrDefault();
 
             if (checkEmail != null)
             {
@@ -119,11 +119,11 @@ namespace Simply_First.Controllers
 
             var identityUser = new IdentityUser()
             {
-                UserName = newUser.Email,
-                Email = newUser.Email
+                UserName = model.Email,
+                Email = model.Email
             };
 
-            IdentityResult result = manager.Create(identityUser, newUser.Password);
+            IdentityResult result = manager.Create(identityUser, model.Password);
 
             // Google Captcha Helper
             CaptchaHelper captchaHelper = new CaptchaHelper();
@@ -149,10 +149,10 @@ namespace Simply_First.Controllers
                     string email = "Please confirm your email address \n You have created a Simply First ID" + "\n" + callbackUrl;
                     string subject = "Please confirm email for your Simply First ID";
 
-                    emailRepo.SendEmail(newUser.Email, subject, email);
+                    emailRepo.SendEmail(model.Email, subject, email);
 
                     // Adding Registered User to Default Role of: User
-                    var standardUser = manager.FindByName(newUser.Email);
+                    var standardUser = manager.FindByName(model.Email);
                     manager.AddToRoles(standardUser.Id, new string[] { "User" });
 
                     TempData["RegisterSuccess"] = "Registered successfully, check your email for confirmation link!";
