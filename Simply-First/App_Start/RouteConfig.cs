@@ -7,7 +7,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Simply_First.Models;
+using Simply_First.ViewModels;
 
 namespace Simply_First
 {

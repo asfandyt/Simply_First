@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Simply_First.Models;
+using Simply_First.ViewModels;
 using System.Web.Http;
 using Simply_First.App_Start;
 

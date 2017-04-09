@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Simply_First.Models;
+using Simply_First.ViewModels;
 
 namespace Simply_First.Controllers
 {

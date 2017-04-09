@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Simply_First.Models;
+using Simply_First.ViewModels;
 
 namespace Simply_First.Repositories
 {

@@ -8,7 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Simply_First.Models;
+using Simply_First.ViewModels;
 
 namespace Simply_First.Controllers
 {
@@ -26,17 +26,11 @@ namespace Simply_First.Controllers
             return userId;
         }
 
-        [HttpGet]
+        [AcceptVerbs("Get", "Post")]
         public ActionResult EditInformation()
         {
+            db.UserInformation = null;
             return View();
         }
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult EditInformation()
-        //{
-        //    return View();
-        //}
     }
 }

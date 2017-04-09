@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
-using Simply_First.Models;
+using Simply_First.ViewModels;
 using System;
 using System.Linq;
 using System.Security.Claims;

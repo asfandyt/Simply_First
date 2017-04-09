@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Simply_First.Models
+namespace Simply_First.ViewModels
 {
     public class RoleVM
     {

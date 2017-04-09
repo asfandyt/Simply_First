@@ -8,7 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Simply_First.Models;
+using Simply_First.ViewModels;
 using System.Web.Http.Cors;
 
 namespace Simply_First.Controllers
