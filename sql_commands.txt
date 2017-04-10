@@ -10,6 +10,7 @@ DROP TABLE [dbo].[AspNetRoles]
 DROP TABLE [dbo].[AspNetUsers]
 DROP TABLE [dbo].[CartItem]
 DROP TABLE [dbo].[ShoppingCart]
+DROP TABLE [dbo].[UserInformation]
 DROP TABLE [dbo].[PayPal]
 
 SELECT * FROM AspNetUsers

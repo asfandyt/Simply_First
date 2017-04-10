@@ -14,6 +14,8 @@ namespace Simply_First.Controllers
 {
     public class AccountsController : Controller
     {
+        private SimplyFirstVMContext db = new SimplyFirstVMContext();
+
         // ReSharper disable once InconsistentNaming
         const string EMAIL_CONFIRMATION = "EmailConfirmation";
         // ReSharper disable once InconsistentNaming
@@ -22,18 +24,6 @@ namespace Simply_First.Controllers
         void CreateTokenProvider(UserManager<IdentityUser> manager, string tokenType)
         {
             manager.UserTokenProvider = new EmailTokenProvider<IdentityUser>();
-        }
-
-        public string FindUserId()
-        {
-            string name = User.Identity.Name;
-
-            SimplyFirstVMContext context = new SimplyFirstVMContext();
-
-            IdentityUser user = context.Users.Where(u => u.UserName == name).FirstOrDefault();
-            string userId = user.Id;
-
-            return userId;
         }
 
         [HttpGet]
@@ -75,17 +65,7 @@ namespace Simply_First.Controllers
                         IsPersistent = false
                     }, identity);
 
-                    //if (User.Identity.IsAuthenticated)
-                    //{
-                    //    if (User.IsInRole("Admin"))
-                    //    {
-                    //        return RedirectToAction("Index", "Admin");
-                    //    }
-                    //    else
-                    //    {
                     return RedirectToAction("SecureArea", "Accounts");
-                    //    }
-                    //}
                 }
 
                 TempData["LoginError"] = "Invalid email or password!";

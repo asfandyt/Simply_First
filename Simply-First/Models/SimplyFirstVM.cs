@@ -49,6 +49,8 @@ namespace Simply_First.ViewModels
     public class UserInformation
     {
         [Key]
+        public int Id { get; set; }
+
         public string UserId { get; set; }
 
         [Required]
@@ -60,8 +62,8 @@ namespace Simply_First.ViewModels
         public string LastName { get; set; }
 
         [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "Phone Number")]
+        public int PhoneNumber { get; set; }
 
         [Required]
         [Display(Name = "Street Address")]

@@ -84,10 +84,11 @@ namespace Simply_First.Migrations
                 "dbo.UserInformation",
                 c => new
                     {
-                        UserId = c.String(nullable: false, maxLength: 128),
+                        Id = c.Int(nullable: false, identity: true),
+                        UserId = c.String(),
                         FirstName = c.String(nullable: false),
                         LastName = c.String(nullable: false),
-                        Email = c.String(nullable: false),
+                        PhoneNumber = c.Int(nullable: false),
                         StreetAddress = c.String(nullable: false),
                         City = c.String(nullable: false),
                         Province = c.String(nullable: false),
@@ -95,7 +96,7 @@ namespace Simply_First.Migrations
                         Country = c.String(nullable: false),
                         JoinDate = c.DateTime(nullable: false),
                     })
-                .PrimaryKey(t => t.UserId);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
