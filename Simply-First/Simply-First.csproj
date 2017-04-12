@@ -237,6 +237,8 @@
     <Content Include="Views\Accounts\ChangePassword.cshtml" />
     <Content Include="Views\PayPal\Index.cshtml" />
     <Content Include="Views\Home\ApiDocumentation.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Shared\_LayoutHome.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

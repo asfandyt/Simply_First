@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using Simply_First.Services;
 using Simply_First.Repositories;
+using System.Collections.Generic;
 
 namespace Simply_First.Controllers
 {
@@ -19,6 +20,16 @@ namespace Simply_First.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Search(string name)
+        {
+            if (!string.IsNullOrEmpty(name))
+            {
+                IEnumerable<Products> product = db.Products.Where(s => s.ProductName.Contains(name) || s.Manufacturer.Contains(name));
+                return View(product.ToList());
+            }
+            return View(db.Products.ToList());
         }
 
         public ActionResult Product()
@@ -80,11 +91,11 @@ namespace Simply_First.Controllers
 
         public ActionResult RemoveItem(int id)
         {
-          
+
             ShoppingCart.Instance.RemoveItem(id);
             return RedirectToAction("ViewCart", "Home");
         }
-       
+
         public ActionResult AddItem(int id)
         {
 
@@ -96,7 +107,7 @@ namespace Simply_First.Controllers
         public ActionResult UpdateQuantity(int id, int quantity)
         {
 
-            ShoppingCart.Instance.SetItemQuantity(id,quantity);
+            ShoppingCart.Instance.SetItemQuantity(id, quantity);
             return RedirectToAction("ViewCart", "Home");
         }
     }
