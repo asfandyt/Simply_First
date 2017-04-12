@@ -19,7 +19,6 @@ namespace Simply_First.Controllers
             return View(db.PayPal.OrderByDescending(t => t.txtTime));
         }
 
-        [Authorize]
         public ActionResult Purchase()
         {
             PayPalService paypalService = new PayPalService("test");
@@ -41,7 +40,7 @@ namespace Simply_First.Controllers
                 db.SaveChanges();
             }
 
-            return View();
+            return View("Success", "Home");
         }
 
         public ActionResult Success()
