@@ -62,13 +62,23 @@
                     @(item.TotalPrice)
                 </td>
                 <td>
-                    <input type="submit" id="submit" value="Update Quantity" class="btn btn-success btn-sm" />
+                    <input type="submit" id="submit" value="Update" class="btn btn-success btn-sm" />
                 </td>
                 <td>
-                    @Html.ActionLink("Delete", "RemoveItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
+                    @Html.ActionLink("Remove", "RemoveItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
                 </td>
             </tr>
         }
     </table>
 </form>
+
+
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top" class="offset-md-9 col-md-2 offset-md-1">
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="hosted_button_id" value="4UAWP4HZDKH7Y">
+    <input type="button" class="btn btn-primary btn-lg" name="submit" value="Purchase Products">
+    <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
 
