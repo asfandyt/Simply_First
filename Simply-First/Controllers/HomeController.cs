@@ -73,6 +73,10 @@ namespace Simply_First.Controllers
             // Pass the model to the View
             return View();
         }
+        public ActionResult ApiDocumentation()
+        {
+            return View();
+        }
 
         public ActionResult RemoveItem(int id)
         {
