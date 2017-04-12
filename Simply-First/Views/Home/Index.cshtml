@@ -1,17 +1,30 @@
-﻿@{
+@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
     ViewBag.Title = "Home";
+    ViewBag.BodyClass = "Home";
 }
 
-<div class="jumbotron">
-    <h1 class="display-3 text-center">DJI Mavic Pro</h1>
+<div class="homepage-hero-module">
+    <div class="video-container">
+        <div class="title-container">
+            <div class="headline">
+                <!--Original logo height 80px-->
+                <h1 class="text-white text-thin">DJI Mavic Pro</h1>
+                <h3 class="text-white text-thin">No Limit Wherever You Go.</h3>
+                <h5 class="text-white text-thin">@Html.ActionLink("Documentation", "Document", "Home", null, new { @class = "btn btn-success btn-lg" })</h5>
+            </div>
 
-    <p class="lead text-center">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-
-    <hr class="my-4">
-
-    <p>The DJI Mavic Pro is a small yet powerful drone that turns the sky into your creative canvas easily and without worry, helping you make every moment an aerial moment. Its compact size hides a high degree of complexity that makes it one of DJI’s most sophisticated flying cameras ever. 24 high-performance computing cores, an all-new transmission system with a 4.3mi (7km) *range, 5 vision sensors, and a 4K camera stabilized by a 3-axis mechanical gimbal, are at your command with just a push of your thumb or a tap of your finger. Unobstructed, free of interference, when FCC compliant.</p>
-
-    <p class="lead text-center">
-        @Html.ActionLink("Documentation", "Document", "Home", null, new { @class = "btn btn-success btn-lg" })
-    </p>
+            <div class="text-center" id="loadBannerVideoSpinner" style="background-color: rgba(0, 0, 0, 0.498039); padding: 10px; border-radius: 4px; display: none; margin-top: 20px;">
+                <h5 class="text-thin text-primary">Loading Coverr... <i class="fa fa-circle-o-notch fa-spin"></i></h5>
+            </div>
+        </div>
+        <div class="filter"></div>
+        <video autoplay loop class="fillWidth">
+            <source src="~/Content/Tropical/MP4/Tropical.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+            <source src="~/Content/Tropical/WEBM/Tropical.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+        </video>
+        <div class="poster">
+            <img hidden src="~/Content/Tropical/Snapshots/Tropical.jpg" alt="">
+        </div>
+    </div>
 </div>

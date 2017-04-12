@@ -1,33 +1,36 @@
-﻿
+
 @{
     ViewBag.Title = "Contact";
+    ViewBag.BodyClass = "Contact";
 }
 
 <h1 class="display-4 pb-3">Contact Us!</h1>
+<div class="row">
+    <form class="well form-horizontal col-sm-12" action="">
+        <div class="form-group row">
+            <label for="name" class="col-sm-2 col-lg-2 col-form-label">Name</label>
+            <div class="col-sm-10 col-lg-6 inputGroupContainer">
+                <input class="form-control" type="text" value="Enter your name" id="name" required />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="email" class="col-sm-2 col-lg-2 col-form-label">Email</label>
+            <div class="col-sm-10 col-lg-6 inputGroupContainer">
+                <input class="form-control" type="email" value="Enter your email" id="email" required />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="message" class="col-sm-2 col-lg-2 col-form-label">Message</label>
+            <div class="col-sm-10 col-lg-6 inputGroupContainer">
+                <textarea class="form-control" type="text" placeholder="Enter your message" id="message" rows="5" required></textarea>
+            </div>
+        </div>
 
-<form class="col-6 pt-3">
-    <div class="form-group row">
-        <label for="name" class="col-2 col-form-label">Name</label>
-        <div class="col-10">
-            <input class="form-control" type="text" value="Enter your name" id="name" required />
+        <div class="form-group row">
+            <label class="col-sm-2 col-lg-2 col-form-label"></label>
+            <div class="col-sm-10 col-lg-6 inputGroupContainer">
+                <input class="btn btn-primary" type="button" value="Submit" id="submit">
+            </div>
         </div>
-    </div>
-    <div class="form-group row">
-        <label for="email" class="col-2 col-form-label">Email</label>
-        <div class="col-10">
-            <input class="form-control" type="email" value="Enter your email" id="email" required>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="message" class="col-2 col-form-label">Message</label>
-        <div class="col-10">
-            <textarea class="form-control" type="text" placeholder="Enter your message" id="message" rows="5" required></textarea>
-        </div>
-    </div>
-    
-    <div class="form-group row">
-        <div class="col-md-10">
-            <input class="btn btn-primary" type="button" value="Submit" id="submit">
-        </div>
-    </div>
-</form>
+    </form>
+</div>
