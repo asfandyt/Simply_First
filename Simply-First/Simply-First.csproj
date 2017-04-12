@@ -239,6 +239,7 @@
     <Content Include="Views\Home\ApiDocumentation.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Shared\_LayoutHome.cshtml" />
+    <Content Include="Views\PayPal\InvoiceHistory.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -26,14 +26,14 @@
                         }
                     }
                 </li>
-                @*<li class="nav-item">
+                <li class="nav-item">
                     @{
                         if (Request.IsAuthenticated)
                         {
-                            @Html.ActionLink("Edit Information", "Edit", "Users", null, new { @class = "nav-link" })
+                            @Html.ActionLink("Invoice History", "InvoiceHistory", "PayPal", null, new { @class = "nav-link" })
                         }
                     }
-                </li>*@
+                </li>
             </ul>
             
             <ul class="nav nav-pills flex-column">
