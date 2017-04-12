@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -29,7 +30,40 @@ namespace Simply_First.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            string userId = FindUserId();
+
+            if (userId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            UserInformation userInformation = db.UserInformation.Where(u => u.UserId == userId).FirstOrDefault();
+
+            if (userInformation == null)
+            {
+                
+                // The form should display anyway
+                userInformation = new UserInformation
+                {
+                    UserId = userId,
+                    FirstName = "a",
+                    LastName = "a",
+                    PhoneNumber = 111111111,
+                    StreetAddress = "asd",
+                    City = "asda",
+                    PostalCode = "asd",
+                    Province = "asd",
+                    Country = "asd",
+                    JoinDate = DateTime.Now
+                };
+                
+                db.UserInformation.Add(userInformation);
+                db.SaveChanges();
+
+                return View(userInformation);
+            }
+
+            return View(userInformation);
         }
 
         [Authorize]
@@ -39,25 +73,24 @@ namespace Simply_First.Controllers
         {
             string userId = FindUserId();
 
+            UserInformation user = db.UserInformation.Where(u => u.UserId == userId).FirstOrDefault();
+            
+            
             if (ModelState.IsValid)
             {
-                UserInformation info = new UserInformation
-                {
-                    Id = model.Id,
-                    UserId = userId,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    PhoneNumber = model.PhoneNumber,
-                    StreetAddress = model.StreetAddress,
-                    City = model.City,
-                    PostalCode = model.PostalCode,
-                    Province = model.Province,
-                    Country = model.Country,
-                    JoinDate = DateTime.Now
-                };
+                user.UserId = userId;
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.PhoneNumber = model.PhoneNumber;
+                user.StreetAddress = model.StreetAddress;
+                user.City = model.City;
+                user.PostalCode = model.PostalCode;
+                user.Province = model.Province;
+                user.Country = model.Country;
 
-                db.UserInformation.Add(info);
+                //db.UserInformation.Add(user);
                 db.SaveChanges();
+                //db.Entry(info);
             }
 
             return View();
