@@ -264,6 +264,57 @@ namespace Simply_First.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            var userStore = new UserStore<IdentityUser>();
+            UserManager<IdentityUser> manager = new UserManager<IdentityUser>(userStore);
+
+            var user = manager.FindByName(User.Identity.Name);
+            CreateTokenProvider(manager, PASSWORD_RESET);
+
+            var code = manager.GeneratePasswordResetToken(user.Id);
+            ViewBag.PasswordToken = code;
+            ViewBag.UserID = user.Id;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(string currentPassword, string password, string confirmPassword, string passwordToken, string userID)
+        {
+            var userStore = new UserStore<IdentityUser>();
+            UserManager<IdentityUser> manager = new UserManager<IdentityUser>(userStore);
+            var user = manager.FindById(userID);
+            CreateTokenProvider(manager, PASSWORD_RESET);
+            var compareResult = manager.PasswordHasher.VerifyHashedPassword(user.PasswordHash, currentPassword);
+
+            if (!(compareResult == PasswordVerificationResult.Success))
+            {
+                TempData["PasswordError"] = "The current password is incorrect.";
+
+                return View();
+            }
+            else if (password == confirmPassword)
+            {
+                IdentityResult result = manager.ResetPassword(userID, passwordToken, password);
+                if (result.Succeeded)
+                {
+                    TempData["PasswordSucesss"] = "The password has been reset.";
+                }
+                else
+                {
+                    TempData["PasswordError"] = "The password has not been reset.";
+                }
+            }
+            else
+            {
+                TempData["PasswordError"] = "Two passwords don't match!";
+            }
+                
+            return View();
+        }
+
         [Authorize]
         public ActionResult SecureArea()
         {
