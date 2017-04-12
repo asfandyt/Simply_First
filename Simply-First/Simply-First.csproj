@@ -235,6 +235,7 @@
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Accounts\ChangePassword.cshtml" />
+    <Content Include="Views\PayPal\Index.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -243,6 +244,7 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PayPalController.cs" />
     <Compile Include="Controllers\ProductsAPIController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
