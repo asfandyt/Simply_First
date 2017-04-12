@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using Simply_First.ViewModels;
 using System;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
@@ -317,9 +318,32 @@ namespace Simply_First.Controllers
             return View();
         }
 
+        public string FindUserId()
+        {
+            string name = User.Identity.Name;
+
+            IdentityUser user = db.Users.Where(u => u.UserName == name).FirstOrDefault();
+            string userId = user.Id;
+
+            return userId;
+        }
+
         [Authorize]
         public ActionResult SecureArea()
         {
+            string id = FindUserId();
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            UserInformation userInformation = db.UserInformation.Where(u => u.UserId == id).FirstOrDefault();
+
+            if (userInformation == null)
+            {
+                return RedirectToAction("Create", "Users");
+            }
             Page_Load();
             return View();
         }
