@@ -264,6 +264,7 @@ namespace Simply_First.Controllers
             return View();
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult ChangePassword()
         {
@@ -280,6 +281,7 @@ namespace Simply_First.Controllers
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult ChangePassword(string currentPassword, string password, string confirmPassword, string passwordToken, string userID)
         {
