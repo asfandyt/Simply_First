@@ -11,28 +11,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UserId)
+            @Html.DisplayNameFor(model => model.txtTime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TransactionTime)
+            @Html.DisplayNameFor(model => model.firstName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model.lastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.custom)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Custom)
+            @Html.DisplayNameFor(model => model.quantity)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Quantity)
+            @Html.DisplayNameFor(model => model.buyerEmail)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BuyerEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Amount)
+            @Html.DisplayNameFor(model => model.amount)
         </th>
         <th></th>
         <th></th>
@@ -41,34 +38,31 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.UserId)
+            @Html.DisplayFor(modelItem => item.txtTime)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TransactionTime)
+            @Html.DisplayFor(modelItem => item.firstName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
+            @Html.DisplayFor(modelItem => item.lastName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LastName)
+            @Html.DisplayFor(modelItem => item.custom)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Custom)
+            @Html.DisplayFor(modelItem => item.quantity)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
+            @Html.DisplayFor(modelItem => item.buyerEmail)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.BuyerEmail)
+            @Html.DisplayFor(modelItem => item.amount)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Amount)
+            @Html.ActionLink("Details", "Details", new { id=item.transactionID })
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.TransactionId })
-        </td>
-        <td>
-            @Html.ActionLink("Delete", "Delete", new { id = item.TransactionId })
+            @Html.ActionLink("Delete", "Delete", new { id = item.transactionID })
         </td>
     </tr>
 }

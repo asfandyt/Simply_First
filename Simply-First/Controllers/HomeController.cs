@@ -76,7 +76,8 @@ namespace Simply_First.Controllers
             // var model = new ShoppingVM();
 
             ViewBag.Shopping = ShoppingCart.Instance.Items.ToList();
-
+            Session["session_tx"] = "Unique Session Id";
+            ViewBag.Session = this.Session.SessionID;
 
             ///model.Property = Session["ASPNETShoppingCart"];
 

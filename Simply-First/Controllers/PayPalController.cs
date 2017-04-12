@@ -16,7 +16,7 @@ namespace Simply_First.Controllers
         // GET: PayPal
         public ActionResult InvoiceHistory()
         {
-            return View(db.PayPal.OrderByDescending(t => t.TransactionTime));
+            return View(db.PayPal.OrderByDescending(t => t.txtTime));
         }
 
         [Authorize]
@@ -27,20 +27,30 @@ namespace Simply_First.Controllers
             if (paypalService.TXN_ID != null)
             {
                 PayPal paypal = new PayPal();
-                paypal.TransactionId = paypalService.TXN_ID;
+                paypal.transactionID = paypalService.TXN_ID;
                 decimal amount = Convert.ToDecimal(paypalService.PaymentGross);
-                paypal.Amount = amount;
-                paypal.BuyerEmail = paypalService.PayerEmail;
-                paypal.TransactionTime = DateTimeOffset.Now.LocalDateTime;
-                paypal.Quantity = paypalService.Quantity;
-                paypal.FirstName = paypalService.PayerFirstName;
-                paypal.LastName = paypalService.PayerLastName;
-                paypal.Custom = paypalService.Custom;
+                paypal.amount = amount;
+                paypal.buyerEmail = paypalService.PayerEmail;
+                paypal.txtTime = DateTimeOffset.Now.LocalDateTime;
+                paypal.quantity = paypalService.Quantity;
+                paypal.firstName = paypalService.PayerFirstName;
+                paypal.lastName = paypalService.PayerLastName;
+                paypal.custom = paypalService.Custom;
 
                 db.PayPal.Add(paypal);
                 db.SaveChanges();
             }
 
+            return View();
+        }
+
+        public ActionResult Success()
+        {
+            return View();
+        }
+
+        public ActionResult Cancel()
+        {
             return View();
         }
     }

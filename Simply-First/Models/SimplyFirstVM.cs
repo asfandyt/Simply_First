@@ -283,32 +283,32 @@ namespace Simply_First.ViewModels
     {
         [Key]
         [Display(Name = "Transaction Id")]
-        public string TransactionId { get; set; }
+        public string transactionID { get; set; }
 
-        public string UserId { get; set; }
+        //public string UserId { get; set; }
 
         //[DisplayFormat(DataFormatString = "{0:dd MMM yyyy - H:mm:ss}")]
         [Display(Name = "Purchase Time")]
-        public DateTime TransactionTime { get; set; }
+        public DateTime txtTime { get; set; }
 
         [Display(Name = "First Name")]
-        public string FirstName { get; set; }
+        public string firstName { get; set; }
 
         [Display(Name = "Last Name")]
-        public string LastName { get; set; }
+        public string lastName { get; set; }
 
         [Display(Name = "Session Id")]
-        public string Custom { get; set; }
+        public string custom { get; set; }
 
         [Display(Name = "Total Products")]
-        public string Quantity { get; set; }
+        public string quantity { get; set; }
 
         [Display(Name = "Buyer Email")]
-        public string BuyerEmail { get; set; }
+        public string buyerEmail { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)]
         [Display(Name = "Transaction Amount")]
-        public decimal Amount { get; set; }
+        public decimal amount { get; set; }
 
         //[Display(Name = "Payment Status")]
         //public string paymentStatus { get; set; }

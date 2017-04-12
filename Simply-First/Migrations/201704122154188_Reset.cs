@@ -23,17 +23,16 @@ namespace Simply_First.Migrations
                 "dbo.PayPal",
                 c => new
                     {
-                        TransactionId = c.String(nullable: false, maxLength: 128),
-                        UserId = c.String(),
-                        TransactionTime = c.DateTime(nullable: false),
-                        FirstName = c.String(),
-                        LastName = c.String(),
-                        Custom = c.String(),
-                        Quantity = c.String(),
-                        BuyerEmail = c.String(),
-                        Amount = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        transactionID = c.String(nullable: false, maxLength: 128),
+                        txtTime = c.DateTime(nullable: false),
+                        firstName = c.String(),
+                        lastName = c.String(),
+                        custom = c.String(),
+                        quantity = c.String(),
+                        buyerEmail = c.String(),
+                        amount = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
-                .PrimaryKey(t => t.TransactionId);
+                .PrimaryKey(t => t.transactionID);
             
             CreateTable(
                 "dbo.Products",
