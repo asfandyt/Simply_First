@@ -9,11 +9,7 @@
     <link href="~/Content/Boostrap 4/boostrap.min.css" rel="stylesheet" />
     <link href="~/Content/Boostrap 4/dashboard.css" rel="stylesheet" />
 
-    @* Bootstrap 3 *@
-    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />*@
-    @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />*@
-
-    @*<link href="~/Content/sidebar.css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
 
@@ -23,7 +19,8 @@
     @* Google Captcha *@
     <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
-<body>
+
+<body class="@ViewBag.BodyClass">
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-primary">
         <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,7 +31,7 @@
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
+                @*<li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>*@
                 <li class="nav-item">@Html.ActionLink("Drones", "Product", "Home", null, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Shop", "Purchase", "Home", null, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Documentation", "Document", "Home", null, new { @class = "nav-link" })</li>
@@ -42,55 +39,50 @@
                 <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
             </ul>
 
-            <ul class="navbar-nav mr-4 mt-lg-0">
-
-                <form class="form-inline mr-sm-2" method="get" action="~/Home/Search">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" name="name" />
-                    <input class="btn btn-default" type="submit" value="Search" />
-                </form>
-
-            </ul>
-
             <ul class="navbar-nav">
+                <li class="nav-item mr-3">
+                    <form class="navbar-form" role="search" method="get" action="~/Home/Search">
+                        <div class="input-group add-on">
+                            <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
+                            <div class="input-group-btn" style="height:36px; margin-top:1px;">
+                                <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </li>
                 <li class="nav-item mr-3">@Html.ActionLink("Cart", "ViewCart", "Home", null, new { @class = "nav-link" })</li>
                 @{
                     if (Request.IsAuthenticated)
                     {
-                        <span class="navbar-text mr-3"><strong>[@Html.Raw(User.Identity.Name)]</strong></span>
+                        @Html.Raw("<li class=\"nav-item\"><strong>");
+                        @Html.ActionLink(User.Identity.Name, "SecureArea", "Accounts", null, new { @class = "nav-link" })
+                        @Html.Raw("</strong></li>");
                     }
                 }
-                <li class="nav-item">
-                    @{
-                        if (!Request.IsAuthenticated)
-                        {
-                            @Html.ActionLink("Login", "Index", "Accounts", null, new { @class = "nav-link" })
-                        }
+                @{
+                    if (!Request.IsAuthenticated)
+                    {
+                        @Html.Raw("<li class=\"nav-item\">");
+                        @Html.ActionLink("Login", "Index", "Accounts", null, new { @class = "nav-link" })
+                        @Html.Raw("</li>");
                     }
-                </li>
-                <li class="nav-item">
-                    @{
-                        if (!Request.IsAuthenticated)
-                        {
-                            @Html.ActionLink("Register", "Register", "Accounts", null, new { @class = "nav-link" })
-                        }
+                }
+                @{
+                    if (!Request.IsAuthenticated)
+                    {
+                        @Html.Raw("<li class=\"nav-item\">");
+                        @Html.ActionLink("Register", "Register", "Accounts", null, new { @class = "nav-link" })
+                        @Html.Raw("</li>");
                     }
-                </li>
-                <li class="nav-item">
-                    @{
-                        if (Request.IsAuthenticated)
-                        {
-                            @Html.ActionLink("Profile", "SecureArea", "Accounts", null, new { @class = "nav-link" })
-                        }
+                }
+                @{
+                    if (Request.IsAuthenticated)
+                    {
+                        @Html.Raw("<li class=\"nav-item\">");
+                        @Html.ActionLink("Logout", "Logout", "Accounts", null, new { @class = "nav-link" })
+                        @Html.Raw("</li>");
                     }
-                </li>
-                <li class="nav-item">
-                    @{
-                        if (Request.IsAuthenticated)
-                        {
-                            @Html.ActionLink("Logout", "Logout", "Accounts", null, new { @class = "nav-link" })
-                        }
-                    }
-                </li>
+                }
             </ul>
         </div>
         @*</div>*@
@@ -112,7 +104,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-    @* Boostrap 3 *@
-    @*@<script src="~/Scripts/bootstrap.min.js"></script>*@
 </body>
 </html>

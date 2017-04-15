@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Shopping Cart";
+    ViewBag.BodyClass = "ShoppingCart";
 }
 
 <h1 class="text-center display-4 pb-3">Shopping Cart</h1>
@@ -72,9 +73,19 @@
                 </td>
             </tr>
         }
+        <tr>
+            <td colspan="5">
+            </td>
+            <td></td>
+            <td></td>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <td colspan="6"></td>
+            <td><p>@(total)</p></td>
+            <td colspan="2"></td>
+        </tr>
     </table>
-
-    <p>@(total)</p>
 </form>
 
 <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">

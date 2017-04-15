@@ -187,6 +187,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\sidebar.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Tropical\MP4\Tropical.mp4" />
+    <Content Include="Content\Tropical\Snapshots\Tropical.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Documents\documentation.pdf" />
@@ -201,6 +203,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\Tropical\WEBM\Tropical.webm" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
