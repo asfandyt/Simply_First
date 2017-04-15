@@ -7,41 +7,43 @@
 <h1 class="text-center display-4 pb-3">Purchase Product</h1>
 
 <table class="table table-bordered">
-    <tr class="bg-primary text-white text-center">
-        <th>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductImage)
-        </th>
-        <th class="text-center">
-            @Html.DisplayNameFor(model => model.ProductDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th class="hidden-md-up hidden-xs-up"></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr class="text-center">
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                <img src="@Html.DisplayFor(modelItem => item.ProductImage)" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.ActionLink("Purchase", "AddToCart", "Home", new { id = item.ProductId }, new { @class = "btn btn-success btn-sm" })
-            </td>
+    <thead>
+        <tr class="bg-primary text-white text-center">
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductImage)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th class="hidden-md-up hidden-xs-up"></th>
         </tr>
-    }
-
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="text-center">
+                <td data-title="Product Name">
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td data-title="Image">
+                    <img src="@Html.DisplayFor(modelItem => item.ProductImage)" alt="@Html.DisplayFor(modelItem => item.ProductName)" class="img-fluid" />
+                </td>
+                <td data-title="Description">
+                    @Html.DisplayFor(modelItem => item.ProductDescription)
+                </td>
+                <td data-title="Price">
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Add To Cart", "AddToCart", "Home", new { id = item.ProductId }, new { @class = "btn btn-success btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

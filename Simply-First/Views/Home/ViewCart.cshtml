@@ -9,82 +9,93 @@
 
 
 <form action="~/Home/UpdateQuantity" method="post">
-    <table class="table table-bordered">
-        <tr class="bg-primary text-white text-center">
-            <th>
-                Image
-            </th>
-            <th>
-                Name
-            </th>
-            <th>
-                Description
-            </th>
-            <th class="text-center">
-                Manufacturer
-            </th>
-            <th>
-                Quantity
-            </th>
-            <th>
-                Price
-            </th>
-            <th>
-                Total Price
-            </th>
-            <th class="hidden-md-up hidden-xs-up"></th>
-            <th class="hidden-md-up hidden-xs-up"></th>
-        </tr>
-        
-        @{decimal total = 0; }
-
-        @foreach (var item in ViewBag.Shopping)
-        {
-            total = total + item.TotalPrice;
-
-            <tr class="text-center">
-                <td>
-                    <img src="@(item.Prod.ProductImage)" />
-                </td>
-                <td>
-                    @(item.Prod.ProductName)
-                </td>
-                <td>
-                    @(item.Prod.ProductDescription)
-                </td>
-                <td>
-                    @(item.Prod.Manufacturer)
-                </td>
-                <td>
-                    <input type="number" value="@(item.Quantity)" id="quantity" name="quantity" class="form-control form-control-sm" />
-                    <input type="hidden" id="id" name="id" value="@(item.ProductId)" />
-                </td>
-                <td>
-                    @(item.UnitPrice)
-                </td>
-                <td>
-                    @(item.TotalPrice)
-                </td>
-                <td>
-                    <input type="submit" id="submit" value="Update" class="btn btn-success btn-sm" />
-                </td>
-                <td>
-                    @Html.ActionLink("Remove", "RemoveItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
-                </td>
+    <table class="table table-bordered table-condensed">
+        <thead>
+            <tr class="bg-primary text-white text-center">
+                <th data-title="Image">
+                    Image
+                </th>
+                <th data-title="Name">
+                    Name
+                </th>
+                <th data-title="Description">
+                    Description
+                </th>
+                <th data-title="Manufacturer">
+                    Manufacturer
+                </th>
+                <th data-title="Quantity">
+                    Quantity
+                </th>
+                <th data-title="Price">
+                    Price
+                </th>
+                <th data-title="TotalPrice">
+                    Total Price
+                </th>
+                <th colspan="2" class="hidden-xs-up"></th>
             </tr>
-        }
-        <tr>
-            <td colspan="5">
-            </td>
-            <td></td>
-            <td></td>
-            <td colspan="2"></td>
-        </tr>
-        <tr>
-            <td colspan="6"></td>
-            <td><p>@(total)</p></td>
-            <td colspan="2"></td>
-        </tr>
+        </thead>
+        @{decimal total = 0; }
+        <tbody>
+            @foreach (var item in ViewBag.Shopping)
+            {
+                total = total + item.TotalPrice;
+
+                <tr class="text-center">
+                    <td data-title="Image">
+                        <img src="@(item.Prod.ProductImage)" class="img-fluid" alt="@(item.Prod.ProductName)" />
+                    </td>
+                    <td data-title="Name">
+                        @(item.Prod.ProductName)
+                    </td>
+                    <td data-title="Description">
+                        @(item.Prod.ProductDescription)
+                    </td>
+                    <td data-title="Manufacturer">
+                        @(item.Prod.Manufacturer)
+                    </td>
+                    <td data-title="Quantity">
+                        <input type="number" value="@(item.Quantity)" id="quantity" name="quantity" class="form-control form-control-sm" />
+                        <input type="hidden" id="id" name="id" value="@(item.ProductId)" />
+                    </td>
+                    <td data-title="Price">
+                        @(item.UnitPrice)
+                    </td>
+                    <td data-title="TotalPrice">
+                        @(item.TotalPrice)
+                    </td>
+                    <td data-title="Update">
+                        <input type="submit" id="submit" value="Update" class="btn btn-success btn-sm" />
+                    </td>
+                    <td data-title="Delete">
+                        @Html.ActionLink("Remove", "RemoveItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="5"></td>
+                <td>Tax</td>
+                <td>
+                    $12.00
+                </td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td colspan="5"></td>
+                <td>Shipping</td>
+                <td>
+                    $49.99
+                </td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td colspan="5"></td>
+                <td>Total</td>
+                <td><p>$@(12.00m + 49.99m + total)</p></td>
+                <td colspan="2"></td>
+            </tr>
+        </tbody>
     </table>
 </form>
 
@@ -112,5 +123,3 @@
     <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
     <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
-
-
