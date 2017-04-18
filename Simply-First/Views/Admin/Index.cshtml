@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Simply_First.ViewModels.SiteUserVM>
+@model IEnumerable<Simply_First.ViewModels.SiteUserVM>
 
 @{
     ViewBag.Title = "Users";
@@ -19,6 +19,9 @@
         <th>
             @Html.DisplayNameFor(model => model.EmailConfirmed)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
         <th class="hidden-md-up hidden-xs-up"></th>
         <th class="hidden-md-up hidden-xs-up"></th>
         <th class="hidden-md-up hidden-xs-up"></th>
@@ -34,6 +37,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EmailConfirmed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
         </td>
         <td>
             @Html.ActionLink("Edit", "EditUser", new { id = item.Id }, new { @class = "btn btn-success btn-sm" })
