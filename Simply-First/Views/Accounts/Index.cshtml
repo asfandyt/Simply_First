@@ -6,14 +6,14 @@
 
 <h1 class="text-center display-4 pb-3">Login</h1>
 
-<div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+<div class="alert alert-warning alert-dismissible fade show text-center offset-md-3 col-md-6 offset-md-3" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
-    <strong>User</strong> user@sf.com / password
+    <strong>Admin</strong> admin@sf.com / password
 </div>
 
-<div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+<div class="alert alert-warning alert-dismissible fade show text-center offset-md-3 col-md-6 offset-md-3" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -27,37 +27,37 @@
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label offset-md-1 col-md-2" })
-            <div class="offset-md-1 col-md-10 offset-md-1">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label offset-md-3 col-md-2" })
+            <div class="offset-md-3 col-md-6 offset-md-3">
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label offset-md-1 col-md-2" })
-            <div class="offset-md-1 col-md-10 offset-md-1">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label offset-md-3 col-md-2" })
+            <div class="offset-md-3 col-md-6 offset-md-3">
                 @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="offset-md-1 col-md-10">
+            <div class="offset-md-3 col-md-9">
                 @Html.ActionLink("Forgot your password?", "ForgotPassword", "Accounts", null, new { @class = "text-primary"})
             </div>
         </div>
 
         <div class="form-group">
-            <div class="offset-md-1 col-md-10">
+            <div class="offset-md-3 col-md-9">
                 <input type="submit" value="Login" class="btn btn-primary" />
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                @TempData["LoginError"]
-                @TempData["RegisterSuccess"]
+            <div class="offset-md-3 col-md-9">
+                <p class="text-danger">@TempData["LoginError"]</p>
+                <p class="text-success">@TempData["RegisterSuccess"]</p>
                 @*@TempData["Logout"]*@
             </div>
         </div>

@@ -15,47 +15,47 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         
         <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label offset-md-3 col-md-3" })
+            <div class="offset-md-3 col-md-6 offset-md-3">
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label offset-md-3 col-md-3" })
+            <div class="offset-md-3 col-md-6 offset-md-3">
                 @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label offset-md-3 col-md-3" })
+            <div class="offset-md-3 col-md-6 offset-md-3">
                 @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="offset-md-3 col-md-9">
                 <div class="g-recaptcha inp50" data-sitekey="6LfRCRUUAAAAAAP0UKAszces8MPrDnZZum737Cgr"></div>
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="offset-md-3 col-md-9">
                 <input type="submit" value="Register" class="btn btn-primary" />
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="offset-md-3 col-md-9">
                 @*@Html.Raw(ViewBag.CaptchaResponse)*@
-                @TempData["RegisterSuccess"]
-                @TempData["RegisterError"]
-                @TempData["CaptchaError"]
+                <p class="text-success">@TempData["RegisterSuccess"]</p>
+                <p class="text-danger">@TempData["RegisterError"]</p>
+                <p class="text-danger">@TempData["CaptchaError"]</p>
             </div>
         </div>
     </div>
