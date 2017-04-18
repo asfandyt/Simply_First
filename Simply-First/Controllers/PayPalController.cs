@@ -27,7 +27,11 @@ namespace Simply_First.Controllers
         // GET: PayPal
         public ActionResult InvoiceHistory()
         {
-            return View(db.PayPal.OrderByDescending(t => t.txtTime));
+            string userId = FindUserId();
+
+            IEnumerable<PayPal> user = db.PayPal.Where(u => u.custom == userId).ToList();
+
+            return View(user.OrderByDescending(t => t.txtTime));
         }
 
         public ActionResult Purchase()
