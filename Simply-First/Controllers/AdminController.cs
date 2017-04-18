@@ -232,5 +232,46 @@ namespace Simply_First.Controllers
 
             return RedirectToAction("Index", "Admin");
         }
+
+        
+        public async Task<ActionResult> DeleteUser(string id)
+        {
+            var _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
+
+            if (ModelState.IsValid)
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                var user = await _userManager.FindByIdAsync(id);
+                var logins = user.Logins;
+                var rolesForUser = await _userManager.GetRolesAsync(id);
+
+                using (var transaction = db.Database.BeginTransaction())
+                {
+                    foreach (var login in logins.ToList())
+                    {
+                        await _userManager.RemoveLoginAsync(login.UserId, new UserLoginInfo(login.LoginProvider, login.ProviderKey));
+                    }
+
+                    if (rolesForUser.Count() > 0)
+                    {
+                        foreach (var item in rolesForUser.ToList())
+                        {
+                            // item should be the name of the role
+                            var result = await _userManager.RemoveFromRoleAsync(user.Id, item);
+                        }
+                    }
+
+                    await _userManager.DeleteAsync(user);
+                    transaction.Commit();
+                }
+
+                return RedirectToAction("Index", "Admin");
+            }
+            return View();
+        }
     }
 }
