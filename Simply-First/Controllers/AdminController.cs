@@ -196,7 +196,7 @@ namespace Simply_First.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult EditUserPost(UserTableForAdminVM userTable)
+        public ActionResult EditUserPost(SiteUserVM userTable)
         {
             System.Diagnostics.Debug.WriteLine(userTable.Id);
             string userId = userTable.Id;

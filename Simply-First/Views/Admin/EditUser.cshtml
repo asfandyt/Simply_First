@@ -1,5 +1,5 @@
 @using System.Activities.Statements
-@model Simply_First.ViewModels.UserTableForAdminVM
+@model Simply_First.ViewModels.SiteUserVM
 
 @{
     ViewBag.Title = "EditUser";
@@ -34,9 +34,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EmailConfirmed, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EmailConfirmed)
             <div class="col-md-10">
-                @Html.CheckBoxFor(model => model.EmailConfirmed)
+                @Html.CheckBoxFor(model => model.EmailConfirmed, new { @checked = "checked"})
                 @Html.ValidationMessageFor(model => model.EmailConfirmed, "", new { @class = "text-danger" })
             </div>
         </div>

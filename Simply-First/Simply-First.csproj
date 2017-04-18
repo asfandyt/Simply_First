@@ -241,6 +241,7 @@
     <Content Include="Views\PayPal\Success.cshtml" />
     <Content Include="Views\PayPal\Cancel.cshtml" />
     <Content Include="Views\Home\API.cshtml" />
+    <Content Include="Views\Admin\EditUser.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -281,6 +282,7 @@
     <Compile Include="Repositories\UserRepo.cs" />
     <Compile Include="Services\CaptchaHelper.cs" />
     <Compile Include="Services\PayPalService.cs" />
+    <Compile Include="ViewModels\UserTableForAdminVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

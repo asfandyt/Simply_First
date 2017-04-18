@@ -14,12 +14,14 @@ namespace Simply_First.ViewModels
         [Display(Name ="User Name")]
         public string UserName { get; set; }
 
+        [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
         
         [Display(Name = "Email Confirmed")]
         public bool EmailConfirmed { get; set; }
         
+        [Phone]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
     }
