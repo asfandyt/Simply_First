@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -153,6 +153,24 @@ namespace Simply_First.ViewModels
             {
                 newItem.Quantity = 1;
                 Items.Add(newItem);
+            }
+        }
+
+        public void SubtractItem(int productId)
+        {
+            // Find the item and update the quantity
+            CartItem updatedItem = new CartItem(productId);
+            foreach (CartItem item in Items)
+            {
+                if (item.Equals(updatedItem))
+                {
+                    item.Quantity = item.Quantity - 1;
+                    if (item.Quantity <= 0) {
+                        Items.Remove(item);
+                    }
+
+                    return;
+                }
             }
         }
 
