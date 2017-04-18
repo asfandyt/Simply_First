@@ -42,6 +42,7 @@ namespace Simply_First.ViewModels
 
         [Required]
         [Range(0, int.MaxValue, ErrorMessage = "A value bigger than 0 is needed.")]
+        [DataType(DataType.Currency)]
         [Display(Name = "Price")]
         public decimal Price { get; set; }
     }
@@ -63,7 +64,7 @@ namespace Simply_First.ViewModels
 
         [Required]
         [Display(Name = "Phone Number")]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         [Required]
         [Display(Name = "Street Address")]
