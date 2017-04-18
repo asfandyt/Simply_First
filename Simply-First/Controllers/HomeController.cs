@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using Simply_First.ViewModels;
@@ -84,6 +84,13 @@ namespace Simply_First.Controllers
         {
 
             ShoppingCart.Instance.AddItem(id);
+            return RedirectToAction("ViewCart", "Home");
+        }
+
+        public ActionResult SubtractItem(int id)
+        {
+
+            ShoppingCart.Instance.SubtractItem(id);
             return RedirectToAction("ViewCart", "Home");
         }
 
