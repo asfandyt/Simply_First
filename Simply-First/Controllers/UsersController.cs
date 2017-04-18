@@ -46,14 +46,14 @@ namespace Simply_First.Controllers
                 userInformation = new UserInformation
                 {
                     UserId = userId,
-                    FirstName = "a",
-                    LastName = "a",
-                    PhoneNumber = 111111111,
-                    StreetAddress = "asd",
-                    City = "asda",
-                    PostalCode = "asd",
-                    Province = "asd",
-                    Country = "asd",
+                    FirstName = "Enter Name",
+                    LastName = "Enter Last Name",
+                    PhoneNumber = 0000000000,
+                    StreetAddress = "Enter Street Address",
+                    City = "Enter City",
+                    PostalCode = "Enter Postal Code",
+                    Province = "Enter Province",
+                    Country = "Enter Country",
                     JoinDate = DateTime.Now
                 };
                 
