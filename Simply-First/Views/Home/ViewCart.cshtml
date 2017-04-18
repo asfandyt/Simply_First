@@ -1,4 +1,4 @@
-@model IEnumerable<Simply_First.ViewModels.ShoppingCart>
+﻿@model IEnumerable<Simply_First.ViewModels.ShoppingCart>
 
 @{
     ViewBag.Title = "Shopping Cart";
@@ -6,83 +6,80 @@
 
 <h1 class="text-center display-4 pb-3">Shopping Cart</h1>
 
-    <table class="table table-bordered">
-        <tr class="bg-primary text-white text-center">
-            <th>
-                Image
-            </th>
-            <th>
-                Name
-            </th>
-            <th>
-                Description
-            </th>
-            <th class="text-center">
-                Manufacturer
-            </th>
-            <th>
-                Quantity
-            </th>
-            <th>
-                Price
-            </th>
-            <th>
-                Total Price
-            </th>
-            <th class="hidden-md-up hidden-xs-up"></th>
-            <th class="hidden-md-up hidden-xs-up"></th>
+<table class="table table-bordered">
+    <tr class="bg-primary text-white text-center">
+        <th>
+            Image
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th class="text-center">
+            Manufacturer
+        </th>
+        <th>
+            Quantity
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Total Price
+        </th>
+        <th class="hidden-md-up hidden-xs-up"></th>
+        <th class="hidden-md-up hidden-xs-up"></th>
+    </tr>
+
+    @{decimal total = 0; }
+
+    @foreach (var item in ViewBag.Shopping)
+    {
+        total = total + item.TotalPrice;
+
+        <tr class="text-center">
+            <td>
+                <img src="@(item.Prod.ProductImage)" />
+            </td>
+            <td>
+                @(item.Prod.ProductName)
+            </td>
+            <td>
+                @(item.Prod.ProductDescription)
+            </td>
+            <td>
+                @(item.Prod.Manufacturer)
+            </td>
+            <td>
+                @(item.Quantity)
+            </td>
+            <td>
+                @(item.UnitPrice)
+            </td>
+            <td>
+                @(item.TotalPrice)
+            </td>
+            <td class="col-md-1">
+                @Html.ActionLink("+", "AddItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-success btn-sm" })
+                @Html.ActionLink("-", "SubtractItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
+            </td>
+            <td>
+                @Html.ActionLink("Clear", "RemoveItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
+            </td>
         </tr>
-        
-        @{decimal total = 0; }
+    }
+</table>
 
-        @foreach (var item in ViewBag.Shopping)
-        {
-            total = total + item.TotalPrice;
-
-            <tr class="text-center">
-                <td>
-                    <img src="@(item.Prod.ProductImage)" />
-                </td>
-                <td>
-                    @(item.Prod.ProductName)
-                </td>
-                <td>
-                    @(item.Prod.ProductDescription)
-                </td>
-                <td>
-                    @(item.Prod.Manufacturer)
-                </td>
-                <td>
-                    @(item.Quantity)
-                </td>
-                <td>
-                    @(item.UnitPrice)
-                </td>
-                <td>
-                    @(item.TotalPrice)
-                </td>
-                <td>
-                    @Html.ActionLink("+", "AddItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-success btn-sm" }) 
-                    @Html.ActionLink("-", "SubtractItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
-                </td>
-                <td>
-                    @Html.ActionLink("Remove", "RemoveItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
-                </td>
-            </tr>
-        }
-    </table>
-
-    <p>@(total)</p>
-
+<p>@(total)</p>
 
 <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
-    <input type="hidden" name="cmd" value="_s-xclick">
-    <input type="hidden" name="hosted_button_id" value="GV8YSQDCBR2W8" />
+    <input type="hidden" name="cmd" value="_xclick">
     <input type="hidden" name="business" value="TDJBNEF3XE5NU">
-    <input type="hidden" name="custom" value="@ViewBag.Session">
     <input type="hidden" name="lc" value="US">
-    <input type="hidden" name="item_name" value="Simply First Drones">
-    <input type="hidden" name="item_number" value="1">
+    <input type="hidden" name="item_name" value="Simply First">
+    <input type="hidden" name="custom" value="@ViewBag.Session">
     <input type="hidden" name="amount" value="@(total)">
     <input type="hidden" name="currency_code" value="USD">
     <input type="hidden" name="button_subtype" value="services">
@@ -94,10 +91,7 @@
     <input type="hidden" name="cancel_return" value="http://gurkiratbola.com/simplyfirst/paypal/cancel">
     <input type="hidden" name="tax_rate" value="12.000">
     <input type="hidden" name="shipping" value="49.99">
-    <input type="hidden" name="address_override" value="1">
-    <input type="hidden" name="notify_url" value="http://gurkiratbola.com/simplyfirst/paypal/purchase">
+    <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
     <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
     <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
-
-

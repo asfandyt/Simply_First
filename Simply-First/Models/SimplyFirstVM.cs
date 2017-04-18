@@ -165,7 +165,8 @@ namespace Simply_First.ViewModels
                 if (item.Equals(updatedItem))
                 {
                     item.Quantity = item.Quantity - 1;
-                    if (item.Quantity <= 0) {
+                    if (item.Quantity <= 0)
+                    {
                         Items.Remove(item);
                     }
 
@@ -303,7 +304,7 @@ namespace Simply_First.ViewModels
         [Display(Name = "Transaction Id")]
         public string transactionID { get; set; }
 
-        //public string UserId { get; set; }
+        public string UserId { get; set; }
 
         //[DisplayFormat(DataFormatString = "{0:dd MMM yyyy - H:mm:ss}")]
         [Display(Name = "Purchase Time")]
@@ -342,9 +343,11 @@ namespace Simply_First.ViewModels
         public string Email { get; set; }
 
         [Required]
+
         public string Name { get; set; }
 
         [Required]
+        [DataType(DataType.MultilineText)]
         public string Message { get; set; }
     }
 

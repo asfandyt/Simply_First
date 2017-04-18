@@ -1,4 +1,5 @@
-﻿using Simply_First.Services;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Simply_First.Services;
 using Simply_First.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,16 @@ namespace Simply_First.Controllers
     public class PayPalController : Controller
     {
         private SimplyFirstVMContext db = new SimplyFirstVMContext();
+
+        public string FindUserId()
+        {
+            string name = User.Identity.Name;
+
+            IdentityUser user = db.Users.Where(u => u.UserName == name).FirstOrDefault();
+            string userId = user.Id;
+
+            return userId;
+        }
 
         [Authorize]
         // GET: PayPal
@@ -35,6 +46,7 @@ namespace Simply_First.Controllers
                 paypal.firstName = paypalService.PayerFirstName;
                 paypal.lastName = paypalService.PayerLastName;
                 paypal.custom = paypalService.Custom;
+                paypal.UserId = FindUserId();
 
                 db.PayPal.Add(paypal);
                 db.SaveChanges();
