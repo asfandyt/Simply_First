@@ -34,7 +34,20 @@ namespace Simply_First.Controllers
                 UserInformation userInformation = db.UserInformation.Where(u => u.UserId == user.Id).FirstOrDefault();
                 if (userInformation == null)
                 {
-                    return HttpNotFound("User Information is null");
+                    userInformation = new UserInformation
+                    {
+                        UserId = user.Id,
+                        FirstName = "",
+                        LastName = "",
+                        PhoneNumber = "",
+                        StreetAddress = "",
+                        City = "",
+                        PostalCode = "",
+                        Province = "",
+                        Country = "",
+                        JoinDate = DateTime.Now
+                    };
+                    //return HttpNotFound("User Information is null");
                 }
                 siteUser.Id = user.Id;
                 siteUser.Email = user.Email;
