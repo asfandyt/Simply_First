@@ -12,6 +12,8 @@ DROP TABLE [dbo].[CartItem]
 DROP TABLE [dbo].[ShoppingCart]
 DROP TABLE [dbo].[UserInformation]
 DROP TABLE [dbo].[PayPal]
+DROP TABLE [dbo].[Contact]
+
 
 SELECT * FROM AspNetUsers
 SELECT * FROM AspNetRoles
