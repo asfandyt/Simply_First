@@ -314,6 +314,22 @@ namespace Simply_First.ViewModels
         //public string paymentStatus { get; set; }
     }
 
+    public class Contact
+    {
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        public string Message { get; set; }
+    }
+
     public class SimplyFirstVMContext : IdentityDbContext<IdentityUser>
     {
         public SimplyFirstVMContext() : base("DefaultConnection") { }
@@ -342,5 +358,6 @@ namespace Simply_First.ViewModels
         public DbSet<CartItem> CartItem { get; set; }
         public DbSet<ShoppingCart> ShoppingCart { get; set; }
         public DbSet<PayPal> PayPal { get; set; }
+        public DbSet<Contact> Contact { get; set; }
     }
 }
