@@ -6,13 +6,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Search</h2>
+<h1 class="display-4 text-center pb-3">Search</h1>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
+<table class="table table-bordered">
+    <tr class="bg-primary text-white text-center">
         <th>
             @Html.DisplayNameFor(model => model.ProductName)
         </th>
@@ -31,7 +28,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
-        <th></th>
+        <th class="hidden-md-up hidden-xs-up"></th>
 
     </tr>
 
@@ -57,11 +54,8 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-            <td>
-                @Html.ActionLink("Purchase", "AddToCart", "Home", new { id = item.ProductId }, new { @class = "btn btn-success btn-sm" })
+                @Html.ActionLink("Add to Cart", "AddToCart", "Home", new { id = item.ProductId }, new { @class = "btn btn-success btn-sm" })
             </td>
-
         </tr>
     }
-
 </table>

@@ -52,41 +52,24 @@ namespace Simply_First.Controllers
             return View();
         }
 
-        //public void AddToCart(object sender, EventArgs e)
-        //{
-        //    // Add product 1 to the shopping cart
-        //    ShoppingCart.Instance.AddItem(1);
-
-        //    // Redirect the user to view their shopping cart
-        //   // Response.Redirect("ViewCart.aspx");
-        //}
+        public ActionResult API()
+        {
+            return View();
+        }
 
         public ActionResult AddtoCart(int id)
         {
             ShoppingCart.Instance.AddItem(id);
-            //Console.WriteLine("SOMETHING HAPPENED");
+
             return RedirectToAction("Purchase", "Home");
         }
 
         public ActionResult ViewCart()
         {
-            // Build an example model
-
-            // var model = ShoppingCart.Instance;
-            // var model = new ShoppingVM();
-
             ViewBag.Shopping = ShoppingCart.Instance.Items.ToList();
             Session["session_tx"] = "Unique Session Id";
             ViewBag.Session = this.Session.SessionID;
 
-            ///model.Property = Session["ASPNETShoppingCart"];
-
-            // List<Array> shitList = new List<Array> {}
-            // Pass the model to the View
-            return View();
-        }
-        public ActionResult ApiDocumentation()
-        {
             return View();
         }
 

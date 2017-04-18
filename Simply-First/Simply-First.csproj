@@ -235,12 +235,12 @@
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Accounts\ChangePassword.cshtml" />
-    <Content Include="Views\Home\ApiDocumentation.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Shared\_LayoutHome.cshtml" />
     <Content Include="Views\PayPal\InvoiceHistory.cshtml" />
     <Content Include="Views\PayPal\Success.cshtml" />
     <Content Include="Views\PayPal\Cancel.cshtml" />
+    <Content Include="Views\Home\API.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
