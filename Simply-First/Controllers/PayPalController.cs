@@ -50,9 +50,10 @@ namespace Simply_First.Controllers
                 paypal.firstName = paypalService.PayerFirstName;
                 paypal.lastName = paypalService.PayerLastName;
                 paypal.custom = paypalService.Custom;
-
+                ShoppingCart.Instance.ClearCart();
                 db.PayPal.Add(paypal);
                 db.SaveChanges();
+
             }
 
             return View("Success", "Home");
@@ -67,5 +68,8 @@ namespace Simply_First.Controllers
         {
             return View();
         }
+
+
+
     }
 }

@@ -77,6 +77,7 @@ namespace Simply_First.Controllers
             return View();
         }
 
+
         public ActionResult RemoveItem(int id)
         {
             ShoppingCart.Instance.RemoveItem(id);

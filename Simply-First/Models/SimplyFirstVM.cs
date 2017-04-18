@@ -209,6 +209,20 @@ namespace Simply_First.ViewModels
             CartItem removedItem = new CartItem(productId);
             Items.Remove(removedItem);
         }
+
+        public void ClearCart()
+        {
+            ShoppingCart cart = new ShoppingCart();
+            foreach (CartItem item in Items)
+            {
+
+                Items.Remove(item);
+                return;
+            }
+
+        }
+
+
         #endregion
 
         #region Reporting Methods
