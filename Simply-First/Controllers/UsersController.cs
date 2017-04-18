@@ -48,7 +48,11 @@ namespace Simply_First.Controllers
                     UserId = userId,
                     FirstName = "Enter Name",
                     LastName = "Enter Last Name",
+<<<<<<< HEAD
                     PhoneNumber = "Enter Phone Number",
+=======
+                    PhoneNumber = "0000000000",
+>>>>>>> a6b1ce3a083b9a2ee1f66d9c025199c7740e8b96
                     StreetAddress = "Enter Street Address",
                     City = "Enter City",
                     PostalCode = "Enter Postal Code",
