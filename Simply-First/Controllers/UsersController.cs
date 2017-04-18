@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -46,14 +47,14 @@ namespace Simply_First.Controllers
                 userInformation = new UserInformation
                 {
                     UserId = userId,
-                    FirstName = "Enter Name",
-                    LastName = "Enter Last Name",
-                    PhoneNumber = "Enter Phone Number",
-                    StreetAddress = "Enter Street Address",
-                    City = "Enter City",
-                    PostalCode = "Enter Postal Code",
-                    Province = "Enter Province",
-                    Country = "Enter Country",
+                    FirstName = " ",
+                    LastName = " ",
+                    PhoneNumber = " ", 
+                    StreetAddress = " ",
+                    City = " ",
+                    PostalCode = " ",
+                    Province = " ",
+                    Country = " ",
                     JoinDate = DateTime.Now
                 };
                 
