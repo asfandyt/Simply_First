@@ -155,5 +155,19 @@ namespace Simply_First.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [Authorize]
+        public ActionResult Search(string name)
+        {
+            if (!string.IsNullOrEmpty(name))
+            {
+                string userName = User.Identity.Name;
+                IdentityUser user = db.Users.Where(u => u.UserName == userName).FirstOrDefault();
+                string userId = user.Id;
+                IEnumerable<PayPal> paypal = db.PayPal.Where(s => s.custom == userId && s.amount.ToString().Contains(name) || s.custom == userId && s.txtTime.ToString().Contains(name));
+                return View(paypal.ToList());
+            }
+            return View();
+        }
     }
 }

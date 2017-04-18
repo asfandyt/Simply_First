@@ -291,5 +291,15 @@ namespace Simply_First.Controllers
             }
             return View();
         }
+        [Authorize(Roles = "Admin")]
+        public ActionResult Search(string name)
+        {
+            if (!string.IsNullOrEmpty(name))
+            {
+                IEnumerable<PayPal> paypal = db.PayPal.Where(s => s.amount.ToString().Contains(name) || s.transactionID.Contains(name) || s.lastName.Contains(name) || s.firstName.Contains(name) || s.buyerEmail.Contains(name));
+                return View(paypal.ToList());
+            }
+            return View(db.PayPal.ToList());
+        }
     }
 }
