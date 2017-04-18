@@ -1,17 +1,34 @@
 ﻿@model IEnumerable<Simply_First.ViewModels.PayPal>
 
 @{
-    ViewBag.Title = "Search";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Invoice History";
 }
 
-<h2>Search</h2>
+@Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
+<h1 class="text-center display-4 pb-3">Invoice History</h1>
+@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole("Admin"))
+    {
+        <form class="form-inline mr-sm-2" method="get" action="~/Admin/Search">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="name" />
+            <input class="btn btn-secondary" type="submit" value="Search" />
+        </form>
+    }
+    else
+    {
+        <form class="form-inline mr-sm-2" method="get" action="~/Users/Search">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="name" />
+            <input class="btn btn-secondary" type="submit" value="Search" />
+        </form>
+    }
+}
+
+
+
+<table class="table table-bordered">
+    <tr class="bg-inverse text-white text-center">
         <th>
             @Html.DisplayNameFor(model => model.txtTime)
         </th>
@@ -33,7 +50,7 @@
         <th>
             @Html.DisplayNameFor(model => model.amount)
         </th>
-        <th></th>
+        <th class="hidden-md-up hidden-xs-up"></th>
     </tr>
 
     @foreach (var item in Model)
@@ -61,11 +78,11 @@
                 @Html.DisplayFor(modelItem => item.amount)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.transactionID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.transactionID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.transactionID })
+                @Html.ActionLink("Details", "Details", null, new { id = item.transactionID }, new { @class = "btn btn-success text-muted btn-sm" })
             </td>
         </tr>
     }
 
 </table>
+
+@Html.Partial("~/Views/Sidebar/_Sidebar-bottom.cshtml")
