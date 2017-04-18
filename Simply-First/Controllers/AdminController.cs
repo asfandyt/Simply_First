@@ -23,19 +23,37 @@ namespace Simply_First.Controllers
         {
             var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
 
-            var user = userManager.Users.ToList();
+            var users = userManager.Users.ToList();
             
             // This code could go in a repo.
             List<SiteUserVM> siteUsers = new List<SiteUserVM>();
 
-            foreach (var users in user)
+            foreach (var user in users)
             {
                 SiteUserVM siteUser = new SiteUserVM();
-                siteUser.Id = users.Id;
-                siteUser.Email = users.Email;
-                siteUser.UserName = users.UserName;
-                siteUser.EmailConfirmed = users.EmailConfirmed;
-                siteUser.PhoneNumber = users.PhoneNumber;
+                UserInformation userInformation = db.UserInformation.Where(u => u.UserId == user.Id).FirstOrDefault();
+                if (userInformation == null)
+                {
+                    return HttpNotFound("User Information is null");
+                }
+                siteUser.Id = user.Id;
+                siteUser.Email = user.Email;
+                siteUser.UserName = user.UserName;
+                siteUser.EmailConfirmed = user.EmailConfirmed;
+                if (user.PhoneNumber != null)
+                {
+                    siteUser.PhoneNumber = user.PhoneNumber;
+                }
+                if (userInformation.FirstName != null)
+                {
+                    siteUser.FirstName = userInformation.FirstName;
+                }
+                siteUser.LastName = userInformation.LastName;
+                siteUser.StreetAddress = userInformation.StreetAddress;
+                siteUser.City = userInformation.City;
+                siteUser.PostalCode = userInformation.PostalCode;
+                siteUser.Province = userInformation.Province;
+                siteUser.Country = userInformation.Country;
                 siteUsers.Add(siteUser);
             }
             
@@ -224,7 +242,7 @@ namespace Simply_First.Controllers
 
                 if (userTable.PhoneNumber != userManagerMain.GetPhoneNumber(userId))
                 {
-                    userManagerMain.SetPhoneNumber(userTable.Id, userTable.PhoneNumber);
+                    userManagerMain.SetPhoneNumber(userTable.Id, userTable.PhoneNumber.ToString());
                 }
 
 

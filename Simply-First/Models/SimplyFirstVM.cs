@@ -63,7 +63,7 @@ namespace Simply_First.ViewModels
 
         [Required]
         [Display(Name = "Phone Number")]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         [Required]
         [Display(Name = "Street Address")]

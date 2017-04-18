@@ -48,7 +48,7 @@ namespace Simply_First.Controllers
                     UserId = userId,
                     FirstName = "Enter Name",
                     LastName = "Enter Last Name",
-                    PhoneNumber = 0000000000,
+                    PhoneNumber = "0000000000",
                     StreetAddress = "Enter Street Address",
                     City = "Enter City",
                     PostalCode = "Enter Postal Code",
