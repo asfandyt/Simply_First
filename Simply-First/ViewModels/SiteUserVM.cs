@@ -19,6 +19,9 @@ namespace Simply_First.ViewModels
         
         [Display(Name = "Email Confirmed")]
         public bool EmailConfirmed { get; set; }
+        
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
     }
 
     public class SiteUsersRoleVM
