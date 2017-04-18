@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Simply_First.ViewModels.ShoppingCart>
+@model IEnumerable<Simply_First.ViewModels.ShoppingCart>
 
 @{
     ViewBag.Title = "Shopping Cart";
@@ -6,8 +6,6 @@
 
 <h1 class="text-center display-4 pb-3">Shopping Cart</h1>
 
-
-<form action="~/Home/UpdateQuantity" method="post">
     <table class="table table-bordered">
         <tr class="bg-primary text-white text-center">
             <th>
@@ -55,8 +53,7 @@
                     @(item.Prod.Manufacturer)
                 </td>
                 <td>
-                    <input type="number" value="@(item.Quantity)" id="quantity" name="quantity" class="form-control form-control-sm" />
-                    <input type="hidden" id="id" name="id" value="@(item.ProductId)" />
+                    @(item.Quantity)
                 </td>
                 <td>
                     @(item.UnitPrice)
@@ -65,7 +62,8 @@
                     @(item.TotalPrice)
                 </td>
                 <td>
-                    <input type="submit" id="submit" value="Update" class="btn btn-success btn-sm" />
+                    @Html.ActionLink("+", "AddItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-success btn-sm" }) 
+                    @Html.ActionLink("-", "SubtractItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
                 </td>
                 <td>
                     @Html.ActionLink("Remove", "RemoveItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
@@ -75,7 +73,7 @@
     </table>
 
     <p>@(total)</p>
-</form>
+
 
 <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
     <input type="hidden" name="cmd" value="_s-xclick">
