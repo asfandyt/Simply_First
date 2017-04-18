@@ -46,7 +46,6 @@ namespace Simply_First.Controllers
                 paypal.firstName = paypalService.PayerFirstName;
                 paypal.lastName = paypalService.PayerLastName;
                 paypal.custom = paypalService.Custom;
-                paypal.UserId = FindUserId();
 
                 db.PayPal.Add(paypal);
                 db.SaveChanges();

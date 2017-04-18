@@ -304,9 +304,7 @@ namespace Simply_First.ViewModels
         [Display(Name = "Transaction Id")]
         public string transactionID { get; set; }
 
-        public string UserId { get; set; }
-
-        //[DisplayFormat(DataFormatString = "{0:dd MMM yyyy - H:mm:ss}")]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy - H:mm:ss}")]
         [Display(Name = "Purchase Time")]
         public DateTime txtTime { get; set; }
 
@@ -316,7 +314,7 @@ namespace Simply_First.ViewModels
         [Display(Name = "Last Name")]
         public string lastName { get; set; }
 
-        [Display(Name = "Session Id")]
+        [Display(Name = "User Id")]
         public string custom { get; set; }
 
         [Display(Name = "Total Products")]
