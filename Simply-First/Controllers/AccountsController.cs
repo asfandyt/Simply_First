@@ -333,9 +333,12 @@ namespace Simply_First.Controllers
         public ActionResult SecureArea()
         {
             string id = FindUserId();
+
             string name = User.Identity.Name;
-            Session["session_tx"] = "Unique Session Id";
-            ViewBag.UserId = id;
+            //Session["session_tx"] = "Unique Session Id";
+            //ViewBag.UserId = id;
+            //TempData["UserId"] = id;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

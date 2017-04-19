@@ -71,8 +71,13 @@ namespace Simply_First.Controllers
             IdentityUser user = db.Users.Where(u => u.UserName == name).FirstOrDefault();
 
             ViewBag.Shopping = ShoppingCart.Instance.Items.ToList();
-            //Session["session_tx"] = "Unique Session Id";
-            //ViewBag.UserId = user.Id;
+
+            if(Request.IsAuthenticated)
+            {
+                Session["session_tx"] = "Unique Session Id";
+                ViewBag.UserId = user.Id;
+            }
+
             return View();
         }
 
