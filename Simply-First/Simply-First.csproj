@@ -244,6 +244,7 @@
     <Content Include="Views\Admin\EditUser.cshtml" />
     <Content Include="Views\Admin\Search.cshtml" />
     <Content Include="Views\Users\Search.cshtml" />
+    <Content Include="Views\Admin\EditUserDetails.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
