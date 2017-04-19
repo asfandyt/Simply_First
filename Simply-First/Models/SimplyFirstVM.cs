@@ -213,12 +213,20 @@ namespace Simply_First.ViewModels
         public void ClearCart()
         {
             ShoppingCart cart = new ShoppingCart();
-            foreach (CartItem item in Items)
+            if (cart == null)
             {
-
-                Items.Remove(item);
                 return;
             }
+                foreach (CartItem item in Items)
+                {
+
+                if (item.Quantity <= 0)
+                {
+                    Items.Remove(item);
+                }
+
+            }
+         
 
         }
 

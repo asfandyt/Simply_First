@@ -50,7 +50,7 @@ namespace Simply_First.Controllers
                 paypal.firstName = paypalService.PayerFirstName;
                 paypal.lastName = paypalService.PayerLastName;
                 paypal.custom = paypalService.Custom;
-                ShoppingCart.Instance.ClearCart();
+               
                 db.PayPal.Add(paypal);
                 db.SaveChanges();
 
@@ -61,6 +61,16 @@ namespace Simply_First.Controllers
 
         public ActionResult Success()
         {
+
+            ShoppingCart cart = ShoppingCart.Instance;
+            if (ShoppingCart.Instance.Items.Count > 0)
+            {
+                foreach (CartItem item in cart.Items.ToList())
+                {
+                    ShoppingCart.Instance.RemoveItem(item.ProductId);
+                }
+                return View();
+            }
             return View();
         }
 
