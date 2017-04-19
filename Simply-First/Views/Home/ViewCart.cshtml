@@ -75,7 +75,7 @@
 <p>@(total)</p>
 
 @{
-    if (Request.IsAuthenticated)
+    if (ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("User"))
     {
         <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
             <input type="hidden" name="cmd" value="_xclick">
@@ -100,4 +100,10 @@
             <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
         </form>
     }
+    else
+    {
+        @Html.ActionLink("Login", "Index", "Accounts", null, new { @class = "nav-link btn btn-primary" })
+        @Html.ActionLink("Register", "Register", "Accounts", null, new { @class = "nav-link btn btn-primary" })
+    }
 }
+
