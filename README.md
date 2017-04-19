@@ -7,3 +7,6 @@ To Do:
 3) Fix the front end of the website (Home, Purchase, Contact) homepage - almost done
 4) Connect it to PayPal and make it functional
 
+Things to Fix:
+1) Search bar does not adjust properly in mobile view.
+
