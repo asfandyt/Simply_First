@@ -40,7 +40,7 @@ namespace Simply_First.Controllers
 
             UserInformation userInformation = db.UserInformation.Where(u => u.UserId == userId).FirstOrDefault();
 
-            if (userInformation == null)
+            if (ModelState.IsValid && userInformation == null)
             {
                 
                 // The form should display anyway
@@ -59,7 +59,20 @@ namespace Simply_First.Controllers
                 };
                 
                 db.UserInformation.Add(userInformation);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in entityValidationErrors.ValidationErrors)
+                        {
+                            Response.Write("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                        }
+                    }
+                }
 
                 return View(userInformation);
             }
