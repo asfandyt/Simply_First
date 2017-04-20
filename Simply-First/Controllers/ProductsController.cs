@@ -143,6 +143,16 @@ namespace Simply_First.Controllers
 
             base.Dispose(disposing);
         }
+
+        public ActionResult Search(string name)
+        {
+            if (!string.IsNullOrEmpty(name))
+            {
+                IEnumerable<Products> product = db.Products.Where(s => s.ProductName.Contains(name) || s.Manufacturer.Contains(name));
+                return View(product.ToList());
+            }
+            return View(db.Products.ToList());
+        }
     }
 
 }
