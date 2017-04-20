@@ -90,7 +90,7 @@ namespace Simply_First.Controllers
                 return View(paypal.ToList());
             }
 
-            return View(db.PayPal.ToList());
+            return View();
         }
 
         [Authorize(Roles = "Admin")]
