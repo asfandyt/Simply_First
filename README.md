@@ -9,4 +9,5 @@ To Do:
 
 Things to Fix:
 1) Search bar does not adjust properly in mobile view.
+2) links in the application are white (a:hover is blue but a is white, hint: dashboard.css)
 
