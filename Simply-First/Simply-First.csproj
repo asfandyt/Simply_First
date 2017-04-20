@@ -271,7 +271,6 @@
     <Compile Include="ViewModels\RoleVM.cs" />
     <Compile Include="ViewModels\ShoppingVM.cs" />
     <Compile Include="Models\SimplyFirstVM.cs" />
-    <Compile Include="ViewModels\SimpleRoleManager.cs" />
     <Compile Include="ViewModels\SiteUserVM.cs" />
     <Compile Include="ViewModels\UserRoleVM.cs" />
     <Compile Include="OwinStartup.cs" />
