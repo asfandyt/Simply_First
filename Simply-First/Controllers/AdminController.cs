@@ -94,25 +94,6 @@ namespace Simply_First.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public ActionResult UserDetails(string id)
-        {
-            if(id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);    
-            }
-
-            DatabaseUsersRepo dbUsers = new DatabaseUsersRepo();
-            var users = dbUsers.GetAll(id);
-            
-            if(users == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(users);
-        }
-
-        [Authorize(Roles = "Admin")]
         public ActionResult UserRoles()
         {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new SimplyFirstVMContext()));
@@ -284,6 +265,177 @@ namespace Simply_First.Controllers
             return RedirectToAction("Index", "Admin");
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public ActionResult EditUserDetails(string id)
+        {
+            string userId = id;
+            SiteUserVM siteUser = new SiteUserVM();
+            var userManagerMain = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
+            using (var db = new SimplyFirstVMContext())
+            {
+                var user = db.Users.Where(e => e.Id == id).FirstOrDefault();
+                //UserInformation userInformation = db.UserInformation.Where(u => u.UserId == user.Id).FirstOrDefault();
+                UserInformation userInfo = db.UserInformation.Where(u => u.UserId == userId).FirstOrDefault();
+                
+                if (user != null)
+                {
+                    //TempData["Id"] = userId;
+
+                    //TempData["UserName"] = user.UserName;
+                    //TempData["Email"] = user.Email;
+                    //TempData["EmailConfirmed"] = user.EmailConfirmed;
+                    if (userInfo != null)
+                    {
+                        //TempData["FirstName"] = userInfo.FirstName;
+                        //TempData["LastName"] = userInfo.LastName;
+                        //TempData["PhoneNumber"] = userInfo.PhoneNumber;
+                        //TempData["StreetAddress"] = userInfo.StreetAddress;
+                        //TempData["City"] = userInfo.City;
+                        //TempData["Province"] = userInfo.Province;
+                        //TempData["PostalCode"] = userInfo.PostalCode;
+                        //TempData["Country"] = userInfo.Country;
+                        //TempData["JoinDate"] = userInfo.JoinDate;
+
+                        siteUser = new SiteUserVM
+                        {
+                            Id = userId,
+                            UserName = user.UserName,
+                            Email = user.Email,
+                            EmailConfirmed = user.EmailConfirmed,
+                            FirstName = userInfo.FirstName,
+                            LastName = userInfo.LastName,
+                            PhoneNumber = userInfo.PhoneNumber,
+                            StreetAddress = userInfo.StreetAddress,
+                            City = userInfo.City,
+                            Province = userInfo.Province,
+                            PostalCode = userInfo.PostalCode,
+                            Country = userInfo.Country,
+                            JoinDate = userInfo.JoinDate
+                        };
+                        return View(siteUser);
+                    }
+                    else
+                    {
+                        return HttpNotFound("userInfo is null");
+                    }
+
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("User has a null value!");
+                }
+            }
+
+            return View(siteUser);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public ActionResult EditUserDetails(SiteUserVM formData)
+        {
+            if (formData != null)
+            {
+                string userId = formData.Id;
+                var userManagerMain = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
+                using (var db = new SimplyFirstVMContext())
+                {
+                    var user = db.Users.Where(e => e.Id == userId).FirstOrDefault();
+                    //UserInformation userInformation = db.UserInformation.Where(u => u.UserId == user.Id).FirstOrDefault();
+                    UserInformation userInfo = db.UserInformation.Where(u => u.UserId == userId).FirstOrDefault();
+
+                    // Updating data from form
+                    // AspNetUsers Table
+                    user.UserName = formData.UserName;
+                    user.Email = formData.Email;
+                    user.EmailConfirmed = formData.EmailConfirmed;
+
+                    // UserInformation Table
+                    userInfo.FirstName = formData.FirstName;
+                    userInfo.LastName = formData.LastName;
+                    userInfo.PhoneNumber = formData.PhoneNumber;
+                    userInfo.StreetAddress = formData.StreetAddress;
+                    userInfo.City = formData.City;
+                    userInfo.Province = formData.Province;
+                    userInfo.PostalCode = formData.PostalCode;
+                    userInfo.Country = formData.Country;
+                    // Join Date needs to standardized (Should it be the first time usre signs on or somethign else)
+                    userInfo.JoinDate = formData.JoinDate;
+
+                    // Saving changes
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index", "Admin");
+                }
+            }
+            
+
+            return HttpNotFound("No form data passed onto EditUserDetails Post Action method.");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult UserDetails(string id)
+        {
+            string userId = id;
+            SiteUserVM siteUser = new SiteUserVM();
+            var userManagerMain = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
+            using (var db = new SimplyFirstVMContext())
+            {
+                var user = db.Users.Where(e => e.Id == id).FirstOrDefault();
+                //UserInformation userInformation = db.UserInformation.Where(u => u.UserId == user.Id).FirstOrDefault();
+                UserInformation userInfo = db.UserInformation.Where(u => u.UserId == userId).FirstOrDefault();
+
+                if (user != null)
+                {
+                    //TempData["Id"] = userId;
+
+                    //TempData["UserName"] = user.UserName;
+                    //TempData["Email"] = user.Email;
+                    //TempData["EmailConfirmed"] = user.EmailConfirmed;
+                    if (userInfo != null)
+                    {
+                        //TempData["FirstName"] = userInfo.FirstName;
+                        //TempData["LastName"] = userInfo.LastName;
+                        //TempData["PhoneNumber"] = userInfo.PhoneNumber;
+                        //TempData["StreetAddress"] = userInfo.StreetAddress;
+                        //TempData["City"] = userInfo.City;
+                        //TempData["Province"] = userInfo.Province;
+                        //TempData["PostalCode"] = userInfo.PostalCode;
+                        //TempData["Country"] = userInfo.Country;
+                        //TempData["JoinDate"] = userInfo.JoinDate;
+
+                        siteUser = new SiteUserVM
+                        {
+                            Id = userId,
+                            UserName = user.UserName,
+                            Email = user.Email,
+                            EmailConfirmed = user.EmailConfirmed,
+                            FirstName = userInfo.FirstName,
+                            LastName = userInfo.LastName,
+                            PhoneNumber = userInfo.PhoneNumber,
+                            StreetAddress = userInfo.StreetAddress,
+                            City = userInfo.City,
+                            Province = userInfo.Province,
+                            PostalCode = userInfo.PostalCode,
+                            Country = userInfo.Country,
+                            JoinDate = userInfo.JoinDate
+                        };
+                        return View(siteUser);
+                    }
+                    else
+                    {
+                        return HttpNotFound("userInfo is null");
+                    }
+
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("User has a null value!");
+                }
+            }
+
+            return View(siteUser);
+        }
         
         public async Task<ActionResult> DeleteUser(string id)
         {
