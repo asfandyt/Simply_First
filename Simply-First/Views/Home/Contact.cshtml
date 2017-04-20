@@ -1,37 +1,56 @@
+@model Simply_First.ViewModels.Contact
 
 @{
     ViewBag.Title = "Contact";
     ViewBag.BodyClass = "Contact";
 }
 
-<h1 class="display-4 text-center pb-3">Contact Us!</h1>
+<h2 class="display-4 text-center pb-3">Contact</h2>
 
 <div class="row">
-    <form class="well form-horizontal col-sm-12" action="~/Home/Contact" method="post">
+@using (Html.BeginForm("Contact", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @id = "contact-form", role = "form", @class = "well form-horizontal col-sm-12" }))
+{
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group row offset-md-1 offset-lg-2">
-            <label for="name" class="col-sm-2 col-lg-2 col-form-label">Name</label>
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-sm-2 col-lg-2 col-form-label" })
             <div class="col-sm-10 col-md-8 col-lg-6 inputGroupContainer">
-                <input class="form-control" type="text" placeholder="Enter your name" id="name" required />
-            </div>
-        </div>
-        <div class="form-group row offset-md-1 offset-lg-2">
-            <label for="email" class="col-sm-2 col-lg-2 col-form-label">Email</label>
-            <div class="col-sm-10 col-md-8 col-lg-6 inputGroupContainer">
-                <input class="form-control" type="email" placeholder="Enter your email" id="email" required />
-            </div>
-        </div>
-        <div class="form-group row offset-md-1 offset-lg-2">
-            <label for="message" class="col-sm-2 col-lg-2 col-form-label">Message</label>
-            <div class="col-sm-10 col-md-8 col-lg-6 inputGroupContainer">
-                <textarea class="form-control" type="text" placeholder="Enter your message" id="message" rows="5" required></textarea>
+                @Html.TextBoxFor(model => model.Email, "", new { @class = "form-control", @placeholder = "Enter your Email" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group row offset-md-1 offset-lg-2">
-            <label class="col-sm-2 col-lg-2 col-form-label"></label>
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-sm-2 col-lg-2 col-form-label" })
             <div class="col-sm-10 col-md-8 col-lg-6 inputGroupContainer">
-                <input class="btn btn-primary" type="button" value="Submit" id="submit">
+                @Html.TextBoxFor(model => model.Name, "", new { @class = "form-control", @placeholder = "Enter your name" })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
         </div>
-    </form>
+
+        <div class="form-group row offset-md-1 offset-lg-2">
+            @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "col-sm-2 col-lg-2 col-form-label" })
+            <div class="col-sm-10 col-md-8 col-lg-6 inputGroupContainer">
+                @Html.TextAreaFor(model => model.Message, new { @class = "form-control", @placeholder = "Enter your message" })
+                @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row offset-md-1 offset-lg-2">
+            <div class="col-sm-2 col-lg-2 col-form-label"></div>
+            <div class="col-sm-10 col-md-8 col-lg-6 inputGroupContainer">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+
+        <div class="form-group row offset-md-1 offset-lg-2">
+            <div class="col-sm-2 col-lg-2 col-form-label"></div>
+            <div class="col-sm-10 col-md-8 col-lg-6 inputGroupContainer">
+                <p class="text-success">@TempData["ContactSuccess"]</p>
+                <p class="text-danger">@TempData["ContactError"]</p>
+            </div>
+        </div>
+    </div>
+}
 </div>
