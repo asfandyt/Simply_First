@@ -26,6 +26,9 @@
                         }
                     }
                 </li>
+            </ul>
+
+            <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
                     @{
                         if (Request.IsAuthenticated && (User.IsInRole("User")))
@@ -35,7 +38,7 @@
                     }
                 </li>
             </ul>
-            
+
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
                     @{
@@ -70,7 +73,7 @@
                     }
                 </li>
             </ul>
-            
+
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
                     @{
@@ -91,4 +94,4 @@
             </ul>
         </nav>
 
-    <main class="col-sm-9 offset-sm-3 offset-md-0 col-md-12 offset-md-0 pt-3">
+        <main class="col-sm-9 offset-sm-3 offset-md-0 col-md-12 offset-md-0 pt-3">

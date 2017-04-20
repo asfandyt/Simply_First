@@ -55,25 +55,20 @@ namespace Simply_First.Controllers
         [HttpPost]
         public ActionResult Contact(Contact contactEmail)
         {
-
-            String Email = contactEmail.Email;
-            String Name = contactEmail.Name;
-            String Message = contactEmail.Message;
-
             if (ModelState.IsValid)
             {
+                string Email = contactEmail.Email;
+                string Name = contactEmail.Name;
+                string Message = contactEmail.Message;
+
+                db.Contact.Add(contactEmail);
+                db.SaveChanges();
 
                 EmailRepo emailRepo = new EmailRepo();
 
-                //prepare email
-                var fromAddress = Email.ToString();
+                emailRepo.SendEmail("guri_bola@hotmail.com", Message, Name);
 
-                //start email Thread
-                // var tEmail = new Thread(() =>
-                emailRepo.SendEmail(fromAddress, Message, Name);
-                // tEmail.Start();
-
-                TempData["ContactSuccess"] = "Form successfully sent!";
+                TempData["ContactSuccess"] = "Your message has been delivered! \n\nWe will answer back as soon as possible.";
 
                 return RedirectToAction("Contact");
             }
