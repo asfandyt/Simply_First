@@ -13,7 +13,7 @@ namespace Simply_First.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201704182217295_Reset"; }
+            get { return "201704201641159_Reset"; }
         }
         
         string IMigrationMetadata.Source

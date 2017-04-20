@@ -370,6 +370,8 @@ namespace Simply_First.ViewModels
         [Required]
         [DataType(DataType.MultilineText)]
         public string Message { get; set; }
+
+        public DateTime DateSubmitted { get; set; }
     }
 
     public class SimplyFirstVMContext : IdentityDbContext<IdentityUser>

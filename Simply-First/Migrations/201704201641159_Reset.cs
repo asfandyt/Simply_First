@@ -27,6 +27,7 @@ namespace Simply_First.Migrations
                         Email = c.String(nullable: false),
                         Name = c.String(nullable: false),
                         Message = c.String(nullable: false),
+                        DateSubmitted = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             

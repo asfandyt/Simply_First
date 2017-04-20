@@ -61,6 +61,9 @@ namespace Simply_First.Controllers
                 string Name = contactEmail.Name;
                 string Message = contactEmail.Message;
 
+                var date = DateTime.Now;
+                date = contactEmail.DateSubmitted;
+
                 db.Contact.Add(contactEmail);
                 db.SaveChanges();
 
