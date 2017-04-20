@@ -1,11 +1,10 @@
-@model Simply_First.ViewModels.SiteUserVM
+﻿@model Simply_First.ViewModels.SiteUserVM
 
 @{
     ViewBag.Title = "EditUserDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")
 <h2>EditUserDetails</h2>
 
 
@@ -128,8 +127,6 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@Html.Partial("~/Views/Sidebar/_Sidebar-bottom.cshtml")
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
