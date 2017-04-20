@@ -15,32 +15,79 @@
 
 
 @*<div class="highlight">
-    <pre>http://gurkiratbola.com/simplyfirst/api/ProductsAPI</pre>
-</div>*@
+        <pre>http://gurkiratbola.com/simplyfirst/api/ProductsAPI</pre>
+    </div>*@
 
 <div class="highlight">
-    <pre>GET http://gurkiratbola.com/simplyfirst/api/ProductsAPI <br /><br /><code class="language-json">]<br />}<br />"productId": 1, <br />"productName": "Mavic Pro",<br />"productDescription": "The best light weight drone tech", <br />"manufacturer": "DJI", <br />"quantity": 99,<br />"productImage": "http://djireview.com/wp-content/uploads/2016/12/1280805548-1-300x300.jpg", <br />"price": 99.99 <br /> } <br />{ <br />"productId": 2, <br />"productName": "Phantom 4",<br />"productDescription": "JI staple products", <br />"manufacturer": "DJI", <br />"quantity": 99,<br />"productImage": ""https://dronenetwork.uk.com/wp-content/uploads/2016/03/phantom4-1-300x300.jpg", <br />"price": 99.99" <br />}<br />]</code></pre>
+
+<pre>GET http://gurkiratbola.com/simplyfirst/api/ProductsAPI <br />
+<br /><code class="language-json">]<br />}<br />"productId": 1, <br />"productName": "Mavic Pro",<br />"productDescription": "The best light weight drone tech", <br />"manufacturer": "DJI", <br />"quantity": 99,<br />"productImage": "http://djireview.com/wp-content/uploads/2016/12/1280805548-1-300x300.jpg", <br />"price": 99.99 <br /> } <br />{ <br />"productId": 2, <br />"productName": "Phantom 4",<br />"productDescription": "JI staple products", <br />"manufacturer": "DJI", <br />"quantity": 99,<br />"productImage": ""https://dronenetwork.uk.com/wp-content/uploads/2016/03/phantom4-1-300x300.jpg", <br />"price": 99.99" <br />}<br />]</code></pre>
 </div>
 
+<h2>Jquery example of product list</h2>
 
-
+<pre>
+<code>function sendRequest() {
+    $("#products").replaceWith("<span id='value1'></span>");
+    var method = $('#method').val();
+    $.ajax({
+        type: method,
+        url: serviceUrl
+    }).done(function (data) {
+        data.forEach(function (val) {
+            callback(val)
+        });
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        $('#value1').text(jqXHR.responseText || textStatus);
+    });
+}
+<br />
+function callback(val) {
+    //var fullstr =  JSON.stringify(val);
+    //  $("#manufacturers").replaceWith("<span id='value1'>(Result)</span>");
+    $("#value1").replaceWith("<ul id='products' />");
+    var str = "Product ID: " + val.productName + " Description: " + val.productDescription + " Manufacturer: " + val.manufacturer;
+    //var str = fullstr;
+    $('<li />', { text: str }).appendTo($('#products'));
+}
+</code>
+</pre>
 <h2>Using Parameters</h2>
-
 <p class="high"> By adding the ID number of the product to the string individual products can be sent for consumption.</p>
-
 <div class="highlight">
-    <pre>GET http://gurkiratbola.com/simplyfirst/api/ProductsAPI/1 <br /><br /><code class="language-json">]<br />}<br />"productId": 1, <br />"productName": "Mavic Pro",<br />"productDescription": "The best light weight drone tech", <br />"manufacturer": "DJI", <br />"quantity": 99,<br />"productImage": "http://djireview.com/wp-content/uploads/2016/12/1280805548-1-300x300.jpg", <br />"price": 99.99<br />}<br />] </code></pre>
+<pre>GET http://gurkiratbola.com/simplyfirst/api/ProductsAPI/1 <br /><br /><code class="language-json">]<br />}<br />"productId": 1, <br />"productName": "Mavic Pro",<br />"productDescription": "The best light weight drone tech", <br />"manufacturer": "DJI", <br />"quantity": 99,<br />"productImage": "http://djireview.com/wp-content/uploads/2016/12/1280805548-1-300x300.jpg", <br />"price": 99.99<br />}<br />] </code></pre>
 </div>
+
+<h2>Jquery example using parameters</h2>
+<code>
+<pre>
+function find() {
+    var id = $('#productIdFind').val();
+    $.getJSON(serviceUrl + "/" + id,
+        function (data) {
+            if (data == null) {
+                $('#productFind').text('Product not found.');
+            }
+            var str = data.ProductName + ': ' + data.ProductDescription;
+            $('#productFind').text(str);
+        })
+    .fail(
+        function (jqueryHeaderRequest, textStatus, err) {
+            $('#productFind').text('Find error: ' + err);
+        });
+}
+</pre>
+</code>
+
 
 <h2>Client Errors</h2>
-
 <p>Here are some of the common errors you may find:</p>
-
 <div class="bd-example" data-example-id="">
     <p>Sending invalid Product Ids will result in a 404 Page Can't be found.</p>
     <p>Sending a bad controller link will get you this response.</p>
 </div>
-
 <div class="highlight">
-    <pre>"message": "No HTTP resource was found that matches the request URI 'http://gurkiratbola.com/simplyfirst/api/ProductsA'.", <br />"messageDetail": "No type was found that matches the controller named 'ProductsA'."</pre>
+<pre>"message": "No HTTP resource was found that matches the request URI 'http://gurkiratbola.com/simplyfirst/api/ProductsA'.", <br />"messageDetail": "No type was found that matches the controller named 'ProductsA'."</pre>
 </div>
+
+
