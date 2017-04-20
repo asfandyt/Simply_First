@@ -241,7 +241,7 @@
     <Content Include="Views\PayPal\Success.cshtml" />
     <Content Include="Views\PayPal\Cancel.cshtml" />
     <Content Include="Views\Home\API.cshtml" />
-    <Content Include="Views\Admin\EditUser.cshtml" />
+    <None Include="Views\Admin\EditUser.old" />
     <Content Include="Views\Admin\Search.cshtml" />
     <Content Include="Views\Users\Search.cshtml" />
     <Content Include="Views\Admin\EditUserDetails.cshtml" />

@@ -194,76 +194,76 @@ namespace Simply_First.Controllers
             return View(userRoleVM);
         }
         
-        [Authorize(Roles = "Admin")]
-        [HttpGet]
-        public ActionResult EditUser(string id)
-        {
-            string name = id;
-            var userManagerMain = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
-            using (var db = new SimplyFirstVMContext())
-            {
-                var user = db.Users.Where(e => e.Id == id).FirstOrDefault();
-                //System.Diagnostics.Debug.WriteLine(user.Email);
+        //[Authorize(Roles = "Admin")]
+        //[HttpGet]
+        //public ActionResult EditUser(string id)
+        //{
+        //    string name = id;
+        //    var userManagerMain = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
+        //    using (var db = new SimplyFirstVMContext())
+        //    {
+        //        var user = db.Users.Where(e => e.Id == id).FirstOrDefault();
+        //        //System.Diagnostics.Debug.WriteLine(user.Email);
 
-                //userManager.SetPhoneNumber(id, "6045553217");
+        //        //userManager.SetPhoneNumber(id, "6045553217");
 
-                if (user != null)
-                {
-                    TempData["Id"] = name;
-                    TempData["Email"] = user.Email;
-                    TempData["PhoneNumber"] = user.PhoneNumber;
-                    TempData["UserName"] = user.UserName;
-                    TempData["EmailConfirmed"] = user.EmailConfirmed;
-                }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine("User has a null value!");
-                }
-
-
-            }
-
-            return View();
-        }
-
-        [Authorize(Roles = "Admin")]
-        [HttpPost]
-        public ActionResult EditUserPost(SiteUserVM userTable)
-        {
-            System.Diagnostics.Debug.WriteLine(userTable.Id);
-            string userId = userTable.Id;
-            var userManagerMain = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
-            using (var db = new SimplyFirstVMContext())
-            {
-                var user = db.Users.Where(e => e.Id == userId).FirstOrDefault();
-                System.Diagnostics.Debug.WriteLine(user.Email);
-                if (userTable.Email != userManagerMain.GetEmail(userId))
-                {
-                    userManagerMain.SetEmail(userTable.Id, userTable.Email);
-                }
-
-                if (userTable.UserName != user.UserName)
-                {
-                    user.UserName = userTable.UserName;
-                    db.SaveChanges();
-                }
-
-                if (userTable.EmailConfirmed != userManagerMain.IsEmailConfirmed(userId))
-                {
-                    user.EmailConfirmed = userTable.EmailConfirmed;
-                    db.SaveChanges();
-                }
-
-                if (userTable.PhoneNumber != userManagerMain.GetPhoneNumber(userId))
-                {
-                    userManagerMain.SetPhoneNumber(userTable.Id, userTable.PhoneNumber.ToString());
-                }
+        //        if (user != null)
+        //        {
+        //            TempData["Id"] = name;
+        //            TempData["Email"] = user.Email;
+        //            TempData["PhoneNumber"] = user.PhoneNumber;
+        //            TempData["UserName"] = user.UserName;
+        //            TempData["EmailConfirmed"] = user.EmailConfirmed;
+        //        }
+        //        else
+        //        {
+        //            System.Diagnostics.Debug.WriteLine("User has a null value!");
+        //        }
 
 
-            }
+        //    }
 
-            return RedirectToAction("Index", "Admin");
-        }
+        //    return View();
+        //}
+
+        //[Authorize(Roles = "Admin")]
+        //[HttpPost]
+        //public ActionResult EditUserPost(SiteUserVM userTable)
+        //{
+        //    System.Diagnostics.Debug.WriteLine(userTable.Id);
+        //    string userId = userTable.Id;
+        //    var userManagerMain = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
+        //    using (var db = new SimplyFirstVMContext())
+        //    {
+        //        var user = db.Users.Where(e => e.Id == userId).FirstOrDefault();
+        //        System.Diagnostics.Debug.WriteLine(user.Email);
+        //        if (userTable.Email != userManagerMain.GetEmail(userId))
+        //        {
+        //            userManagerMain.SetEmail(userTable.Id, userTable.Email);
+        //        }
+
+        //        if (userTable.UserName != user.UserName)
+        //        {
+        //            user.UserName = userTable.UserName;
+        //            db.SaveChanges();
+        //        }
+
+        //        if (userTable.EmailConfirmed != userManagerMain.IsEmailConfirmed(userId))
+        //        {
+        //            user.EmailConfirmed = userTable.EmailConfirmed;
+        //            db.SaveChanges();
+        //        }
+
+        //        if (userTable.PhoneNumber != userManagerMain.GetPhoneNumber(userId))
+        //        {
+        //            userManagerMain.SetPhoneNumber(userTable.Id, userTable.PhoneNumber.ToString());
+        //        }
+
+
+        //    }
+
+        //    return RedirectToAction("Index", "Admin");
+        //}
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
