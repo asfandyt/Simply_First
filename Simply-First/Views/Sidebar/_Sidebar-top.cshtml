@@ -28,7 +28,7 @@
                 </li>
                 <li class="nav-item">
                     @{
-                        if (Request.IsAuthenticated)
+                        if (Request.IsAuthenticated && (User.IsInRole("User")))
                         {
                             @Html.ActionLink("Invoice History", "InvoiceHistory", "PayPal", null, new { @class = "nav-link" })
                         }
@@ -77,6 +77,14 @@
                         if (Request.IsAuthenticated && (User.IsInRole("Admin")))
                         {
                             @Html.ActionLink("Product Inventory", "Index", "Products", null, new { @class = "nav-link" })
+                        }
+                    }
+                </li>
+                <li class="nav-item">
+                    @{
+                        if (Request.IsAuthenticated && (User.IsInRole("Admin")))
+                        {
+                            @Html.ActionLink("Invoice History", "InvoiceHistory", "Admin", null, new { @class = "nav-link" })
                         }
                     }
                 </li>

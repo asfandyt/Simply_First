@@ -168,6 +168,7 @@ namespace Simply_First.Controllers
                 IEnumerable<PayPal> paypal = db.PayPal.Where(s => s.custom == userId && s.amount.ToString().Contains(name) || s.custom == userId && s.txtTime.ToString().Contains(name));
                 return View(paypal.ToList());
             }
+
             return View();
         }
     }

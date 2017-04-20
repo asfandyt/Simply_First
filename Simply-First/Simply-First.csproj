@@ -245,6 +245,7 @@
     <Content Include="Views\Admin\Search.cshtml" />
     <Content Include="Views\Users\Search.cshtml" />
     <Content Include="Views\Admin\EditUserDetails.cshtml" />
+    <Content Include="Views\Admin\InvoiceHistory.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

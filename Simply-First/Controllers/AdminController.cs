@@ -73,6 +73,26 @@ namespace Simply_First.Controllers
             return View(siteUsers);
         }
 
+
+        [Authorize(Roles = "Admin")]
+        // GET: PayPal
+        public ActionResult InvoiceHistory()
+        {
+            return View(db.PayPal.OrderByDescending(t => t.txtTime));
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult Search(string name)
+        {
+            if (!string.IsNullOrEmpty(name))
+            {
+                IEnumerable<PayPal> paypal = db.PayPal.Where(s => s.amount.ToString().Contains(name) || s.transactionID.Contains(name) || s.lastName.Contains(name) || s.firstName.Contains(name) || s.buyerEmail.Contains(name));
+                return View(paypal.ToList());
+            }
+
+            return View(db.PayPal.ToList());
+        }
+
         [Authorize(Roles = "Admin")]
         public ActionResult UserDetails(string id)
         {
@@ -303,16 +323,6 @@ namespace Simply_First.Controllers
                 return RedirectToAction("Index", "Admin");
             }
             return View();
-        }
-        [Authorize(Roles = "Admin")]
-        public ActionResult Search(string name)
-        {
-            if (!string.IsNullOrEmpty(name))
-            {
-                IEnumerable<PayPal> paypal = db.PayPal.Where(s => s.amount.ToString().Contains(name) || s.transactionID.Contains(name) || s.lastName.Contains(name) || s.firstName.Contains(name) || s.buyerEmail.Contains(name));
-                return View(paypal.ToList());
-            }
-            return View(db.PayPal.ToList());
         }
 
         [Authorize(Roles = "Admin")]

@@ -7,25 +7,11 @@
 @Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")
 
 <h1 class="text-center display-4 pb-3">Invoice History</h1>
-@if (Request.IsAuthenticated)
-{
-    if (User.IsInRole("Admin"))
-    {
-        <form class="form-inline mr-sm-2" method="get" action="~/Admin/Search">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="name" />
-            <input class="btn btn-secondary" type="submit" value="Search" />
-        </form>
-    }
-    else
-    {
-        <form class="form-inline mr-sm-2" method="get" action="~/Users/Search">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="name" />
-            <input class="btn btn-secondary" type="submit" value="Search" />
-        </form>
-    }
-}
 
-
+<form class="form-inline pb-3" method="get" action="~/Users/Search">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search" name="name" />
+    <input class="btn btn-secondary" type="submit" value="Search" />
+</form>
 
 <table class="table table-bordered">
     <tr class="bg-inverse text-white text-center">
