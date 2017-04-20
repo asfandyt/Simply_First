@@ -173,6 +173,61 @@ body.Home {
 }
 
 
+
+@media screen and (max-width: 800px) {
+
+    /* Force table to not be like tables anymore */
+    .container table,
+    .container thead,
+    .container tbody,
+    .container th,
+    .container td,
+    .container tr {
+        display: block;
+    }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        .container thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+    .container tr {
+        border: 1px solid #ccc;
+    }
+
+    .container td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        white-space: normal;
+        text-align: left;
+    }
+
+        .container td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        /*
+    Label the data
+    */
+        .container td:before {
+            content: attr(data-title);
+        }
+}
+
 @media screen and (min-width: 576px) {
     .Contact form .col-form-label {
         text-align: right;
