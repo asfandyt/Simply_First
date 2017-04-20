@@ -27,7 +27,8 @@
 <h2>Jquery example of product list</h2>
 
 <pre>
-<code>function sendRequest() {
+<code>
+    function sendRequest() {
     $("#products").replaceWith("<span id='value1'></span>");
     var method = $('#method').val();
     $.ajax({
@@ -40,7 +41,7 @@
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#value1').text(jqXHR.responseText || textStatus);
     });
-}
+    }
 <br />
 function callback(val) {
     //var fullstr =  JSON.stringify(val);

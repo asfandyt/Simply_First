@@ -1,12 +1,13 @@
 @model Simply_First.ViewModels.SiteUserVM
 
 @{
-    ViewBag.Title = "EditUserDetails";
+    ViewBag.Title = "Edit User Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")
-<h2>EditUserDetails</h2>
+
+<h1 class="display-4 text-center pb-3">Edit User Details</h1>
 
 
 @using (Html.BeginForm())
@@ -14,8 +15,6 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>SiteUserVM</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
@@ -119,15 +118,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-success" />
+                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-danger" })
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @Html.Partial("~/Views/Sidebar/_Sidebar-bottom.cshtml")
 

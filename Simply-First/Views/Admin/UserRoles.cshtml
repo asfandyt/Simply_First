@@ -1,22 +1,18 @@
 ﻿@model IEnumerable<Simply_First.ViewModels.SiteUsersRoleVM>
 
 @{
-    ViewBag.Title = "Users Roles";
+    ViewBag.Title = "Roles";
 }
 
 @Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")
 
-<h1 class="text-center display-4 pb-3">Users Roles</h1>
+<h1 class="text-center display-4 pb-3">Roles</h1>
 
 <table class="table table-bordered">
     <tr class="bg-primary text-white">
         <th>
             @Html.DisplayNameFor(model => model.RoleId)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Users)
-        </th>
-        @*<th></th>*@
     </tr>
 
     @foreach (var item in Model)
@@ -24,14 +20,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.RoleId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Users)
-            </td>
-            <td>
-                @*@Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |*@
-                @Html.ActionLink("Details", "User Details", new { id = item.UserId }) 
-                @*@Html.ActionLink("Delete", "Delete", new { id = item.UserId })*@
             </td>
         </tr>
     }

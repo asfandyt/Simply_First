@@ -60,7 +60,7 @@
                     @{
                         if (Request.IsAuthenticated && (User.IsInRole("Admin")))
                         {
-                            @Html.ActionLink("User Roles", "UserRoles", "Admin", null, new { @class = "nav-link" })
+                            @Html.ActionLink("Roles", "UserRoles", "Admin", null, new { @class = "nav-link" })
                         }
                     }
                 </li>

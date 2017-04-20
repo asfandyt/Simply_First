@@ -36,8 +36,8 @@ namespace Simply_First.Migrations
             };
 
             // Assign user password on start
-            userManager.Create(admin, "password");
-            userManager.Create(user, "password");
+            userManager.Create(admin, "P@ssw0rd!@");
+            userManager.Create(user, "P@ssw0rd!@");
 
             // adding products
             var p1 = new Products()
@@ -82,7 +82,6 @@ namespace Simply_First.Migrations
             if (roleManager.Roles.Count() == 0)
             {
                 roleManager.Create(new IdentityRole { Name = "Admin" });
-                roleManager.Create(new IdentityRole { Name = "Employee" });
                 roleManager.Create(new IdentityRole { Name = "User" });
             }
 

@@ -2,12 +2,20 @@
     ViewBag.Title = "Welcome";
 }
 
-
 @Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")
 
+@{
+    if (Request.IsAuthenticated && (User.IsInRole("Admin")))
+    {
+        <h1 class="text-center display-4 pb-3">Welcome Admin</h1>
+    }
+    else
+    {
+        <h1 class="text-center display-4 pb-3">Welcome User</h1>
+    }
+}
 
-<h1 class="text-center display-4 pb-3">Welcome</h1>
 
-<p>This is the control panel for all users.</p>
+<p>This page will notify the users of upcoming updates.</p>
 
 @Html.Partial("~/Views/Sidebar/_Sidebar-bottom.cshtml")

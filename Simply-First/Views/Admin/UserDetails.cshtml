@@ -1,16 +1,15 @@
 @model Simply_First.ViewModels.SiteUserVM
 
 @{
-    ViewBag.Title = "UserDetails";
+    ViewBag.Title = "User Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @Html.Partial("~/Views/Sidebar/_Sidebar-top.cshtml")
 
-<h2>UserDetails</h2>
+<h1 class="display-4 text-center pb-3">User Details</h1>
 
 <div>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.UserName)
