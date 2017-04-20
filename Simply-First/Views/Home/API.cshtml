@@ -10,31 +10,26 @@
 }
 
 <h1 class="display-4 text-center pb-3">Simply First API</h1>
-
-
-<h2>Schema</h2>
-
 <p>All API access is over HTTPS, and accessed from this site, all data is sent and received as JSON.</p>
-
-<div class="highlight">
-    <pre>http://gurkiratbola.com/simplyfirst/api</pre>
-</div>
-
-
 <h2>Summary of Products</h2>
 
-<p>Get a list of all available products and details.</p>
+
+@*<div class="highlight">
+    <pre>http://gurkiratbola.com/simplyfirst/api/ProductsAPI</pre>
+</div>*@
 
 <div class="highlight">
-    <pre>GET /ProductsAPI</pre>
+    <pre>GET http://gurkiratbola.com/simplyfirst/api/ProductsAPI <br /><br /><code class="language-json">]<br />}<br />"productId": 1, <br />"productName": "Mavic Pro",<br />"productDescription": "The best light weight drone tech", <br />"manufacturer": "DJI", <br />"quantity": 99,<br />"productImage": "http://djireview.com/wp-content/uploads/2016/12/1280805548-1-300x300.jpg", <br />"price": 99.99 <br /> } <br />{ <br />"productId": 2, <br />"productName": "Phantom 4",<br />"productDescription": "JI staple products", <br />"manufacturer": "DJI", <br />"quantity": 99,<br />"productImage": ""https://dronenetwork.uk.com/wp-content/uploads/2016/03/phantom4-1-300x300.jpg", <br />"price": 99.99" <br />}<br />]</code></pre>
 </div>
+
+
 
 <h2>Using Parameters</h2>
 
-<p> By adding the ID number of the product to the string individual products can be sent for consumption.</p>
+<p class="high"> By adding the ID number of the product to the string individual products can be sent for consumption.</p>
 
 <div class="highlight">
-    <pre>GET /ProductsAPI/1 <br /><br /><code class="language-json">"productId": 1, <br />"productName": "Mavic Pro",<br />"productDescription": "The best light weight drone tech", <br />"manufacturer": "DJI", <br />"quantity": 99,<br />"productImage": "http://djireview.com/wp-content/uploads/2016/12/1280805548-1-300x300.jpg", <br />"price": 99.99 </code></pre>
+    <pre>GET http://gurkiratbola.com/simplyfirst/api/ProductsAPI/1 <br /><br /><code class="language-json">]<br />}<br />"productId": 1, <br />"productName": "Mavic Pro",<br />"productDescription": "The best light weight drone tech", <br />"manufacturer": "DJI", <br />"quantity": 99,<br />"productImage": "http://djireview.com/wp-content/uploads/2016/12/1280805548-1-300x300.jpg", <br />"price": 99.99<br />}<br />] </code></pre>
 </div>
 
 <h2>Client Errors</h2>
