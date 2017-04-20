@@ -477,37 +477,37 @@ namespace Simply_First.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
-        public ActionResult EditUserDetails(string id)
-        {
-            string userId = id;
-            var userManagerMain = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
-            using (var db = new SimplyFirstVMContext())
-            {
-                var user = db.Users.Where(e => e.Id == id).FirstOrDefault();
-                //System.Diagnostics.Debug.WriteLine(user.Email);
+        //[Authorize(Roles = "Admin")]
+        //public ActionResult EditUserDetails(string id)
+        //{
+        //    string userId = id;
+        //    var userManagerMain = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
+        //    using (var db = new SimplyFirstVMContext())
+        //    {
+        //        var user = db.Users.Where(e => e.Id == id).FirstOrDefault();
+        //        //System.Diagnostics.Debug.WriteLine(user.Email);
 
-                //userManager.SetPhoneNumber(id, "6045553217");
+        //        //userManager.SetPhoneNumber(id, "6045553217");
 
-                if (user != null)
-                {
-                    TempData["Id"] = userId;
-                    TempData["Email"] = user.Email;
-                    TempData["EmailConfirmed"] = user.EmailConfirmed;
-                    TempData["FirstName"] = 
-                    TempData["PhoneNumber"] = user.PhoneNumber;
-                    TempData["UserName"] = user.UserName;
+        //        if (user != null)
+        //        {
+        //            TempData["Id"] = userId;
+        //            TempData["Email"] = user.Email;
+        //            TempData["EmailConfirmed"] = user.EmailConfirmed;
+        //            TempData["FirstName"] = 
+        //            TempData["PhoneNumber"] = user.PhoneNumber;
+        //            TempData["UserName"] = user.UserName;
 
-                }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine("User has a null value!");
-                }
+        //        }
+        //        else
+        //        {
+        //            System.Diagnostics.Debug.WriteLine("User has a null value!");
+        //        }
 
 
-            }
+        //    }
 
-            return View();
-        }
+        //    return View();
+        //}
     }
 }
