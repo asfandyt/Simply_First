@@ -47,14 +47,17 @@ namespace Simply_First.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Contact()
+        {
+            return View();
+        }
         
         [HttpPost]
-        public ActionResult Contact()
+        public ActionResult Contact(Contact contactEmail)
         {
             if (ModelState.IsValid)
             {
-                Contact contactEmail = new Contact();
-
                 string Email = contactEmail.Email;
                 string Name = contactEmail.Name;
                 string Message = contactEmail.Message;
