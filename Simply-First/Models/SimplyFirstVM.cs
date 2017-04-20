@@ -340,6 +340,9 @@ namespace Simply_First.ViewModels
         [Display(Name = "User Id")]
         public string custom { get; set; }
 
+        [Display(Name = "Product Name")]
+        public string name { get; set; }
+
         [Display(Name = "Total Products")]
         public string quantity { get; set; }
 

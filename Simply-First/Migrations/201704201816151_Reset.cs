@@ -40,6 +40,7 @@ namespace Simply_First.Migrations
                         firstName = c.String(),
                         lastName = c.String(),
                         custom = c.String(),
+                        name = c.String(),
                         quantity = c.String(),
                         buyerEmail = c.String(),
                         amount = c.Decimal(nullable: false, precision: 18, scale: 2),

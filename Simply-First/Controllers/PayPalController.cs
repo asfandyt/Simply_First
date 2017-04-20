@@ -47,6 +47,7 @@ namespace Simply_First.Controllers
                 paypal.buyerEmail = paypalService.PayerEmail;
                 paypal.txtTime = DateTimeOffset.Now.LocalDateTime;
                 paypal.quantity = paypalService.ItemNumber;
+                paypal.name = paypalService.ItemName;
                 paypal.firstName = paypalService.PayerFirstName;
                 paypal.lastName = paypalService.PayerLastName;
                 paypal.custom = paypalService.Custom;
