@@ -171,13 +171,6 @@ namespace Simply_First.Controllers
                 using (var db = new SimplyFirstVMContext())
                 {
                     var user = db.Users.Where(e => e.Email == userRoleVM.Email).FirstOrDefault();
-                    //var role = db.Roles.Where(r => r.Name == userRoleVM.RoleName).FirstOrDefault();
-
-                    //var userRole = new IdentityRole();
-                    //userRole.Id = role.Id;
-                    //userRole.Name = user.Id;
-                    //db.Roles.Add(userRole);
-                    //db.SaveChanges();
 
                     var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
 
@@ -193,77 +186,6 @@ namespace Simply_First.Controllers
 
             return View(userRoleVM);
         }
-        
-        //[Authorize(Roles = "Admin")]
-        //[HttpGet]
-        //public ActionResult EditUser(string id)
-        //{
-        //    string name = id;
-        //    var userManagerMain = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
-        //    using (var db = new SimplyFirstVMContext())
-        //    {
-        //        var user = db.Users.Where(e => e.Id == id).FirstOrDefault();
-        //        //System.Diagnostics.Debug.WriteLine(user.Email);
-
-        //        //userManager.SetPhoneNumber(id, "6045553217");
-
-        //        if (user != null)
-        //        {
-        //            TempData["Id"] = name;
-        //            TempData["Email"] = user.Email;
-        //            TempData["PhoneNumber"] = user.PhoneNumber;
-        //            TempData["UserName"] = user.UserName;
-        //            TempData["EmailConfirmed"] = user.EmailConfirmed;
-        //        }
-        //        else
-        //        {
-        //            System.Diagnostics.Debug.WriteLine("User has a null value!");
-        //        }
-
-
-        //    }
-
-        //    return View();
-        //}
-
-        //[Authorize(Roles = "Admin")]
-        //[HttpPost]
-        //public ActionResult EditUserPost(SiteUserVM userTable)
-        //{
-        //    System.Diagnostics.Debug.WriteLine(userTable.Id);
-        //    string userId = userTable.Id;
-        //    var userManagerMain = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
-        //    using (var db = new SimplyFirstVMContext())
-        //    {
-        //        var user = db.Users.Where(e => e.Id == userId).FirstOrDefault();
-        //        System.Diagnostics.Debug.WriteLine(user.Email);
-        //        if (userTable.Email != userManagerMain.GetEmail(userId))
-        //        {
-        //            userManagerMain.SetEmail(userTable.Id, userTable.Email);
-        //        }
-
-        //        if (userTable.UserName != user.UserName)
-        //        {
-        //            user.UserName = userTable.UserName;
-        //            db.SaveChanges();
-        //        }
-
-        //        if (userTable.EmailConfirmed != userManagerMain.IsEmailConfirmed(userId))
-        //        {
-        //            user.EmailConfirmed = userTable.EmailConfirmed;
-        //            db.SaveChanges();
-        //        }
-
-        //        if (userTable.PhoneNumber != userManagerMain.GetPhoneNumber(userId))
-        //        {
-        //            userManagerMain.SetPhoneNumber(userTable.Id, userTable.PhoneNumber.ToString());
-        //        }
-
-
-        //    }
-
-        //    return RedirectToAction("Index", "Admin");
-        //}
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
@@ -280,23 +202,8 @@ namespace Simply_First.Controllers
                 
                 if (user != null)
                 {
-                    //TempData["Id"] = userId;
-
-                    //TempData["UserName"] = user.UserName;
-                    //TempData["Email"] = user.Email;
-                    //TempData["EmailConfirmed"] = user.EmailConfirmed;
                     if (userInfo != null)
                     {
-                        //TempData["FirstName"] = userInfo.FirstName;
-                        //TempData["LastName"] = userInfo.LastName;
-                        //TempData["PhoneNumber"] = userInfo.PhoneNumber;
-                        //TempData["StreetAddress"] = userInfo.StreetAddress;
-                        //TempData["City"] = userInfo.City;
-                        //TempData["Province"] = userInfo.Province;
-                        //TempData["PostalCode"] = userInfo.PostalCode;
-                        //TempData["Country"] = userInfo.Country;
-                        //TempData["JoinDate"] = userInfo.JoinDate;
-
                         siteUser = new SiteUserVM
                         {
                             Id = userId,
@@ -387,23 +294,8 @@ namespace Simply_First.Controllers
 
                 if (user != null)
                 {
-                    //TempData["Id"] = userId;
-
-                    //TempData["UserName"] = user.UserName;
-                    //TempData["Email"] = user.Email;
-                    //TempData["EmailConfirmed"] = user.EmailConfirmed;
                     if (userInfo != null)
                     {
-                        //TempData["FirstName"] = userInfo.FirstName;
-                        //TempData["LastName"] = userInfo.LastName;
-                        //TempData["PhoneNumber"] = userInfo.PhoneNumber;
-                        //TempData["StreetAddress"] = userInfo.StreetAddress;
-                        //TempData["City"] = userInfo.City;
-                        //TempData["Province"] = userInfo.Province;
-                        //TempData["PostalCode"] = userInfo.PostalCode;
-                        //TempData["Country"] = userInfo.Country;
-                        //TempData["JoinDate"] = userInfo.JoinDate;
-
                         siteUser = new SiteUserVM
                         {
                             Id = userId,
@@ -477,37 +369,5 @@ namespace Simply_First.Controllers
             return View();
         }
 
-        //[Authorize(Roles = "Admin")]
-        //public ActionResult EditUserDetails(string id)
-        //{
-        //    string userId = id;
-        //    var userManagerMain = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new SimplyFirstVMContext()));
-        //    using (var db = new SimplyFirstVMContext())
-        //    {
-        //        var user = db.Users.Where(e => e.Id == id).FirstOrDefault();
-        //        //System.Diagnostics.Debug.WriteLine(user.Email);
-
-        //        //userManager.SetPhoneNumber(id, "6045553217");
-
-        //        if (user != null)
-        //        {
-        //            TempData["Id"] = userId;
-        //            TempData["Email"] = user.Email;
-        //            TempData["EmailConfirmed"] = user.EmailConfirmed;
-        //            TempData["FirstName"] = 
-        //            TempData["PhoneNumber"] = user.PhoneNumber;
-        //            TempData["UserName"] = user.UserName;
-
-        //        }
-        //        else
-        //        {
-        //            System.Diagnostics.Debug.WriteLine("User has a null value!");
-        //        }
-
-
-        //    }
-
-        //    return View();
-        //}
     }
 }
