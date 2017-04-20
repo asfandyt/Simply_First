@@ -51,6 +51,37 @@ namespace Simply_First.Controllers
         {
             return View();
         }
+        
+        [HttpPost]
+        public ActionResult Contact(Contact contactEmail)
+        {
+
+            String Email = contactEmail.Email;
+            String Name = contactEmail.Name;
+            String Message = contactEmail.Message;
+
+            if (ModelState.IsValid)
+            {
+
+                EmailRepo emailRepo = new EmailRepo();
+
+                //prepare email
+                var fromAddress = Email.ToString();
+
+                //start email Thread
+                // var tEmail = new Thread(() =>
+                emailRepo.SendEmail(fromAddress, Message, Name);
+                // tEmail.Start();
+
+                TempData["ContactSuccess"] = "Form successfully sent!";
+
+                return RedirectToAction("Contact");
+            }
+
+            TempData["ContactError"] = "Please provide proper details!";
+
+            return View();
+        }
 
         public ActionResult API()
         {
