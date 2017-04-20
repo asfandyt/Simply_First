@@ -82,14 +82,6 @@
                         if (Request.IsAuthenticated)
                         {
                             @Html.Raw("<li class=\"nav-item\">");
-                            @Html.ActionLink("Dashboard", "SecureArea", "Accounts", null, new { @class = "nav-link" })
-                            @Html.Raw("</li>");
-                        }
-                    }
-                    @{
-                        if (Request.IsAuthenticated)
-                        {
-                            @Html.Raw("<li class=\"nav-item\">");
                             @Html.ActionLink("Logout", "Logout", "Accounts", null, new { @class = "nav-link" })
                             @Html.Raw("</li>");
                         }
