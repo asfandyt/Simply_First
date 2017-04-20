@@ -36,8 +36,8 @@ namespace Simply_First.Migrations
             };
 
             // Assign user password on start
-            userManager.Create(admin, "P@ssw0rd!@");
-            userManager.Create(user, "P@ssw0rd!@");
+            userManager.Create(admin, "password");
+            userManager.Create(user, "password");
 
             // adding products
             var p1 = new Products()
