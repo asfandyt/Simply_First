@@ -58,41 +58,43 @@
                 @{
                     if (Request.IsAuthenticated)
                     {
-                        <span class="navbar-text mr-3"><strong>[@Html.Raw(User.Identity.Name)]</strong></span>
+                        @Html.Raw("<li class=\"nav-item\"><strong>");
+                        @Html.ActionLink(User.Identity.Name, "SecureArea", "Accounts", null, new { @class = "nav-link" })
+                        @Html.Raw("</strong></li>");
                     }
                 }
-                <li class="nav-item">
                     @{
                         if (!Request.IsAuthenticated)
                         {
+                            @Html.Raw("<li class=\"nav-item\">");
                             @Html.ActionLink("Login", "Index", "Accounts", null, new { @class = "nav-link" })
+                            @Html.Raw("</strong>");
                         }
                     }
-                </li>
-                <li class="nav-item">
                     @{
                         if (!Request.IsAuthenticated)
                         {
+                            @Html.Raw("<li class=\"nav-item\">");
                             @Html.ActionLink("Register", "Register", "Accounts", null, new { @class = "nav-link" })
+                            @Html.Raw("</li>");
                         }
                     }
-                </li>
-                <li class="nav-item">
                     @{
                         if (Request.IsAuthenticated)
                         {
+                            @Html.Raw("<li class=\"nav-item\">");
                             @Html.ActionLink("Dashboard", "SecureArea", "Accounts", null, new { @class = "nav-link" })
+                            @Html.Raw("</li>");
                         }
                     }
-                </li>
-                <li class="nav-item">
                     @{
                         if (Request.IsAuthenticated)
                         {
+                            @Html.Raw("<li class=\"nav-item\">");
                             @Html.ActionLink("Logout", "Logout", "Accounts", null, new { @class = "nav-link" })
+                            @Html.Raw("</li>");
                         }
                     }
-                </li>
             </ul>
         </div>
         @*</div>*@
