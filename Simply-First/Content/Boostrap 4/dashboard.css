@@ -171,6 +171,9 @@ body.Home {
 .Home hr {
     width: 40%;
 }
+.Home .feature-list {
+  margin-top: 5rem;
+}
 
 #custom-search-input{
     padding: 3px;
