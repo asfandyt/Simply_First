@@ -16,6 +16,9 @@
 <table class="table table-bordered">
     <tr class="bg-inverse text-white text-center">
         <th>
+            @Html.DisplayNameFor(model => model.custom)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.txtTime)
         </th>
         <th>
@@ -25,7 +28,7 @@
             @Html.DisplayNameFor(model => model.lastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.custom)
+            @Html.DisplayNameFor(model => model.name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.quantity)
@@ -43,6 +46,9 @@
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.custom)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.txtTime)
             </td>
             <td>
@@ -51,9 +57,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.lastName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.custom)
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
             <td>
                 @Html.DisplayFor(modelItem => item.quantity)
             </td>
