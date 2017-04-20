@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Base structure
  */
 
@@ -206,7 +206,6 @@ body.Home {
 #custom-search-input .glyphicon-search{
     font-size: 23px;
 }
-
 @media screen and (max-width: 800px) {
 
     /* Force table to not be like tables anymore */
@@ -259,6 +258,18 @@ body.Home {
         .container td:before {
             content: attr(data-title);
         }
+}
+
+
+@media screen and (max-width: 991px) {
+    header #navbarsExampleDefault > ul:nth-of-type(2) .nav-item:first-child {
+        order: 5;
+    }
+}
+@media screen and (min-width: 992px) {
+    header .nav-link {
+        padding-top: .7em;
+    }
 }
 
 @media screen and (min-width: 576px) {
