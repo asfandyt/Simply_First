@@ -79,26 +79,31 @@
             </td>
         </tr>
     }
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="text-center">@(quantityItems)</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="text-center">@(total)</td>
-    </tr>
+    @{
+        if (quantityItems >= 1)
+        {
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><strong>Quantity</strong></td>
+                <td class="text-center">@(quantityItems)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><strong>Pre Tax</strong></td>
+                <td class="text-center">@(total)</td>
+            </tr>
+        }
+    }
 
     <tr>
         <td></td>
