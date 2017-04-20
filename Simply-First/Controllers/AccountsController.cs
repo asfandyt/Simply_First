@@ -50,6 +50,8 @@ namespace Simply_First.Controllers
 
                 if (accountRepo.ValidLogin(model, out loginError))
                 {
+                    System.Threading.Thread.Sleep(2000);
+
                     IAuthenticationManager authenticationManager = HttpContext.GetOwinContext().Authentication;
 
                     authenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
@@ -120,6 +122,8 @@ namespace Simply_First.Controllers
             {
                 if (result.Succeeded)
                 {
+                    System.Threading.Thread.Sleep(2000);
+
                     CreateTokenProvider(manager, EMAIL_CONFIRMATION);
 
                     var code = manager.GenerateEmailConfirmationToken(identityUser.Id);
@@ -218,6 +222,8 @@ namespace Simply_First.Controllers
             {
                 if (user != null)
                 {
+                    System.Threading.Thread.Sleep(2000);
+
                     CreateTokenProvider(manager, PASSWORD_RESET);
 
                     var code = manager.GeneratePasswordResetToken(user.Id);
@@ -261,7 +267,20 @@ namespace Simply_First.Controllers
 
             IdentityResult result = manager.ResetPassword(userId, passwordToken, password);
 
-            ViewBag.Result = result.Succeeded ? "The password has been reset." : "The password has not been reset.";
+            //ViewBag.Result = result.Succeeded ? "The password has been reset." : "The password has not been reset.";
+
+            if (result.Succeeded)
+            {
+                System.Threading.Thread.Sleep(2000);
+
+                TempData["ResetSuccess"] = "The password has been reset, You may log in!";
+
+                return RedirectToAction("Index");
+            }
+
+            System.Threading.Thread.Sleep(2000);
+
+            TempData["ResetError"] = "The password has not been reset";
 
             return View();
         }
@@ -295,6 +314,8 @@ namespace Simply_First.Controllers
 
             if (!(compareResult == PasswordVerificationResult.Success))
             {
+                System.Threading.Thread.Sleep(2000);
+
                 TempData["PasswordError"] = "The current password is incorrect.";
 
                 return View();
@@ -304,15 +325,21 @@ namespace Simply_First.Controllers
                 IdentityResult result = manager.ResetPassword(userID, passwordToken, password);
                 if (result.Succeeded)
                 {
+                    System.Threading.Thread.Sleep(2000);
+
                     TempData["PasswordSucesss"] = "The password has been reset.";
                 }
                 else
                 {
+                    System.Threading.Thread.Sleep(2000);
+
                     TempData["PasswordError"] = "The password has not been reset.";
                 }
             }
             else
             {
+                System.Threading.Thread.Sleep(2000);
+
                 TempData["PasswordError"] = "Two passwords don't match!";
             }
                 

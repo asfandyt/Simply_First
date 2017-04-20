@@ -7,7 +7,7 @@
 <h1 class="text-center display-4 pb-3">Shopping Cart</h1>
 
 <table class="table table-bordered">
-    <tr class="bg-primary text-white text-center">
+    <tr class="bg-inverse text-white text-center">
         <th>
             Image
         </th>
@@ -29,7 +29,6 @@
         <th>
             Total Price
         </th>
-        <th class="hidden-md-up hidden-xs-up"></th>
         <th class="hidden-md-up hidden-xs-up"></th>
     </tr>
 
@@ -61,49 +60,86 @@
             <td>
                 @(item.TotalPrice)
             </td>
-            <td class="col-md-1">
+            <td>
                 @Html.ActionLink("+", "AddItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-success btn-sm" })
                 @Html.ActionLink("-", "SubtractItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
-            </td>
-            <td>
-                @Html.ActionLink("Clear", "RemoveItem", "Home", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
+
+                @Html.ActionLink("Clear", "RemoveItem", "Home", new {id = item.ProductId}, new {@class = "btn btn-warning btn-sm"})
             </td>
         </tr>
     }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-center">@(total)</td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-center">
+                @{
+                    if (Request.IsAuthenticated)
+                    {
+                        <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_xclick">
+                            <input type="hidden" name="business" value="TDJBNEF3XE5NU">
+                            <input type="hidden" name="lc" value="US">
+                            <input type="hidden" name="item_name" value="Simply First">
+                            <input type="hidden" name="custom" value="@ViewBag.UserId">
+                            <input type="hidden" name="amount" value="@(total)">
+                            <input type="hidden" name="currency_code" value="USD">
+                            <input type="hidden" name="button_subtype" value="services">
+                            <input type="hidden" name="no_note" value="0">
+                            <input type="hidden" name="cn" value="Add special instructions to the seller:">
+                            <input type="hidden" name="no_shipping" value="2">
+                            <input type="hidden" name="rm" value="1">
+                            <input type="hidden" name="return" value="http://gurkiratbola.com/simplyfirst/paypal/success">
+                            <input type="hidden" name="cancel_return" value="http://gurkiratbola.com/simplyfirst/paypal/cancel">
+                            <input type="hidden" name="tax_rate" value="12.000">
+                            <input type="hidden" name="shipping" value="49.99">
+                            <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
+                            <input type="hidden" name="notify_url" value="http://gurkiratbola.com/simplyfirst/paypal/purchase">
+                            <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                            <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="mdo">Purchase</button>
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">You must be logged in Purchase!</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body text-nowrap">
+                                        Please proceed to the <a href="~/Accounts/Index" class="text-primary">Login</a> page and complete your transaction.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </td>
+        </tr>
 </table>
 
-<p>@(total)</p>
 
-@{
-    if (ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("User"))
-    {
-        <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="TDJBNEF3XE5NU">
-            <input type="hidden" name="lc" value="US">
-            <input type="hidden" name="item_name" value="Simply First">
-            <input type="hidden" name="custom" value="@ViewBag.UserId">
-            <input type="hidden" name="amount" value="@(total)">
-            <input type="hidden" name="currency_code" value="USD">
-            <input type="hidden" name="button_subtype" value="services">
-            <input type="hidden" name="no_note" value="0">
-            <input type="hidden" name="cn" value="Add special instructions to the seller:">
-            <input type="hidden" name="no_shipping" value="2">
-            <input type="hidden" name="rm" value="1">
-            <input type="hidden" name="return" value="http://gurkiratbola.com/simplyfirst/paypal/success">
-            <input type="hidden" name="cancel_return" value="http://gurkiratbola.com/simplyfirst/paypal/cancel">
-            <input type="hidden" name="tax_rate" value="12.000">
-            <input type="hidden" name="shipping" value="49.99">
-            <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
-            <input type="hidden" name="notify_url" value="http://gurkiratbola.com/simplyfirst/paypal/purchase">
-            <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-            <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-        </form>
-    }
-    else
-    {
-        @Html.ActionLink("Login", "Index", "Accounts", null, new { @class = "nav-link btn btn-primary" })
-        @Html.ActionLink("Register", "Register", "Accounts", null, new { @class = "nav-link btn btn-primary" })
-    }
-}
-
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
