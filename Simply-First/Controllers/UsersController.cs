@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.Validation;
 using System.Linq;
@@ -87,24 +88,73 @@ namespace Simply_First.Controllers
         {
             string userId = FindUserId();
 
+            if (userId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             UserInformation user = db.UserInformation.Where(u => u.UserId == userId).FirstOrDefault();
             
             
             if (ModelState.IsValid)
             {
-                user.UserId = userId;
-                user.FirstName = model.FirstName;
-                user.LastName = model.LastName;
-                user.PhoneNumber = model.PhoneNumber;
-                user.StreetAddress = model.StreetAddress;
-                user.City = model.City;
-                user.PostalCode = model.PostalCode;
-                user.Province = model.Province;
-                user.Country = model.Country;
+                if (user == null)
+                {
+                    UserInformation newUser = new UserInformation
+                    {
+                        UserId = userId,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        PhoneNumber = model.PhoneNumber,
+                        StreetAddress = model.StreetAddress,
+                        City = model.City,
+                        PostalCode = model.PostalCode,
+                        Province = model.Province,
+                        Country = model.Country,
+                        JoinDate = model.JoinDate
+                    };
+                    db.UserInformation.Add(newUser);
+                }
+                else
+                {
+                    try
+                    {
+                        user.FirstName = model.FirstName;
+                        user.LastName = model.LastName;
+                        user.PhoneNumber = model.PhoneNumber;
+                        user.StreetAddress = model.StreetAddress;
+                        user.City = model.City;
+                        user.PostalCode = model.PostalCode;
+                        user.Province = model.Province;
+                        user.Country = model.Country;
+                        user.JoinDate = model.JoinDate;
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                }
 
-                //db.UserInformation.Add(user);
-                db.SaveChanges();
-                //db.Entry(info);
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in entityValidationErrors.ValidationErrors)
+                        {
+                            Response.Write("Property: " + validationError.PropertyName + " Error: " +
+                                           validationError.ErrorMessage);
+                        }
+                    }
+                }
+                catch (DbUpdateException ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.StackTrace);
+                }
             }
 
             return View();
