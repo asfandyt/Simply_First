@@ -70,7 +70,7 @@ namespace Simply_First.Controllers
                     {
                         foreach (var validationError in entityValidationErrors.ValidationErrors)
                         {
-                            Response.Write("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                            System.Diagnostics.Debug.WriteLine(ex.StackTrace);
                         }
                     }
                 }
@@ -146,8 +146,7 @@ namespace Simply_First.Controllers
                     {
                         foreach (var validationError in entityValidationErrors.ValidationErrors)
                         {
-                            Response.Write("Property: " + validationError.PropertyName + " Error: " +
-                                           validationError.ErrorMessage);
+                            System.Diagnostics.Debug.WriteLine(ex.StackTrace);
                         }
                     }
                 }

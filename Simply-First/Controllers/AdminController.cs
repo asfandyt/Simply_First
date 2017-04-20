@@ -369,5 +369,26 @@ namespace Simply_First.Controllers
             return View();
         }
 
+
+        public ActionResult RoleManager()
+        {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new SimplyFirstVMContext()));
+
+            var role = roleManager.Roles.ToList();
+
+            List<SiteUsersRoleVM> siteUsersRoles = new List<SiteUsersRoleVM>();
+
+            foreach (var roles in role)
+            {
+                SiteUsersRoleVM userRoles = new SiteUsersRoleVM();
+
+                userRoles.UserId = roles.Id;
+                userRoles.RoleId = roles.Name;
+                userRoles.Users = roles.Users.ToList();
+                siteUsersRoles.Add(userRoles);
+            }
+
+            return View(siteUsersRoles);
+        }
     }
 }
